@@ -1,10 +1,10 @@
 nav {
     font-family: Arial, Helvetica, sans-serif;
-    padding-top: 10px;
+    padding-top: 6px;
     border-bottom: 1px solid #0E86D4;
-    height: 44px;
+    height: 46px;
     box-sizing: border-box;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 ul {
@@ -16,14 +16,14 @@ ul {
 }
 
 li {
-    font-size: 14px;
+    font-size: 15px;
     display: inline-block;
     margin-right: 20px;
     color: #000000;
 }
 
 #brand {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
 }
 
@@ -34,15 +34,16 @@ li {
 
 .list-items {
     padding-bottom: 10px;
+    font-size: 16px;
 }
 
 .border-class {
     font-weight: 600;
-    border-bottom: 2px solid #0E86D4;
+    border-bottom: 4px solid #0E86D4;
 }
 
 .right-side {
-    margin-top: 4px;
+    margin-top: 6px;
     margin-right: 10px;
     font-weight: 600;
 }
@@ -53,6 +54,10 @@ img {
     margin-right: 15px;
 }
 
+div > img + li img {
+    margin-right: 0;
+}
 .inside-div {
     margin-right: 0;
+    padding: 0 8px;
 }
