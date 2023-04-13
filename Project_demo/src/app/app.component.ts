@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Project_demo';
+  // sidebarVisible = false;
+  // toggleSidebar() {
+  //   this.sidebarVisible = !this.sidebarVisible;
+  // }
 }
+  
