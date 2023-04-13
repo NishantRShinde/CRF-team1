@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DataSelectorComponent } from './data-selector/data-selector.component';
+import { InternalDataSelectorComponent } from './internal-data-selector/internal-data-selector.component';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,15 @@ export class AppComponent {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DataSelectorComponent, {
-      width: '600px',
+      width: '500px',
+      
       position:{top:'#',left:'30%'},
       panelClass:'custom-dialog-container'
     });
+
+
+
+    
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);

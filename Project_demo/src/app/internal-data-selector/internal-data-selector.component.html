@@ -1,0 +1,117 @@
+<h2 style="text-align: center;">Retail Measurement</h2>
+<p>Choose a dataset</p>
+<button name="close" dialog-dismiss class="close-icon" role="button" tabindex="0" mat-dialog-close
+    aria-disabled="false">X</button>
+
+
+<div>
+    <input type="text" data-cy="inpt-search-asset" id="search" name="searchText" class="search-bar">
+    <mat-icon class="icon" aria-hidden="false" aria-label="Example search icon"></mat-icon>
+</div>
+
+<mat-dialog-content class="custom-dialog-content">
+    <div class="box-container">
+
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">AUS APAC Dataset</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">SYNDICATED US</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">US TSR Demo prod copy</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">SJUYTGVH DTA</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;"> DATA SYND US</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">POFBT DTASET</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">AUN HBD DATA</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+        <div class="box" style="border: 1px solid black;padding: 3px;">
+
+            <label class="content">
+                <p style="text-align: left;">US PORAL DS</p>
+                <mat-dialog-actions align="end">
+                    <div id="checkbox-container" class="checked">
+                        <input type="checkbox" name="option1" value="option1" class="checkbox1">
+                    </div>
+                </mat-dialog-actions>
+            </label>
+        </div>
+
+    </div>
+</mat-dialog-content>
+
+
+
+
+<mat-dialog-actions align="end">
+
+
+    <div style="padding: 10px; ">
+        <button class="cancel" mat-raised-button mat-dialog-close style="padding: 20 px;">Cancel</button>
+        <button class="next" mat-raised-button mat-dialog-close (click)="openNewDialog()">Next</button>
+    </div>
+</mat-dialog-actions>

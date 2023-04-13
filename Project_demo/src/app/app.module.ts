@@ -5,16 +5,20 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataSelectorComponent } from './data-selector/data-selector.component';
+import { MatIconModule } from '@angular/material/icon';
+import { InternalDataSelectorComponent } from './internal-data-selector/internal-data-selector.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DataSelectorComponent
+    DataSelectorComponent,
+    InternalDataSelectorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
