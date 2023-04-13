@@ -1,7 +1,15 @@
 .close-icon{
     position: absolute;
-    top: 14px;
+    top: 20px;
     right: 12px;
+    /* background-image: url(src/assets/images/close.png);
+    background-size: cover; */
+ }
+ .back{
+    position: absolute;
+    top:20px;
+    left:12px;
+
  } 
 
  .box{
@@ -12,11 +20,14 @@
 
 .box-container{
     height: 300px;
+    
+   
   }
 
 .search-bar{
     background-color:rgb(219, 216, 216);
     outline: none;
+    margin-right: 10px;
     min-height: 25px;
     font-size: 1rem;
     padding: 10px 40px;

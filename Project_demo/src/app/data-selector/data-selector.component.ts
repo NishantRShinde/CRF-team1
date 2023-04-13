@@ -10,6 +10,8 @@ import { InternalDataSelectorComponent } from '../internal-data-selector/interna
   })
 export class DataSelectorComponent implements OnInit {
   [x:string]:any;
+
+  isAtLeastOneCheckboxSelected = false;
   // dialog: any;
 
   // constructor(@Inject(MatDialogRef) public dialogRef: MatDialogRef<DataSelectorComponent>) { }
@@ -17,7 +19,16 @@ export class DataSelectorComponent implements OnInit {
   // ngOnInit(): void {
 
   constructor(public dialog:MatDialog){}
+
+  updateCheckboxSelection(): void {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const atLeastOneCheckboxSelected = Array.prototype.some.call(checkboxes, (checkbox: HTMLInputElement) => checkbox.checked);
+    this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
+  }
+
+
     ngOnInit(): void{}
+
   
   public openNewDialog():void{
     const dialogRef=this.dialog.open(InternalDataSelectorComponent,{

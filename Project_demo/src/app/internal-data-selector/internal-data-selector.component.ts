@@ -1,5 +1,9 @@
+import { Location } from '@angular/common';
 import { Component, OnInit ,Inject} from '@angular/core';
 import { MatDialog ,MatDialogRef} from '@angular/material/dialog';
+
+import { DataSelectorComponent } from '../data-selector/data-selector.component';
+
 
 @Component({
   selector: 'app-internal-data-selector',
@@ -7,13 +11,23 @@ import { MatDialog ,MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./internal-data-selector.component.css']
 })
 export class InternalDataSelectorComponent implements OnInit {
-  constructor(public dialog:MatDialog){ }
-
-
+   isAtLeastOneCheckboxSelected = false; //for next disable
+  constructor(private location: Location,public dialog:MatDialog ){ }
+  goBack():void {
+    this.location.back();
+    
+  }
+  
+  updateCheckboxSelection(): void {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const atLeastOneCheckboxSelected = Array.prototype.some.call(checkboxes, (checkbox: HTMLInputElement) => checkbox.checked);
+    this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
+  }
+  
   ngOnInit(): void {
     // throw new Error('Method not implemented.');
   }
-
+  
   openNewDialog():void{
     const dialogRef=this.dialog.open(InternalDataSelectorComponent,{
       width:'500px'

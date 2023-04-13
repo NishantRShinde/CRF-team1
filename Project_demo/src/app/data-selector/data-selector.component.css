@@ -3,73 +3,84 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-  }
 
+}
+.head{
+    text-align: center;
+
+}
 
 .box-container {
 
     /* display: flex; */
-    align-items: center; 
+    align-items: center;
     justify-content: space-between;
-  }
-.box{
+}
+
+.box {
     flex-basis: calc(33.33% -20px);
+    display: flex;
     margin: 10px;
     padding: -200px;
     align-items: center;
     height: 150px;
-   
-  }
-.icon{
-    
-    top: 50px;
-    margin-top: 20px;
-    left: 50%;
+
+}
+
+.icon {
+    position: unset;
+    top: -500px;
+    margin-right: 10px;
+    /* margin-top: 10px; */
+    /* left: 50%; */
     background-image: url("src\assets\images\home.png");
     background-size: cover;
-   
+
+
 }
 
-.icon2{
-    
+.icon2 {
+
     top: 50px;
-    margin-top: 20px;
-    left: 50%;
+    margin-top: 10px;
+    /* left: 50%; */
     background-image: url("src\assets\images\user.png");
     background-size: cover;
-   
+
 }
 
-.icon3{
-    
+.icon3 {
+
     top: 50px;
-    margin-top: 20px;
-    left: 50%;
+    margin-top: 10px;
+    /* left: 50%; */
     background-image: url("src\assets\images\weigh.jpg");
     background-size: cover;
-   
+
 }
 
-.checkbox1{
-    border-radius: 50%; 
+.checkbox1 {
+    border-radius: 50%;
     position: relative;
-    top: -100px;
-    border: 2px solid black; 
-    height: 30px; 
-    width: 30px; 
-    display: inline-block; 
-  }
-.cancel{
+    top: -10px;
+    border: 2px solid black;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+}
+
+.cancel {
     margin-right: 20px;
     padding: 15px;
-    
+
 }
-.next{
+
+.next {
     padding: 15px;
     color: white;
     background-color: blue;
 }
+
 /* .checkbox2{
     border-radius: 50%; 
     border: 2px solid black; 
@@ -85,29 +96,34 @@
     width: 30px; 
     display: inline-block; 
   } */
-   
-  
+
+
 .content {
-    
+
     text-align: right;
-  margin: 0 auto 0 0;
-  }
-  
+    margin: 0 auto 0 0;
+    /* display: flex; */
+
+}
+
 .content1 {
-    
+
     text-align: right;
-  margin: 0 auto 0 0;
-  }
+    margin: 0 auto 0 0;
+}
+.first{
+    display: flex;
+}
 .content2 {
-    
+
     text-align: right;
-  margin: 0 auto 0 0;
-  }
+    margin: 0 auto 0 0;
+}
 
 
 
-.close-icon{
+.close-icon {
     position: absolute;
     top: 14px;
     right: 11px;
- } 
+}
