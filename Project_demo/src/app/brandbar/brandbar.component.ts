@@ -10,6 +10,11 @@ export class BrandbarComponent {
   isFirst: boolean = true;
 
   highlight(name: string): void {
+    if (name === 'home') {
+      this.previous.classList.remove('border-class');
+      this.isFirst = true;
+      return;
+    }
     if (this.isFirst) {
       this.isFirst = false;
       let item = document.querySelector(`.${name}`);
