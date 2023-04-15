@@ -20,6 +20,8 @@
   text-align: center;
   font-size: 15px;
   border: none;
+  height: 26px;
+  width: 26px;
   padding: 5px;
   transition-duration: 0.3s;
   opacity: 0.75;
@@ -27,7 +29,10 @@
 
 .icon_button:not(:disabled):hover {
   color: red;
+  height: 26px;
+  width: 26px;
   background-color: gray;
+  border-radius: 3px;
   cursor: pointer;
   opacity: 0.75;
 }

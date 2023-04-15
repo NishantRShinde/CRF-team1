@@ -7,41 +7,39 @@
         <h2 style="padding: 0px 30px;">NIQ</h2>
     </div>
     <div style=" padding: 10px 12px;">
-        <table style="width:100%">
-            <tr>
-                <td><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
-                </td>
-                <td style="text-align: right; ">
-                    <button type="button" class="icon_button" [disabled]="undo_icon_disable"
-                        style="transform: scaleX(-1);" (click)="undo_click()"> <i class="fa fa-share"></i>
-                    </button>
-                    <button type="button" class="icon_button" style="margin-left: 8px;" [disabled]="redo_icon_disable"
-                        (click)="redo_click()"><i class="fa fa-share"></i></button>
-                    <span class="vertical-line"></span>
-                    <button type="button" class="icon_button" style="margin-right: 13px;"
-                        [disabled]="download_icon_disable"><i class="fa fa-download"></i>
-                    </button>
-                    <button type="button" class="icon_button" [disabled]="save_icon_disable"
-                        (click)="save_report_title(reporttitle.value)">
-                        <i class="fa fa-print"></i>
-                    </button>
-                    <span class="vertical-line"></span>
-                    <button type="button" class="icon_button" style="margin-right: 13px;"
-                        [disabled]="addcard_icon_disable"><i class="fa fa-plus-circle"></i></button>
-                    <button type="button" class="icon_button" style="margin-right: 13px;"
-                        [disabled]="more_icon_disable"><i class="fa fa-ellipsis-h"></i>
-                        <div class="head-more">
-                            <ul>
-                                <li>Save</li>
-                                <li>Add</li>
-                                <li>Report Filter</li>
-                                <li>Edit Report layout</li>
-                            </ul>
-                        </div>
-                    </button>
-                </td>
-            </tr>
-        </table>
+        <div style="width:100%; display: flex; justify-content: space-between;">
+            <div><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
+            </div>
+            <div>
+                <button type="button" class="icon_button" [disabled]="undo_icon_disable" style="transform: scaleX(-1);"
+                    (click)="undo_click()"> <i class="fa fa-share"></i>
+                </button>
+                <button type="button" class="icon_button" style="margin-left: 8px;" [disabled]="redo_icon_disable"
+                    (click)="redo_click()"><i class="fa fa-share"></i></button>
+                <span class="vertical-line"></span>
+                <button type="button" class="icon_button" style="margin-right: 13px;"
+                    [disabled]="download_icon_disable"><i class="fa fa-download"></i>
+                </button>
+                <button type="button" class="icon_button" [disabled]="save_icon_disable"
+                    (click)="save_report_title(reporttitle.value)">
+                    <i class="fa fa-print"></i>
+                </button>
+                <span class="vertical-line"></span>
+                <button type="button" class="icon_button" style="margin-right: 13px;"
+                    [disabled]="addcard_icon_disable"><i class="fa fa-plus-circle"></i></button>
+                <button type="button" class="icon_button" style="margin-right: 13px;" [disabled]="more_icon_disable"><i
+                        class="fa fa-ellipsis-h"></i>
+                    <div class="head-more">
+                        <ul>
+                            <li>Save</li>
+                            <li>Add</li>
+                            <li>Report Filter</li>
+                            <li>Edit Report layout</li>
+                        </ul>
+                    </div>
+                </button>
+            </div>
+        </div>
     </div>
 
     <div style=" padding: 10px 17px; padding-bottom: 20px; background-color: rgb(242, 242, 242); ">
@@ -54,10 +52,10 @@
 
                 <input class="tab-title" type="text" id="tab_title" value="Table-1">
 
-                <div style="text-align: right;">
-                    <button type="button" class="icon_button"
-                        style="padding-right: 20px; padding-left: 40px;">&#10530;</button>
-                    <button type="button" class="rotate-button"><i class="fa fa-ellipsis-h"></i></button>
+                <div>
+                    <button type="button" class="icon_button" style="margin-right: 10px; margin-left: 30px;"><i
+                            class="fa fa-arrows-alt" style="transform: rotate(45deg);"></i></button>
+                    <button type="button" class="icon_button"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
             </div>
             <table class="report-table">
