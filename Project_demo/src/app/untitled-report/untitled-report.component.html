@@ -1,56 +1,56 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<div class="wrapper">
-    <div
-        style=" height: 17px; padding-bottom: 30px; border-bottom: 1.5px solid rgb(28, 155, 240); background-color: white;">
-        <h2 style="padding: 0px 30px;">NIQ</h2>
-    </div>
-    <div style=" padding: 10px 12px;">
-        <div style="width:100%; display: flex; justify-content: space-between;">
-            <div><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
-            </div>
-            <div>
-                <button type="button" class="icon_button" [disabled]="undo_icon_disable" style="transform: scaleX(-1);"
-                    (click)="undo_click()"> <i class="fa fa-share"></i>
-                </button>
-                <button type="button" class="icon_button" style="margin-left: 8px;" [disabled]="redo_icon_disable"
-                    (click)="redo_click()"><i class="fa fa-share"></i></button>
-                <span class="vertical-line"></span>
-                <button type="button" class="icon_button" style="margin-right: 13px;"
-                    [disabled]="download_icon_disable"><i class="fa fa-download"></i>
-                </button>
-                <button type="button" class="icon_button" [disabled]="save_icon_disable"
-                    (click)="save_report_title(reporttitle.value)">
-                    <i class="fa fa-print"></i>
-                </button>
-                <span class="vertical-line"></span>
-                <button type="button" class="icon_button" style="margin-right: 13px;"
-                    [disabled]="addcard_icon_disable"><i class="fa fa-plus-circle"></i></button>
-                <button type="button" class="icon_button" style="margin-right: 13px;" [disabled]="more_icon_disable"><i
-                        class="fa fa-ellipsis-h"></i>
-                    <div class="head-more">
-                        <ul>
-                            <li>Save</li>
-                            <li>Add</li>
-                            <li>Report Filter</li>
-                            <li>Edit Report layout</li>
-                        </ul>
-                    </div>
-                </button>
-            </div>
+<div
+    style=" height: 17px; padding-bottom: 30px; border-bottom: 1.5px solid rgb(28, 155, 240); background-color: white;">
+    <h2 style="padding: 0px 30px;">NIQ</h2>
+</div>
+<div style=" padding: 10px 12px;">
+    <div style="width:100%; display: flex; justify-content: space-between;">
+        <div><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
+        </div>
+        <div>
+            <button type="button" class="icon_button" [disabled]="undo_icon_disable" style="transform: scaleX(-1);"
+                (click)="undo_click()"> <i class="fa fa-share"></i>
+            </button>
+            <button type="button" class="icon_button" style="margin-left: 8px;" [disabled]="redo_icon_disable"
+                (click)="redo_click()"><i class="fa fa-share"></i></button>
+            <span class="vertical-line"></span>
+            <button type="button" class="icon_button" style="margin-right: 13px;" [disabled]="download_icon_disable"><i
+                    class="fa fa-download"></i>
+            </button>
+            <button type="button" class="icon_button" [disabled]="save_icon_disable"
+                (click)="save_report_title(reporttitle.value)">
+                <i class="fa fa-print"></i>
+            </button>
+            <span class="vertical-line"></span>
+            <button type="button" class="icon_button" style="margin-right: 13px;" [disabled]="addcard_icon_disable"><i
+                    class="fa fa-plus-circle"></i></button>
+            <button type="button" class="icon_button" style="margin-right: 13px;" [disabled]="more_icon_disable"><i
+                    class="fa fa-ellipsis-h"></i>
+                <div class="head-more">
+                    <ul>
+                        <li>Save</li>
+                        <li>Add</li>
+                        <li>Report Filter</li>
+                        <li>Edit Report layout</li>
+                    </ul>
+                </div>
+            </button>
         </div>
     </div>
+</div>
 
-    <div style=" padding: 10px 17px; padding-bottom: 20px; background-color: rgb(242, 242, 242); ">
-        <span style="font-weight: 600;">$ of 11Products in 2TotalUS during 13 4Weeks</span>
-    </div>
+<div style=" padding: 10px 17px; padding-bottom: 20px; background-color: rgb(242, 242, 242); ">
+    <span style="font-weight: 600;">$ of 11Products in 2TotalUS during 13 4Weeks</span>
+</div>
 
+<div class="wrapper">
     <div class="card">
         <div style="display: flex; flex-direction: column; height: 100%;">
             <div class="card-head">
 
-                <input class="tab-title" type="text" id="tab_title" value="Table-1">
+                <input class="tab-title" type="text" value="Table-1">
 
                 <div>
                     <button type="button" class="icon_button" style="margin-right: 10px; margin-left: 30px;"><i
@@ -58,21 +58,37 @@
                     <button type="button" class="icon_button"><i class="fa fa-ellipsis-h"></i></button>
                 </div>
             </div>
-            <table class="report-table">
-                <tr>
-                    <th style="width: 11%;">Markets</th>
-                    <th style="width: 11%;">Periods</th>
-                    <th style="width: 18%;">Products</th>
-                    <th style="width: 10%; text-align: right;">$</th>
-                    <th></th>
-                </tr>
-                <tr>
-                    <td style="width: 100px;">Total US Food</td>
-                    <td style="width: 100px;">4 w/e 07/20/19</td>
-                    <td style="max-width: 220px;">BEER | ANHEUSER-BUSCH IN BEV SA</td>
-                    <td style="width: 80px; text-align: right;">###</td>
-                </tr>
-            </table>
+            <div *ngIf="isloading"
+                style=" flex-grow: 1; margin: 8px 16px; margin-bottom: 20px; border: 1px solid rgb(204, 204, 204);">
+                <ngx-skeleton-loader [theme]="{ 'height': '100%', 'width': '100%' }" count="1"
+                    appearance="line"></ngx-skeleton-loader>
+            </div>
+            <div *ngIf="!isloading" class="table-headandcontent-container">
+
+                <table class="report-table" style="width:95.5%; position: fixed;">
+                    <thead>
+                        <tr>
+                            <th style="width: 9vw;">Markets</th>
+                            <th style="width: 9vw;">Periods</th>
+                            <th style="width: 14vw;">Products</th>
+                            <th style="width: 6vw; text-align: right;">$</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+                <div style="overflow: scroll;">
+                    <table class="report-table">
+                        <tbody>
+                            <tr *ngFor="let i of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                                <td style="width: 9vw;">Total US Food</td>
+                                <td style="width: 9vw;">4 w/e 07/20/19</td>
+                                <td style="min-width: 14vw; max-width: 14vw;">BEER | ANHEUSER-BUSCH IN BEV SA</td>
+                                <td style="width: 6vw; text-align: right; font-weight: 600;">###</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <!-- <div style=" flex-grow: 1; ">
                 <div style=" display: flex;  padding: 0px 16px;">
                     <div class="cell-card" style="width: 11%;"><p class="report-table-header">Market</p></div>
@@ -84,7 +100,8 @@
             </div> -->
         </div>
     </div>
-    <div
-        style="padding: 0px 12px; padding-top: 6px; padding-bottom: 10px; font-size: small; border-top: 1.5px solid white; background-color: rgb(242, 242, 242); ">
-        Source: NielsenIQ Retail Measurement | SYNDICATED US</div>
+    <div (click)="shimmer_effect()" style="padding: 0px 12px; padding-top: 6px; padding-bottom: 10px; position: fixed; bottom: 0px;width: 100%;
+        font-size: small; border-top: 1.5px solid white; background-color: rgb(242, 242, 242); user-select: none;">
+        <span style="cursor: pointer; margin: 0px 0px;">Source: NielsenIQ Retail Measurement | SYNDICATED US</span>
+    </div>
 </div>

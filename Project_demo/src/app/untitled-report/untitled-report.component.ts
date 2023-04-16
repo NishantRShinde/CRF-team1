@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-untitled-report',
   templateUrl: './untitled-report.component.html',
   styleUrls: ['./untitled-report.component.scss']
 })
-export class UntitledReportComponent {
+export class UntitledReportComponent implements OnInit{
   report_title: string = "Untitled-Report"
   undo: string = "";
   redo: string = "";
@@ -15,7 +15,13 @@ export class UntitledReportComponent {
   save_icon_disable: boolean = false;
   addcard_icon_disable: boolean = false;
   more_icon_disable: boolean = false;
+  isloading: boolean = true;
 
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.isloading = false;
+    }, 1000);
+  }
   save_report_title(title: string): void{
     if(!title){
       this.report_title = 'Untitled-Report';
@@ -40,6 +46,13 @@ export class UntitledReportComponent {
     this.report_title = this.redo;
     this.undo_icon_disable = false;
     this.redo_icon_disable = true;
+  }
+
+  shimmer_effect(){
+    this.isloading = true;
+    setTimeout(() => {
+      this.isloading = false;
+    }, 1000);
   }
 
 }

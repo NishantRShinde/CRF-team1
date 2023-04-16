@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { UntitledReportComponent } from './untitled-report/untitled-report.component';
 
 @NgModule({
@@ -12,7 +13,8 @@ import { UntitledReportComponent } from './untitled-report/untitled-report.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxSkeletonLoaderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
