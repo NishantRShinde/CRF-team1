@@ -20,16 +20,19 @@
 
   <div id="mySidebar" class="sidebar">
 
-    <!-- First div for Facts -->
-    <div id="factsSidebar" class="sidebar-facts">
-      <ul>
-        <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
-        <li><strong><select name="dropdown" id="d1" class="sidebar-heading-select">
-              <Option id="">Facts<a href="" class=""><img src="../src/app/assets/img/downarrow.jpg" alt=">"></a></Option>
-            </select></strong></li>
-        <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
-      </ul>
+    <ul class="sidebar-heading-ul">
+      <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
+      <li><strong><select name="dropdown" id="mainSelect" class="sidebar-heading-select">
+            <option value="facts" (click)="openClose('facts')">Facts</option>
+            <option value="products" (click)="openClose('products')">Products</option>
+            <option value="markets" (click)="openClose('markets')">Markets</option>
+            <option value="periods" (click)="openClose('periods')">Periods</option>
+          </select></strong></li>
+      <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
+    </ul>
 
+    <!-- First div for Facts -->
+    <div id="factsSidebar" class="sidebar-content">
       <a href="#">About</a><br>
       <a href="#">Services</a><br>
       <a href="#">Clients</a><br>
@@ -37,16 +40,7 @@
     </div>
 
     <!-- Second div for Products -->
-    <div id="productsSidebar" class="sidebar-products">
-      <ul>
-        <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
-        <li><strong><select name="dropdown" id="d1" class="sidebar-heading-select">
-              <Option>Products<a href="" class=""><img src="../src/app/assets/img/downarrow.jpg" alt=">"></a></Option>
-            </select></strong></li>
-        <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
-      </ul>
-
-
+    <div id="productsSidebar" class="sidebar-content">
       <a href="#">Services</a><br>
       <a href="#">Clients</a><br>
       <a href="#">Contact</a>

@@ -25,13 +25,15 @@ export class DataSummaryComponent {
 
   openNav(sidebar: String) {
     var z = document.getElementById("main");
+    var mainSelect = <HTMLInputElement>document.getElementById('mainSelect');
     switch (sidebar) {
       case "facts":
         var x = document.getElementById("mySidebar")
         var y = document.getElementById("factsSidebar")
-        if (x != null && y != null && z != null) {
+        if (x != null && y != null && z != null && mainSelect != null) {
+          mainSelect.value = "facts";
           x.style.width = "325px";
-          y.style.width = "325px";
+          y.style.width = "295px";
           z.style.marginRight = "325px";
         }
         else {
@@ -43,9 +45,10 @@ export class DataSummaryComponent {
       case "products":
         var x = document.getElementById("mySidebar")
         var y = document.getElementById("productsSidebar")
-        if (x != null && y != null && z != null) {
+        if (x != null && y != null && z != null && mainSelect != null) {
+          mainSelect.value = "products";
           x.style.width = "325px";
-          y.style.width = "325px";
+          y.style.width = "295px";
           z.style.marginRight = "325px";
         }
         else {
