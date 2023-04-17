@@ -19,27 +19,46 @@
     <a href="" (click) = "myFunction()">$</a> -->
 
   <div id="mySidebar" class="sidebar">
-    <div class="sidebar-heading">
+
+    <!-- First div for Facts -->
+    <div id="factsSidebar" class="sidebar-facts">
       <ul>
         <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
         <li><strong><select name="dropdown" id="d1" class="sidebar-heading-select">
-              <Option>Facts<a href="" class=""><img src="../src/app/assets/img/downarrow.jpg" alt=">"></a></Option>
+              <Option id="">Facts<a href="" class=""><img src="../src/app/assets/img/downarrow.jpg" alt=">"></a></Option>
             </select></strong></li>
         <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
       </ul>
-    </div>
-    <div style="margin: 0px 8px;">
+
       <a href="#">About</a><br>
       <a href="#">Services</a><br>
       <a href="#">Clients</a><br>
       <a href="#">Contact</a>
     </div>
+
+    <!-- Second div for Products -->
+    <div id="productsSidebar" class="sidebar-products">
+      <ul>
+        <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
+        <li><strong><select name="dropdown" id="d1" class="sidebar-heading-select">
+              <Option>Products<a href="" class=""><img src="../src/app/assets/img/downarrow.jpg" alt=">"></a></Option>
+            </select></strong></li>
+        <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
+      </ul>
+
+
+      <a href="#">Services</a><br>
+      <a href="#">Clients</a><br>
+      <a href="#">Contact</a>
+    </div>
+
+
   </div>
 
   <div id="main">
-    <p><a class="openbtn anchor" (click)="openNav()"><strong>$</strong></a> of <a class="openbtn"
-        (click)="openNav()"><strong>11 Products</strong></a> in <a class="openbtn" (click)="openNav()"><strong>2 Total
-          US</strong></a> during <a class="openbtn" (click)="openNav()"><strong>13 4 Weeks</strong></a></p>
+    <p><a class="openbtn anchor" (click)="openClose('facts')"><strong>$</strong></a> of <a class="openbtn"
+        (click)="openClose('products')"><strong>11 Products</strong></a> in <a class="openbtn" (click)="openClose('markets')"><strong>2 Total
+          US</strong></a> during <a class="openbtn" (click)="openClose('periods')"><strong>13 4 Weeks</strong></a></p>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore, qui architecto aspernatur tenetur nam eaque
       cupiditate neque iste ut quod necessitatibus voluptate quae cumque quis! Esse dolor adipisci vero ab!</p>
   </div>

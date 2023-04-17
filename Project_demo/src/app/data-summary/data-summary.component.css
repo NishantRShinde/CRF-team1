@@ -28,13 +28,20 @@ body {
   background-color: #f2f2f2;
 } */
 
-.sidebar-heading{
-  padding: 0px 8px 8px 0px;
-  font-size: 30px;
+.sidebar-facts{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: scroll;
+  /* transition: 0.5s; */
   margin: 0px 10px;
 }
 
-.sidebar-heading ul{
+.sidebar-facts ul{
   background-color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -44,6 +51,28 @@ body {
   margin: 0;
 }
 
+
+.sidebar-products{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: scroll;
+  margin: 0px 10px;
+}
+
+.sidebar-products ul{
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
 .menubtn {
   margin-left: 0px;
   padding: 0px 4px 3px 4px;
@@ -78,7 +107,7 @@ body {
   background-color: rgb(225, 224, 224);
 }
 /* Seperate Sidebars for different Facts, Products, etc. */
-.sidebar-facts {
+/* .sidebar-facts {
   height: 100%;
   width: 0;
   position: fixed;
@@ -89,7 +118,7 @@ body {
   overflow-x: scroll;
   transition: 0.5s;
   padding-top: 50px;
-}
+} */
 .openbtn {
   font-size: 15px;
   cursor: pointer;
@@ -107,7 +136,7 @@ body {
 
 #main {
   /* transition: margin-left .5s; */
-  transition: margin-right .5s;
+  /* transition: margin-right .5s; */
   padding: 16px;
 }
 
