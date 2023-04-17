@@ -1,110 +1,333 @@
 <h2 class="head">Choose source type</h2>
-<button name="close" dialog-dismiss class="close-icon" role="button" tabindex="0" mat-dialog-close
-    aria-disabled="false">X</button>
+<!-- <iron-overlay-backdrop  class="opened"></iron-overlay-backdrop> -->
+<mat-icon class="cross" aria-hidden="false" aria-label="Example cross icon" mat-dialog-close></mat-icon>
 
 
-
-<mat-dialog-content class="custom-dialog-content">
+<mat-dialog-content class="custom-dialog-container">
 
     <div class="box-container">
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content">
-                <h2 style="text-align: center;">Homescale panel</h2>
-                <br>
-                <p class="first" alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                     behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <div id="checkbox-container" class="checked">
-                        <input type="checkbox" name="option1" value="option1" class="checkbox1" (change)="updateCheckboxSelection()">
-                    </div>
-                </mat-dialog-actions>
-            </label>
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Omnishopper panel</h2>
+                    <p class="justified">Broad, trended analytics of individual shopper purchasing behavior in online
+                        and in store channels.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon2" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content1">
-                <h2 style="text-align: center;">Omnishopper 2.0 panel</h2>
-                <br>
-                <p alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                    behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <input type="checkbox" name="option2" value="option2" class="checkbox1" (change)="updateCheckboxSelection()">
-                </mat-dialog-actions>
-            </label>
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon3" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Home Omnisales</h2>
+                    <p class="justified">Understand quarterly trends in retailer store counts and ACV shares across
+                        outlet types and markets.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content1">
-                <h2 style="text-align: center;">Omni us panel</h2>
-                <br>
-                <p alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                    behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <input type="checkbox" name="option2" value="option2" class="checkbox1" (change)="updateCheckboxSelection()">
-                </mat-dialog-actions>
-            </label>
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon2" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Retail Measurement</h2>
+                    <p class="justified">Brand trended analytics of shop analytics of behaviour shopper behaviour in
+                        purch entiree </p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon3" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content1">
-                <h2 style="text-align: center;">Retail Measurement</h2>
-                <br>
-                <p alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                    behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <input type="checkbox" name="option2" value="option2" class="checkbox1" (change)="updateCheckboxSelection()">
-                </mat-dialog-actions>
-            </label>
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Business Drivers</h2>
+                    <p class="justified">Broad, trended analytics of individual shopper purchasing behavior in online
+                        and in store channels.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content">
-                <h2 style="text-align: center;">Homescale panel</h2>
-                <br>
-                <p class="first" alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                     behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <div id="checkbox-container" class="checked">
-                        <input type="checkbox" name="option1" value="option1" class="checkbox1" (change)="updateCheckboxSelection()">
-                    </div>
-                </mat-dialog-actions>
-            </label>
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon2" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Multi-country</h2>
+                    <p class="justified">Understand quarterly trends in retailer store counts and ACV shares across
+                        outlet types and markets.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
 
-        <div class="box" style="border: 1px solid black;padding: 10px;">
-            <mat-icon class="icon2" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-            <label class="content2">
-                <h2 style="text-align: center;">Homescan panel</h2>
-                <br>
-                <p alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                    behaviour in purchase entiree </p>
-                <mat-dialog-actions align="end">
-                    <input type="checkbox" name="option1" value="option1" class="checkbox1" (change)="updateCheckboxSelection()">
-
-                </mat-dialog-actions>
-            </label>
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon3" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Home Omnisales</h2>
+                    <p class="justified">Brand trended analytics of shop analytics of behaviour shopper behaviour in
+                        purch entiree.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
         </div>
-    </div>
 
-    <div class="box" style="border: 1px solid black;padding: 10px;">
-        <mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon>
-        <label class="content">
-            <h2 style="text-align: center;">Homescale panel</h2>
-            <br>
-            <p class="first" alignitems="center">Brand trended analytics of shop analytics of <br>behaviour shopper
-                 behaviour in purchase entiree </p>
-            <mat-dialog-actions align="end">
-                <div id="checkbox-container" class="checked">
-                    <input type="checkbox" name="option1" value="option1" class="checkbox1" (change)="updateCheckboxSelection()">
-                </div>
-            </mat-dialog-actions>
-        </label>
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Retail Omnisales</h2>
+                    <p class="justified">Brand trended analytics of shop analytics of behaviour shopper behaviour in
+                        purch entiree </p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon2" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Multi-country</h2>
+                    <p class="justified">Brand trended analytics of shop analytics of behaviour shopper behaviour in
+                        purch entiree </p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon3" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Business Drivers</h2>
+                    <p class="justified">Broad, trended analytics of individual shopper purchasing behavior in online
+                        and in store channels.</p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon2" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Home Omnisales</h2>
+                    <p class="justified">Understand quarterly trends in retailer store counts and ACV shares across
+                        outlet types and markets. </p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div class="box">
+            <table>
+                <tr style="height: 30px;">
+                    <td>
+                <tr><mat-icon class="icon3" aria-hidden="false" aria-label="Example weigh icon"></mat-icon></tr>
+                <tr style="height: 30px;"></tr>
+                </td>
+                <td>
+                    <h2>Omnishopper panel</h2>
+                    <p class="justified">Broad, trended analytics of individual shopper purchasing behavior in online
+                        and in store channels. </p>
+                </td>
+                <td>
+                    <tr style="height: 30px"></tr>
+                    <tr style="height: 50%;">
+                        <td>
+                            <mat-dialog-actions align="end">
+                                <div id="checkbox-container" class="checked">
+                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                        (change)="updateCheckboxSelection()">
+                                </div>
+                            </mat-dialog-actions>
+                        </td>
+                    </tr>
+                </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
 </mat-dialog-content>
@@ -115,6 +338,8 @@
     <div style="padding: 10px; ">
         <button class="cancel" mat-raised-button color="primary" mat-dialog-close
             style="padding: 20 px;">Cancel</button>
-        <button class="next" mat-raised-button mat-dialog-close  [disabled]="!isAtLeastOneCheckboxSelected" [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  "(click)="openNewDialog()">Next</button>
+        <button class="next" mat-raised-button mat-dialog-close [disabled]="!isAtLeastOneCheckboxSelected"
+            [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  "
+            (click)="openNewDialog()">Next</button>
     </div>
 </mat-dialog-actions>

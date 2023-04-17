@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DataSelectorComponent } from './data-selector/data-selector.component';
-import { InternalDataSelectorComponent } from './internal-data-selector/internal-data-selector.component';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +10,22 @@ import { InternalDataSelectorComponent } from './internal-data-selector/internal
 })
 export class AppComponent {
   title = 'Project_demo';
-  constructor(private dialog: MatDialog) { }
+  buttonVisible = true;
 
-  openDialog(): void {
+  constructor(private dialog: MatDialog,
+    public router: Router
+    ) { }
+
+
+  openNewDialog(): void {
+    this.router.navigate(['/second']);
+
+    this.buttonVisible = false;
     const dialogRef = this.dialog.open(DataSelectorComponent, {
-      width: '500px',
-      
-      position:{top:'#',left:'30%'},
-      panelClass:'custom-dialog-container'
+      width: '540px',
+      position: { top: '4.7%', left: '34%' },
+      panelClass: 'custom-dialog-container'
     });
-
-
-
-    
 
     dialogRef.afterClosed().subscribe((result: any) => {
       console.log(`Dialog result: ${result}`);

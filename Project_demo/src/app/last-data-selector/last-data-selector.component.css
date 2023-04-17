@@ -27,34 +27,28 @@
     font-size: 1.5rem;
     padding: 10px 40px;
     border: 0;
-    border-bottom:  1px solid rgb(109, 105, 105);
+    border-bottom: 1px solid rgb(109, 105, 105);
     margin-bottom: 15px;
     width: 270px;
 }
 
 .header {
     text-indent: 3cm;
-    font-size: 30px;
-}
-
-.content {
-    /* text-align: left; */
-    text-indent: .5cm;
+    font-size: 27px;
 }
 
 .context {
     text-indent: 1cm;
     font-size: 20px;
-
 }
 
 .box {
     flex-basis: calc(33.33% -20px);
     margin: 10px;
-    height: 45px;
+    padding: 3px;
+    height: 100px;
     width: 470px;
     border: 1px solid rgb(204, 197, 197);
-    padding: 3px;
 }
 
 .box-container {
@@ -71,7 +65,7 @@
     margin-bottom: 18px;
     right: 85%;
     background-size: cover;
-    /* background-image: url("src\assets\images\glass.png"); */
+
 }
 
 .checkbox1 {
@@ -84,27 +78,29 @@
     display: inline-block;
 }
 
-.context1 {
-    text-indent: 2cm;
-    font-size: 25px;
+.title {
+    text-indent: 0.2cm;
 }
 
-.checkbox2 {
+/* .checkbox4{
     position: relative;
-    top: -75px;
-    left: 28px;
     border-radius: 50%;
-    border: 2px solid black;
+    top: -80px;
+    border: 2px;
     height: 40px;
     width: 30px;
     display: inline-block;
+} */
+
+.context1 {
+    text-indent: 2cm;
+    font-size: 25px;
 }
 
 .cancel {
     margin-top: 50px;
     margin-right: 50px;
     padding: 15px;
-
 }
 
 .next {
