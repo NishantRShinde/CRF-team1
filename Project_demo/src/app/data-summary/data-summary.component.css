@@ -1,71 +1,129 @@
 body {
-    font-family: "Lato", sans-serif;
-  }
-
-u{
-    margin-top: 4px;
+  font-family: "activ-grotesk", "sans-serif";
 }
 
-div a{
-    font-size: 15px;
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: scroll;
+  transition: 0.5s;
 }
-  .sidebar {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0;
-    background-color: black;
-    overflow-x: scroll;
-    transition: 0.5s;
-    padding-top: 60px;
-  }
   
-  .sidebar a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 15px;
-    color: #818181;
-    display: block;
-    transition: 0.5s;
-  }
-  
-  .sidebar a:hover {
-    color: white;
-  }
-  
-  .sidebar .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
-  
-  .openbtn {
-    font-size: 15px;
-    cursor: pointer;
-    color: #262626;
-    border: none;
-    border-bottom-style:solid;
-    border-bottom-width: 0.5px;
-    width: fit-content;
-  }
-  
-  .openbtn:hover {
-    text-decoration: none;
-    border-bottom: 0.5px solid rgb(189, 209, 252);
-  }
-  
-  #main {
-    /* transition: margin-left .5s; */
-    transition: margin-right .5s;
-    padding: 16px;
-  }
-  
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidebar {padding-top: 15px;}
-    .sidebar a {font-size: 15px;}
-  }
+/* .sidebar a {
+  padding: 8px 8px 8px 20x;
+  text-decoration: none;
+  font-size: 30px;
+  color: #818181;
+  display: block;
+  transition: 0.5s;
+  padding: 2px;
+} */
+
+/* .sidebar a:hover {
+  background-color: #f2f2f2;
+} */
+
+.sidebar-heading{
+  padding: 0px 8px 8px 0px;
+  font-size: 30px;
+  margin: 0px 10px;
+}
+
+.sidebar-heading ul{
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.menubtn {
+  margin-left: 0px;
+  padding: 0px 4px 3px 4px;
+  font-size: 20px;
+  text-decoration: none;
+  color: #262626;
+  display: block;
+}
+ 
+.Sidebar-heading-select {
+  padding: 10px;
+  font-size: 30px;
+  /* text-decoration: none; */
+  color: #262626;
+  display: block;
+  border: none;
+  outline: none;
+}
+.closebtn {
+  font-size: 30px;
+  color: #262626;
+  margin: 0px;
+  padding: 0px 3px 0px 3px;
+  text-decoration: none;
+}
+
+.closebtn:hover {
+  background-color: rgb(225, 224, 224);
+}
+
+.menubtn:hover{
+  background-color: rgb(225, 224, 224);
+}
+/* Seperate Sidebars for different Facts, Products, etc. */
+.sidebar-facts {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 2;
+  top: 20px;
+  right: 10px;
+  background-color: #2f2f2f;
+  overflow-x: scroll;
+  transition: 0.5s;
+  padding-top: 50px;
+}
+.openbtn {
+  font-size: 15px;
+  cursor: pointer;
+  color: #262626;
+  border: none;
+  border-bottom-style:solid;
+  border-bottom-width: 0.5px;
+  width: fit-content;
+}
+
+.openbtn:hover {
+  text-decoration: none;
+  border-bottom: 0.5px solid rgb(189, 209, 252);
+}
+
+#main {
+  /* transition: margin-left .5s; */
+  transition: margin-right .5s;
+  padding: 16px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 10px;}
+  .sidebar a {font-size: 30px;}
+}
+
+select{
+  border: none;
+  font-size: 20px;
+  font-family: activ grotesk ;
+  font-weight: bold;
+}
+
+select:hover {
+  background-color: rgb(225, 224, 224) ;
+}
