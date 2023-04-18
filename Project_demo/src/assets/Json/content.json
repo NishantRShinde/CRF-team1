@@ -1,0 +1,25 @@
+{
+    "facts": [
+        {
+            "title": "$"
+        }
+    ],
+
+    "products":[
+        {
+            "title": "11 Products"
+        }
+    ],
+
+    "markets":[
+        {
+            "title": "2 total US"
+        }
+    ],
+    
+    "periods":[
+        {
+            "title": "13 4 Weeks"
+        }
+    ]
+}
