@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-brandbar',
   templateUrl: './brandbar.component.html',
-  styleUrls: ['./brandbar.component.css'],
+  styleUrls: ['./brandbar.component.scss'],
 })
 export class BrandbarComponent {
   previous: any;
@@ -27,4 +27,18 @@ export class BrandbarComponent {
       this.previous = item;
     }
   }
+  allPermissions: string[] = [
+    'monitor-my-business',
+    'choose-a-template',
+    'build-a-table',
+    'find-my-stuff',
+  ];
+
+  user: {
+    uname: string;
+    permissions: number[];
+  } = {
+    uname: 'Nishant',
+    permissions: [0, 2, 3],
+  };
 }

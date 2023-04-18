@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },
       { path: 'chooseATemplate', component: AppComponent },
-      { path: 'buildATemplate', component: AppComponent },
+      { path: 'buildATable', component: AppComponent },
       { path: 'findMyStuff', component: AppComponent },
     ]),
   ],

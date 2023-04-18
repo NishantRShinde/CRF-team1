@@ -1,13 +1,18 @@
 <nav>
     <ul>
-        <span>
+        <span class="left-side">
             <li id="brand" (click)="highlight('home')" routerLink="/home"><span class="niq-span">NIQ</span>Discover</li>
-            <li class="list-items mmb" (click)="highlight('mmb')" routerLink="/monitorMyBusiness">Monitor my business
-            </li>
-            <li class="list-items cat" (click)="highlight('cat')" routerLink="/chooseATemplate">Choose a template</li>
-            <li class="list-items bat" (click)="highlight('bat')" routerLink="/buildATemplate">Build a template</li>
-            <li class="list-items fms" (click)="highlight('fms')" routerLink="/findMyStuff">Find my stuff</li>
+            <span>
+                <li class="list-items mmb" (click)="highlight('mmb')" routerLink="/monitorMyBusiness">Monitor my
+                    business
+                </li>
+                <li class="list-items cat" (click)="highlight('cat')" routerLink="/chooseATemplate">Choose a template
+                </li>
+                <li class="list-items bat" (click)="highlight('bat')" routerLink="/buildATable">Build a table</li>
+                <li class="list-items fms" (click)="highlight('fms')" routerLink="/findMyStuff">Find my stuff</li>
+            </span>
         </span>
+
         <div class="right-side">
             <img src="../../assets/bell-solid.svg " alt="notification icon" />
             <li class="inside-div">Nishant<img style="margin-left: 2px;" src="../../assets/user-solid.svg "
