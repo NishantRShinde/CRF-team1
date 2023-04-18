@@ -1,0 +1,61 @@
+<div class="bigcontainer">
+    <mat-icon *ngIf="panelnumber==2 || panelnumber==3" class="back" mat-dialog-close>⬅</mat-icon>
+    <div class="head" 
+    [ngStyle]="{ 'padding-left': panelnumber==1? '5%':'14%', }">
+        {{heading}}
+    </div>
+    <mat-icon class="cross" mat-dialog-close></mat-icon>
+
+
+    <p *ngIf="panelnumber==2 || panelnumber==3" class="context_5">Choose a dataset</p>
+    <input *ngIf="panelnumber===2 || panelnumber==3" type="text" data-cy="input-search-asset" id="search"
+        name="searchText" class="search-bar">
+    <mat-icon *ngIf="panelnumber===2 || panelnumber==3" class="icon_5">🔍</mat-icon>
+
+    <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '75%':'45%', }">
+        <div class="boxes" 
+            *ngFor="let i of panel"
+            [ngStyle]="{ 'height': panelnumber==1? '29%':'13%', 'padding-left':panelnumber==2? '7%': '0px' }">
+            <div *ngIf="panelnumber==1" style="width: 15%; padding-left: 2%;"><mat-icon class="icon" aria-hidden="false"
+                    aria-label="Example home icon"></mat-icon></div>
+            <div class="content_1" style="flex-grow: 1;">
+                <div style="display: flex; flex-direction: column;">
+                    <span> {{i.title}}</span>
+                    <br *ngIf="panelnumber==1">
+                    <span *ngIf="panelnumber==1">{{i.description}}</span>
+                </div>
+            </div>
+            <div class="checkbox_1"
+                style="min-width: 10%; max-width: 10%;"
+                [ngStyle]="{'align-self': panelnumber==1? 'last baseline':'none', 'padding-bottom': panelnumber==1? '15px':'none'}"
+                ><input
+                    type="checkbox" name="option1" value="option1" class="checkbox1"
+                    (change)="updateCheckboxSelection()"></div>
+        </div>
+
+    </div>
+    <div *ngIf="!(panelnumber==1)" style=" display: flex;padding-top: 20px;text-indent: 17px">
+        <div class="checkbox_1"
+                ><input
+                    type="checkbox" name="option1" value="option1" class="checkbox1"
+                    (change)="updateCheckboxSelection()"></div>
+        <p style="font-size: 20px">Save as Default</p>
+    </div>
+    <div style="width:100%;position: absolute; display:flex; flex-direction: column;
+    bottom: 0;left: 0;right: 0;"
+    [ngStyle]="{ 'height': panelnumber==1? '17%':'10%',}"
+    >
+        <div style="flex-grow: 1"></div>
+        <div style=" display: flex;">
+            <div style="flex-grow: 1; padding:20px;"></div>
+            <div><button class="cancel" style="padding: 40 px;">Cancel</button></div>
+            <div *ngIf="panelnumber==1 || panelnumber==2"><button class="next"
+                    [disabled]="!isAtLeastOneCheckboxSelected" (click)="Onnext()"
+                    [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
+            </div>
+            <div *ngIf="panelnumber==3"><button class="apply" [disabled]="!isAtLeastOneCheckboxSelected"
+                    (click)="Onnext()" [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Apply
+                    Dataset</button>
+            </div>
+        </div>
+    </div>
