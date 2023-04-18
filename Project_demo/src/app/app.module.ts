@@ -5,17 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataSelectorComponent } from './data-selector/data-selector.component';
 import { MatIconModule } from '@angular/material/icon';
-import { InternalDataSelectorComponent } from './internal-data-selector/internal-data-selector.component';
-import { LastDataSelectorComponent } from './last-data-selector/last-data-selector.component';
+
 import { FormsModule } from '@angular/forms'; // <-- import the FormsModule
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   
   declarations: [
     AppComponent,
     DataSelectorComponent,
-    InternalDataSelectorComponent,
-    LastDataSelectorComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -23,6 +23,13 @@ import { FormsModule } from '@angular/forms'; // <-- import the FormsModule
     MatDialogModule,
     MatIconModule,
     FormsModule ,
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path:"app-data-selector",
+        component:DataSelectorComponent
+      }
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

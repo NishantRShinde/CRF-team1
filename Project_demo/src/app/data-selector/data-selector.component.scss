@@ -1,0 +1,154 @@
+.bigcontainer{
+    background-color: whitesmoke;
+    border: rgb(14, 13, 13);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 30%;
+    height: 80%;
+
+}
+
+.head {
+    text-indent: 13px;
+    font-size: 30px;
+    padding-top: 3%;
+    // padding: 3% 5%;
+}
+.back {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    font-size: 30px;
+    height: 400px;
+    width: 200px;
+}
+.search-bar {
+    background-color: #F5F5F5;
+    outline: none;
+    margin-right: 17px;
+    margin-left: 17px;
+    min-height: 25px;
+    font-size: 1.5rem;
+    padding: 10px 40px;
+    border: 0;
+    border-bottom:  1px solid rgb(109, 105, 105);
+    margin-bottom: 15px;
+    width: 270px;
+}
+.scroll{
+    width: 100%; 
+    overflow-y: scroll;
+}
+.boxes{
+    display: flex;
+     align-items: center;
+     border: 1px solid black;
+      margin: 13px 15px;
+
+}
+.icon_5{
+    position: absolute;
+    height: 40px;
+    width: 35px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    right: 87%;
+    background-size: cover;
+    /* background-image: url("src\assets\images\glass.png"); */
+}
+.box-container {
+    align-items: center;
+    /* height: 360px; */
+    justify-content: space-between;
+}
+.context_5 {
+     text-indent: 17px;
+    font-size: 20px;
+
+}
+.box {
+    flex-basis: calc(33.33% - 20px);
+    display: flex;
+    margin: 10px;
+    width: 478px;
+    height: 115px;
+    border:  1px solid rgb(204, 197, 197);
+}
+
+.cross {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    background-image: url("../../assets/images/close.png");
+    background-size: cover;
+}
+
+.icon {
+     position: unset;
+     top: -500px;
+   
+     margin: 10px 20px 10px 20px;
+    background-image: url("../../assets/images/home.png");
+     background-size: cover;
+}
+
+.icon2 {
+    position: unset;
+    top: -500px;
+    margin: 10px 20px 10px 20px;
+    background-image: url("../../assets/images/Weigh.jpg");
+    background-size: cover;
+}
+
+.icon3 {
+    position: unset;
+    top: -500px;
+    margin: 10px 20px 10px 20px;
+    background-image: url("../../assets/images/user.png");
+    background-size: cover;
+}
+
+.checkbox1 {
+    border-radius: 50%;
+    border: 2px solid black;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+}
+
+.cancel {
+    align-self: last baseline;
+    // margin-left: 100px;
+    padding: 15px;
+    margin-bottom: 15px;
+    padding-right: 20px;
+    color: white;
+    background-color: blue;
+}
+
+.next {
+    align-self: last baseline;
+    margin-left: 40px;
+    color: white;    
+    width: 80px;
+    // margin-top: -90px;
+    margin-right: 35px;
+    padding: 15px;  
+}
+
+.apply{
+    align-self: last baseline;
+    margin-left: 40px;
+    color: white;    
+    width: 120px;
+    // margin-top: -90px;
+    margin-right: 35px;
+    padding: 15px;   
+}

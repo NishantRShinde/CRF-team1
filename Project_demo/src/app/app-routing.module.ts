@@ -5,11 +5,11 @@ import { DataSelectorComponent } from './data-selector/data-selector.component';
 import { InternalDataSelectorComponent } from './internal-data-selector/internal-data-selector.component';
 import { LastDataSelectorComponent } from './last-data-selector/last-data-selector.component';
 
-const routes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'second', component: DataSelectorComponent },
-  { path: 'third', component: InternalDataSelectorComponent }
-];
+// const routes: Routes = [
+//   { path: '', component: AppComponent },
+//   { path: 'second', component: DataSelectorComponent },
+//   { path: 'third', component: InternalDataSelectorComponent }
+// ];
 
 
 

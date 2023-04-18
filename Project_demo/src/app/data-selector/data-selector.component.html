@@ -1,43 +1,162 @@
-<h2 class="head">Choose source type</h2>
-<!-- <iron-overlay-backdrop  class="opened"></iron-overlay-backdrop> -->
-<mat-icon class="cross" aria-hidden="false" aria-label="Example cross icon" mat-dialog-close></mat-icon>
+<div class="bigcontainer">
+    <mat-icon *ngIf="panelnumber==2 || panelnumber==3" class="back" mat-dialog-close>⬅</mat-icon>
+    <div class="head" 
+    [ngStyle]="{ 'padding-left': panelnumber==1? '5%':'14%', }">
+        {{heading}}
+    </div>
+    <mat-icon class="cross" mat-dialog-close></mat-icon>
 
 
-<mat-dialog-content class="custom-dialog-container">
+    <p *ngIf="panelnumber==2 || panelnumber==3" class="context_5">Choose a dataset</p>
+    <input *ngIf="panelnumber===2 || panelnumber==3" type="text" data-cy="input-search-asset" id="search"
+        name="searchText" class="search-bar">
+    <mat-icon *ngIf="panelnumber===2 || panelnumber==3" class="icon_5">🔍</mat-icon>
 
-    <div class="box-container">
+    <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '75%':'45%', }">
+        <div class="boxes" 
+            *ngFor="let i of panel"
+            [ngStyle]="{ 'height': panelnumber==1? '29%':'13%', 'padding-left':panelnumber==2? '7%': '0px' }">
+            <div *ngIf="panelnumber==1" style="width: 15%; padding-left: 2%;"><mat-icon class="icon" aria-hidden="false"
+                    aria-label="Example home icon"></mat-icon></div>
+            <div class="content_1" style="flex-grow: 1;">
+                <div style="display: flex; flex-direction: column;">
+                    <span> {{i.title}}</span>
+                    <br *ngIf="panelnumber==1">
+                    <span *ngIf="panelnumber==1">{{i.description}}</span>
+                </div>
+            </div>
+            <div class="checkbox_1"
+                style="min-width: 10%; max-width: 10%;"
+                [ngStyle]="{'align-self': panelnumber==1? 'last baseline':'none', 'padding-bottom': panelnumber==1? '15px':'none'}"
+                ><input
+                    type="checkbox" name="option1" value="option1" class="checkbox1"
+                    (change)="updateCheckboxSelection()"></div>
+        </div>
 
-        <div class="box">
-            <table>
-                <tr style="height: 30px;">
-                    <td>
-                <tr><mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon></tr>
-                <tr style="height: 30px;"></tr>
-                </td>
-                <td>
-                    <h2>Omnishopper panel</h2>
-                    <p class="justified">Broad, trended analytics of individual shopper purchasing behavior in online
-                        and in store channels.</p>
-                </td>
-                <td>
-                    <tr style="height: 30px"></tr>
-                    <tr style="height: 50%;">
-                        <td>
-                            <mat-dialog-actions align="end">
-                                <div id="checkbox-container" class="checked">
-                                    <input type="checkbox" name="option1" value="option1" class="checkbox1"
-                                        (change)="updateCheckboxSelection()">
-                                </div>
-                            </mat-dialog-actions>
-                        </td>
-                    </tr>
-                </td>
-                </tr>
-            </table>
+    </div>
+    <div *ngIf="!(panelnumber==1)" style=" display: flex;padding-top: 20px;text-indent: 17px">
+        <div class="checkbox_1"
+                ><input
+                    type="checkbox" name="option1" value="option1" class="checkbox1"
+                    (change)="updateCheckboxSelection()"></div>
+        <p style="font-size: 20px">Save as Default</p>
+    </div>
+    <!-- <div style="background-color: blue;">
+        <p *ngIf="panelnumber==2 || panelnumber==3">Save as Default</p>
+    </div> -->
+    <div style="width:100%;position: absolute; display:flex; flex-direction: column;
+    bottom: 0;left: 0;right: 0;"
+    [ngStyle]="{ 'height': panelnumber==1? '17%':'10%',}"
+    >
+        <div style="flex-grow: 1"></div>
+        <div style=" display: flex;">
+            <div style="flex-grow: 1; padding:20px;"></div>
+            <div><button class="cancel" style="padding: 40 px;">Cancel</button></div>
+            <div *ngIf="panelnumber==1 || panelnumber==2"><button class="next"
+                    [disabled]="!isAtLeastOneCheckboxSelected" (click)="Onnext()"
+                    [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
+            </div>
+            <div *ngIf="panelnumber==3"><button class="apply" [disabled]="!isAtLeastOneCheckboxSelected"
+                    (click)="Onnext()" [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Apply
+                    Dataset</button>
+            </div>
         </div>
 
 
-        <div class="box">
+
+    </div>
+
+    <!-- </div> -->
+
+    <!-- <div style="padding: 10px; background-color: brown;display: flex;" >
+        <button class="cancel" style="padding: 20 px;background-color: black;">Cancel</button>
+        <button (click)="Onnext()" class="next" [disabled]="!isAtLeastOneCheckboxSelected"
+            [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
+    </div> -->
+
+    <!-- <div style="width:100%; height: 15%;position: absolute; display:flex; flex-direction: column;
+    bottom: 0;
+    left: 0;
+    right: 0;">
+        <div style="flex-grow: 1;background-color:blue"></div>
+        <div style=" display: flex;">
+            <div style="flex-grow: 1; padding:20px; background-color:black"></div>
+            <div><button style="padding: 20 px;">Cancel</button></div>
+            <div><button (click)="Onnext()">Next</button></div>
+        </div> -->
+    <!-- </div> -->
+
+
+    <!-- <div style="padding: 10px; ">
+        <button class="cancel" mat-raised-button color="primary" mat-dialog-close
+            style="padding: 20 px;">Cancel</button>
+        <button (click)="Onnext()" class="next" mat-raised-button mat-dialog-close
+            [disabled]="!isAtLeastOneCheckboxSelected"
+            [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
+    </div> -->
+
+    <!-- <div style="height:65%; overflow-y: scroll; ">
+        <div class="box-container">
+            <div *ngFor="let i of panel">
+                <div class="box">
+                    <table>
+                        <tr style="height: 30px;">
+                            <td *ngIf="panelnumber==1">
+                        <tr><mat-icon class="icon" aria-hidden="false" aria-label="Example home icon"></mat-icon></tr>
+                        <tr style="height: 30px;"></tr>
+                        </td>
+                        <td>
+                            <h2>{{i.title}}</h2>
+                            <p *ngIf="panelnumber==1" class="justified">{{i.description}}</p>
+                        </td>
+                        <td>
+                            <tr style="height: 30px"></tr>
+                            <tr style="height: 50%;">
+                                <td>
+                                    <mat-dialog-actions align="end">
+                                        <div id="checkbox-container" class="checked">
+                                            <input type="checkbox" name="option1" value="option1" class="checkbox1"
+                                                (change)="updateCheckboxSelection()">
+                                        </div>
+                                    </mat-dialog-actions>
+                                </td>
+                            </tr>
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <!-- <div style="width:100%; height: 15%;position: absolute; display:flex; flex-direction: column;
+    bottom: 0;
+    left: 0;
+    right: 0;">
+        <div style="flex-grow: 1;"></div>
+        <div style=" display: flex;">
+            <div style="flex-grow: 1;"></div>
+            <div><button>Cancel</button></div>
+            <div><button (click)="Onnext()">Next</button></div>
+        </div>
+    </div> -->
+
+    <!-- </mat-dialog-content> -->
+    <!-- <mat-dialog-actions align="end">
+
+
+        <div style="padding: 10px; ">
+            <button class="cancel" mat-raised-button color="primary" mat-dialog-close
+                style="padding: 20 px;">Cancel</button>
+            <button (click)="Onnext()" class="next" mat-raised-button mat-dialog-close
+                [disabled]="!isAtLeastOneCheckboxSelected"
+                [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
+        </div>
+    </mat-dialog-actions> -->
+
+
+    <!-- <div class="box">
             <table>
                 <tr style="height: 30px;">
                     <td>
@@ -328,18 +447,6 @@
                 </tr>
             </table>
         </div>
-    </div>
+    </div> -->
 
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-
-
-    <div style="padding: 10px; ">
-        <button class="cancel" mat-raised-button color="primary" mat-dialog-close
-            style="padding: 20 px;">Cancel</button>
-        <button class="next" mat-raised-button mat-dialog-close [disabled]="!isAtLeastOneCheckboxSelected"
-            [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  "
-            (click)="openNewDialog()">Next</button>
-    </div>
-</mat-dialog-actions>
+    <!-- </mat-dialog-content> -->

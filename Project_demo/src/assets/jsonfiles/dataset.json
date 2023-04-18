@@ -1,0 +1,97 @@
+{
+    "panels_1": [
+        {
+            "title": "Omnishopper 2.0 panel",
+            "description": "Broad, trended analytics of individual shopper purchasing behavior in online and in store channels.",
+            "icon": "icon1",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Retail Measurement",
+            "description": "Cross-channel and granular performance tracking of in-store, point-of-sale data.",
+            "icon": "icon",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel",
+            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "icon": "icon3",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Omnishopper panel",
+            "description": "Broad, trended analytics of individual shopper behavior in online and in store channels.",
+            "icon": "icon",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Omnishopper panel",
+            "description": "Broad, trended analytics of individual shopper behavior in online and in store channels.",
+            "icon": "icon",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel",
+            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "icon": "icon3",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Retail Measurement",
+            "description": "Cross-channel and granular performance tracking of in-store, point-of-sale data.",
+            "icon": "icon",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel",
+            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "icon": "icon3",
+            "checkboxName": "checkbox1"
+        }
+    ],
+
+    "panels_2": [
+        {
+            "title": "AUS APAC Dataset",   
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Retail Measurement",   
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel",            
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Omnishopper panel",
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Omnishopper panel",   
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel", 
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Retail Measurement",  
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "Homescan panel",   
+            "checkboxName": "checkbox1"
+        }
+    ],
+    "panels_3":[
+        {
+            "title": "Nielsen US RMS OnDemand Syndicated..",   
+            "checkboxName": "checkbox1"
+        },
+        {
+            "title": "97210-RB_RULE",   
+            "checkboxName": "checkbox1"
+        }
+    ]
+}
