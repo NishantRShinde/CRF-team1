@@ -17,6 +17,8 @@ export class DataSummaryComponent {
       console.log(this.component);
     });
   }
+
+  
 }
 
 

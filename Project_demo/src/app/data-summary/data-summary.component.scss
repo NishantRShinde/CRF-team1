@@ -1,11 +1,12 @@
 $color_1: #262626;
-$font-family_1: "activ-grotesk", "sans-serif";
+$font-family_1: "arial", "sans-serif";
 
-body {
+.div1 {
 	font-family: $font-family_1;
+  margin-left: 16px;
 }
 .openbtn {
-	font-size: 15px;
+	font-size: 14px;
 	cursor: pointer;
 	color: $color_1;
 	border: none;
