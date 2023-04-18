@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,6 +7,13 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./data-selector.component.scss'],
 })
 export class DataSelectorComponent{
+  // @Input() dataselectorbox!: boolean;
+  @Output() ChangeBoolean = new EventEmitter<boolean>();
+
+  changeisDatasetSelector(){
+    const temp: boolean = false;
+    this.ChangeBoolean.emit(temp);
+  }
 
   heading: string = 'Choose source type';
   [x: string]: any;
@@ -55,6 +62,7 @@ export class DataSelectorComponent{
       this.panel = this.dataset.panels_1;
       this.heading = "Choose source type";
     }
+    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected;
   }
 
   updateCheckboxSelection(): void {

@@ -16,6 +16,7 @@ export class UntitledReportComponent implements OnInit{
   addcard_icon_disable: boolean = false;
   more_icon_disable: boolean = false;
   isloading: boolean = true;
+  isDatasetSelector:boolean = false;
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -52,7 +53,11 @@ export class UntitledReportComponent implements OnInit{
     this.isloading = true;
     setTimeout(() => {
       this.isloading = false;
-    }, 1000);
+    }, 1500);
+  }
+
+  OpenDatasetSelector(){
+    this.isDatasetSelector = true;
   }
 
 }

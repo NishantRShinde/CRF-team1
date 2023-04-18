@@ -10,6 +10,7 @@ import { UntitledReportComponent } from './untitled-report/untitled-report.compo
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
+import { ReportPageFooterComponent } from './untitled-report/report-page-footer/report-page-footer.component';
 
 
 
@@ -22,6 +23,7 @@ import { DataSummaryComponent } from './data-summary/data-summary.component';
     UntitledReportComponent,
     DataSummaryComponent,
     DataSelectorComponent,
+    ReportPageFooterComponent,
   ],
   imports: [
     BrowserModule,
