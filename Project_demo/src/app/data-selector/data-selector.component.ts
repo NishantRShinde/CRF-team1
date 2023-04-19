@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { MatDialogRef, MatDialog } from '@angular/material/dialog';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {  MatDialog } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-data-selector',
@@ -9,16 +8,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./data-selector.component.scss'],
 })
 export class DataSelectorComponent implements OnInit {
+  containerVisible = true;
 
   heading: string = 'Choose source type';
   [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
 
-  // constructor( public dialogRef: MatDialogRef<DataSelectorComponent>,
-  //   // public router: Router,
-  //   public dialog: MatDialog
-
-  //   ) { }
+ 
   dataset: any
   panel: any;
   constructor(private http: HttpClient,public dialog: MatDialog) {
@@ -63,23 +59,37 @@ export class DataSelectorComponent implements OnInit {
       this.heading = "Choose source type";
     }
   }
-
+  Onback(): void {
+    this.panelnumber--;
+    if (this.panelnumber == 1) {
+      this.panel = this.dataset.panels_1;
+      this.heading = "Choose source type";
+    }
+    else if (this.panelnumber == 2) {
+      this.panel = this.dataset.panels_2;
+      this.heading = "Retail Measurement";
+    }
+    else if (this.panelnumber == 3) {
+      this.panel = this.dataset.panels_3;
+      this.heading = "SYNDICATED US";
+    }
+    else if (this.panelnumber >= 3) {
+      this.panelnumber = 1;
+      this.panel = this.dataset.panels_1;
+      this.heading = "Choose source type";
+    }
+  }
   updateCheckboxSelection(): void {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const atLeastOneCheckboxSelected = Array.prototype.some.call(checkboxes, (checkbox: HTMLInputElement) => checkbox.checked);
     this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
   }
+  closeContainer() {
+    this.containerVisible = false;
+  }
   ngOnInit(): void { }
 
-  // public openNewDialog(): void {
-  //   this.dialogRef.close();
-
-  //   const dialogRef = this.dialog.open(InternalDataSelectorComponent, {
-  //     width: '540px',
-  //     position: { top: '4.7%', left: '34%' },
-  //     panelClass: 'custom-dialog-container'
-  //   });
-  // }
+  
 }
 
 
