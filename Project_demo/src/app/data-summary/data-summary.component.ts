@@ -8,11 +8,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./data-summary.component.scss'],
 })
 export class DataSummaryComponent {
-    content: Dict = {
-    Facts: ["",'$'],
+  content: Dict = {
+    Facts: ['', '$'],
     Products: ['of', 'Beer', 'Coke'],
     Markets: ['in', 'US', 'UK'],
-    Periods: ['during', '13 4 Weeks']
+    Periods: ['during', '13 4 Weeks'],
   };
   // component: any
   // constructor(private http: HttpClient){

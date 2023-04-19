@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ShimmerEffectService } from '../services/shimmer-effect.service';
 
 @Component({
   selector: 'app-data-selector',
@@ -16,17 +17,11 @@ export class DataSelectorComponent{
 
   dataset: any
   panel: any;
-  constructor(private http: HttpClient) {
+  constructor(public shimmerService:ShimmerEffectService, private http: HttpClient) {
 
     this.http.get("../../assets/jsonfiles/dataset.json").subscribe((res) => {
-
       this.dataset = res;
-
-      console.log('--- result : ', this.dataset);
-
       this.panel = this.dataset.panels_1;
-      console.log(this.panel);
-
     });
 
   }
@@ -81,6 +76,7 @@ export class DataSelectorComponent{
   changeisDatasetSelector(){
     const temp: boolean = false;
     this.ChangeBoolean.emit(temp);
+    this.shimmerService.shimmer_effect();
   }
 }
 

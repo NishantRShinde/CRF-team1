@@ -53,12 +53,12 @@
                         <button type="button" class="icon_button"><i class="fa fa-ellipsis-h"></i></button>
                     </div>
                 </div>
-                <div *ngIf="isloading"
+                <div *ngIf="shimmerService.isloading"
                     style=" flex-grow: 1; margin: 8px 16px; margin-bottom: 20px; border: 1px solid rgb(204, 204, 204);">
                     <ngx-skeleton-loader [theme]="{ 'height': '100%', 'width': '100%' }" count="1"
                         appearance="line"></ngx-skeleton-loader>
                 </div>
-                <div *ngIf="!isloading" class="table-headandcontent-container">
+                <div *ngIf="!shimmerService.isloading" class="table-headandcontent-container">
 
                     <table class="report-table" style="width:95.5%; position: fixed;">
                         <thead>
