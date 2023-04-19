@@ -10,7 +10,9 @@ import { ShimmerEffectService } from '../services/shimmer-effect.service';
 export class DataSelectorComponent{
   // @Input() dataselectorbox!: boolean;
   @Output() ChangeBoolean = new EventEmitter<boolean>();
+  @Output() sendDataSources = new EventEmitter<string[]>();
 
+  selectedDatasources:string[];
   heading: string = 'Choose source type';
   [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
@@ -23,6 +25,7 @@ export class DataSelectorComponent{
       this.dataset = res;
       this.panel = this.dataset.panels_1;
     });
+    this.selectedDatasources = [];
 
   }
   panelnumber: number = 1;
@@ -76,7 +79,14 @@ export class DataSelectorComponent{
   changeisDatasetSelector(){
     const temp: boolean = false;
     this.ChangeBoolean.emit(temp);
+  }
+  applyDataset(){
+    this.ChangeBoolean.emit(false);
     this.shimmerService.shimmer_effect();
+    this.sendDataSources.emit(this.selectedDatasources);
+  }
+  SelectedDatasetlist(title:string){
+    this.selectedDatasources.push(title);
   }
 }
 

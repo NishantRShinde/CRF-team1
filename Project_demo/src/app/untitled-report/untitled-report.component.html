@@ -1,10 +1,15 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<div [style.pointer-events]=" isDatasetSelector? 'none' : 'auto'" class="grayed" >
+<div class="grayed">
     <div style=" padding: 10px 12px;">
         <div style="width:100%; display: flex; justify-content: space-between;">
-            <div><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
+            <div  ><input #reporttitle class="report-title" type="text" value={{report_title}} size="15px" ngModel>
+            </div>
+            <div *ngIf="shimmerService.isloading" style=" padding-left: 10px; ">
+                <ngx-skeleton-loader
+                    [theme]="{ 'height': '35px', 'position': 'absolute', 'left':'0px', 'width': '40vw', 'margin-left':'10px',  'background-color': 'rgb(204,204,204)',}"
+                    count="1" appearance="line"></ngx-skeleton-loader>
             </div>
             <div>
                 <button type="button" class="icon_button" [disabled]="undo_icon_disable" style="transform: scaleX(-1);"
@@ -16,7 +21,7 @@
                 <button type="button" class="icon_button" style="margin-right: 13px;"
                     [disabled]="download_icon_disable"><i class="fa fa-download"></i>
                 </button>
-                <button type="button" class="icon_button" [disabled]="save_icon_disable"
+                <button type="button" class="icon_button" [disabled]="save_icon_disable || shimmerService.isloading"
                     (click)="save_report_title(reporttitle.value)">
                     <i class="fa fa-print"></i>
                 </button>
@@ -97,7 +102,7 @@
         </div>
     </div>
 </div>
-<div (click)="OpenDatasetSelector()">
-    <app-report-page-footer></app-report-page-footer>
-</div>
-<app-data-selector (ChangeBoolean)="isDatasetSelector = $event" *ngIf="isDatasetSelector" ></app-data-selector>
+<!-- <div >
+    
+</div> -->
+<app-report-page-footer></app-report-page-footer>

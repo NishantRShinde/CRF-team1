@@ -6,12 +6,13 @@
   font-size: 24px;
   font-weight: 600;
   padding-left: 10px;
-}
 
-.report-title:hover {
-  outline: none;
-  border: none;
-  border-bottom: 1.5px solid blue;
+
+  &:hover {
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid blue;
+  }
 }
 
 .icon_button {
@@ -25,16 +26,17 @@
   padding: 5px;
   transition-duration: 0.3s;
   opacity: 0.75;
-}
 
-.icon_button:not(:disabled):hover {
-  color: red;
-  height: 26px;
-  width: 26px;
-  background-color: gray;
-  border-radius: 3px;
-  cursor: pointer;
-  opacity: 0.75;
+  &:not(:disabled):hover {
+    color: red;
+    height: 26px;
+    width: 26px;
+    background-color: gray;
+    border-radius: 3px;
+    cursor: pointer;
+    opacity: 0.75;
+  }
+
 }
 
 // .rotate-button {
@@ -211,7 +213,7 @@
 
 }
 
-.grayed{
+.grayed {
   // background-color: #00000080;
   user-select: none;
   // filter: grayscale(1);
