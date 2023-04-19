@@ -1,54 +1,54 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+// import content from "./src/assets/Json/content.json";
 
 @Component({
   selector: 'app-data-summary',
   templateUrl: './data-summary.component.html',
-  styleUrls: ['./data-summary.component.scss']
+  styleUrls: ['./data-summary.component.scss'],
 })
 export class DataSummaryComponent {
-  content: any
-  component: any
-  constructor(private http: HttpClient){
-    this.http.get("../../assets/Json/content.json").subscribe((res) => {
-      this.content = res;
-      console.log('--- result : ', this.content);
-      this.component = this.content.facts;
-      console.log(this.component);
-    });
+    content: Dict = {
+    Facts: ["",'$'],
+    Products: ['of', 'Beer', 'Coke'],
+    Markets: ['in', 'US', 'UK'],
+    Periods: ['during', '13 4 Weeks']
+  };
+  // component: any
+  // constructor(private http: HttpClient){
+  //   this.http.get("../../assets/Json/content.json").subscribe((res) => {
+  //     this.content = res;
+  //     console.log('--- result : ', this.content);
+  // //     // this.component = this.content.facts;
+  // //     // console.log(this.component);
+  //   });
+  //   this.dict1=this.content
+  // }
+  keys(): Array<string> {
+    return Object.keys(this.content);
   }
-
-  
 }
 
+interface Dict {
+  [index: string]: string[];
+}
 
+//  myFunction(): any{
+//   alert("Successfully executed!")
+//  }
+// previous: any;
+// isFirst: boolean = true;
+// openClose(sidebar: String) {
+//   if (this.isFirst) {
 
-
-
-
-
-
-
-
-
-
-
-  //  myFunction(): any{
-  //   alert("Successfully executed!")
-  //  }
-  // previous: any;
-  // isFirst: boolean = true;
-  // openClose(sidebar: String) {
-  //   if (this.isFirst) {
-
-  //     this.openNav(sidebar);
-  //     this.isFirst = false;
-  //   }
-  //   else {
-  //     this.closeNav();
-  //     this.openNav(sidebar);
-  //   }
-  // }
+//     this.openNav(sidebar);
+//     this.isFirst = false;
+//   }
+//   else {
+//     this.closeNav();
+//     this.openNav(sidebar);
+//   }
+// }
 
 //   openNav(sidebar: String) {
 //     var z = document.getElementById("main");
@@ -83,7 +83,7 @@ export class DataSummaryComponent {
 //         }
 //         this.previous = y
 //         break;
-        
+
 //     }
 //   }
 
