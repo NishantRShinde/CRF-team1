@@ -1,44 +1,43 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 
 @Component({
   selector: 'app-brandbar',
   templateUrl: './brandbar.component.html',
   styleUrls: ['./brandbar.component.scss'],
 })
-export class BrandbarComponent {
+export class BrandbarComponent implements AfterViewInit {
   previous: any;
   isFirst: boolean = true;
 
-  highlight(name: string): void {
-    if (name === 'home') {
-      this.previous.classList.remove('border-class');
-      this.isFirst = true;
-      return;
-    }
-    if (this.isFirst) {
-      this.isFirst = false;
-      let item = document.querySelector(`.${name}`);
-      item?.classList.add('border-class');
-      this.previous = item;
-    } else {
-      this.previous.classList.remove('border-class');
-      let item = document.querySelector(`.${name}`);
-      item?.classList.add('border-class');
-      this.previous = item;
-    }
-  }
   allPermissions: string[] = [
-    'monitor-my-business',
-    'choose-a-template',
-    'build-a-table',
-    'find-my-stuff',
+    'Monitor my business',
+    'Choose a template',
+    'Build a table',
+    'Find my stuff',
   ];
 
   user: {
     uname: string;
     permissions: number[];
   } = {
-    uname: 'Nishant',
-    permissions: [0, 2, 3],
+    uname: 'Nishant.Shinde',
+    permissions: [0, 1, 2, 3],
   };
+
+  ngAfterViewInit() {
+    let listItems = document.querySelectorAll('.list-items');
+    listItems.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (this.isFirst) {
+          item.classList.add('border-class');
+          this.isFirst = false;
+          this.previous = item;
+        } else {
+          this.previous.classList.remove('border-class');
+          item.classList.add('border-class');
+          this.previous = item;
+        }
+      });
+    });
+  }
 }

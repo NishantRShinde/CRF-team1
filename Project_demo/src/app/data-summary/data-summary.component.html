@@ -1,35 +1,11 @@
-  <!-- <div id="mySidebar" class="sidebar">
 
-    <ul class="sidebar-heading-ul">
-      <li><strong><a href="javascript:void(0)" class="menubtn">...</a></strong></li>
-      <li><strong><select name="dropdown" id="mainSelect" class="sidebar-heading-select">
-            <option value="facts" (click)="openClose('facts')">Facts</option>
-            <option value="products" (click)="openClose('products')">Products</option>
-            <option value="markets" (click)="openClose('markets')">Markets</option>
-            <option value="periods" (click)="openClose('periods')">Periods</option>
-          </select></strong></li>
-      <li><a href="javascript:void(0)" class="closebtn" (click)="closeNav()">×</a></li>
-    </ul>
-
-    <div id="factsSidebar" class="sidebar-content">
-      <a href="#">About</a><br>
-      <a href="#">Services</a><br>
-      <a href="#">Clients</a><br>
-      <a href="#">Contact</a>
+<br>
+<div id="main" class="div1">
+    <div *ngFor="let item of keys()" class="inline">&nbsp;
+      {{ content[item][0] }} <a class="openbtn"><strong *ngIf="content[item].length === 2; else elseBlock">
+        {{ content[item][1] }}</strong>
+    <ng-template #elseBlock> <strong> {{content[item].length-1}} {{item}} </strong></ng-template></a>
     </div>
+    <br><br>
+</div>
 
-    <div id="productsSidebar" class="sidebar-content">
-      <a href="#">Services</a><br>
-      <a href="#">Clients</a><br>
-      <a href="#">Contact</a>
-    </div>
-
-
-  </div> -->
-
-  <div id="main" class="div1">
-    <p><a class="openbtn"><strong>$</strong></a> of 
-      <a class="openbtn"><strong> 11 Products</strong></a> in 
-      <a class="openbtn"><strong> 2 Total US</strong></a> during 
-      <a class="openbtn"><strong> 13 4 Weeks</strong></a></p>
-  </div>
