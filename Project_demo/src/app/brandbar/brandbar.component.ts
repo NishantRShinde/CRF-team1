@@ -18,9 +18,11 @@ export class BrandbarComponent implements AfterViewInit {
 
   user: {
     uname: string;
+    uid: number;
     permissions: number[];
   } = {
     uname: 'Pratik.Paulkar',
+    uid: 12,
     permissions: [0, 1, 2, 3],
   };
 
