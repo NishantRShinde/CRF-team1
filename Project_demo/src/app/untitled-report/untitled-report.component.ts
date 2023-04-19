@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShimmerEffectService } from '../services/shimmer-effect.service';
 
 @Component({
   selector: 'app-untitled-report',
@@ -15,13 +16,15 @@ export class UntitledReportComponent implements OnInit{
   save_icon_disable: boolean = false;
   addcard_icon_disable: boolean = false;
   more_icon_disable: boolean = false;
-  isloading: boolean = true;
+  // isloading: boolean = true;
   isDatasetSelector:boolean = false;
 
+  constructor(public shimmerService:ShimmerEffectService){}
+
   ngOnInit(): void {
-    setTimeout(() => {
-      this.isloading = false;
-    }, 1000);
+    // setTimeout(() => {
+    //   this.isloading = false;
+    // }, 1000);
   }
   save_report_title(title: string): void{
     if(!title){
@@ -49,12 +52,12 @@ export class UntitledReportComponent implements OnInit{
     this.redo_icon_disable = true;
   }
 
-  shimmer_effect(){
-    this.isloading = true;
-    setTimeout(() => {
-      this.isloading = false;
-    }, 1500);
-  }
+  // shimmer_effect(){
+  //   this.isloading = true;
+  //   setTimeout(() => {
+  //     this.isloading = false;
+  //   }, 1500);
+  // }
 
   OpenDatasetSelector(){
     this.isDatasetSelector = true;
