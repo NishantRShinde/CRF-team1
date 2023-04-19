@@ -7,7 +7,14 @@
     width: 32%;height: 80%;
 
 }
-
+.page{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;bottom: 0;left: 0;right: 0;
+    margin: auto;
+    background-color: #00000080;
+}
 .head {
     text-indent: 13px;
     font-size: 30px;
@@ -44,7 +51,7 @@
 .boxes{
     display: flex;
      align-items: center;
-     border: 1px solid black;
+     border: 1px solid rgb(204,204,204);
    margin: 13px 15px;
 
 }
