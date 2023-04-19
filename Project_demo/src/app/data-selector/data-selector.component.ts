@@ -10,11 +10,6 @@ export class DataSelectorComponent{
   // @Input() dataselectorbox!: boolean;
   @Output() ChangeBoolean = new EventEmitter<boolean>();
 
-  changeisDatasetSelector(){
-    const temp: boolean = false;
-    this.ChangeBoolean.emit(temp);
-  }
-
   heading: string = 'Choose source type';
   [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
@@ -31,12 +26,6 @@ export class DataSelectorComponent{
 
       this.panel = this.dataset.panels_1;
       console.log(this.panel);
-
-
-
-      // this.panel = this.dataset.panel_2;
-
-      // this.panel = this.dataset.panel_3;
 
     });
 
@@ -64,11 +53,34 @@ export class DataSelectorComponent{
     }
     this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected;
   }
-
+  Onback(): void {
+    this.panelnumber--;
+    if (this.panelnumber == 1) {
+      this.panel = this.dataset.panels_1;
+      this.heading = "Choose source type";
+    }
+    else if (this.panelnumber == 2) {
+      this.panel = this.dataset.panels_2;
+      this.heading = "Retail Measurement";
+    }
+    else if (this.panelnumber == 3) {
+      this.panel = this.dataset.panels_3;
+      this.heading = "SYNDICATED US";
+    }
+    else if (this.panelnumber <= 3) {
+      this.panelnumber = 1;
+      this.panel = this.dataset.panels_1;
+      this.heading = "Choose source type";
+    }
+  }
   updateCheckboxSelection(): void {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const atLeastOneCheckboxSelected = Array.prototype.some.call(checkboxes, (checkbox: HTMLInputElement) => checkbox.checked);
     this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
+  }
+  changeisDatasetSelector(){
+    const temp: boolean = false;
+    this.ChangeBoolean.emit(temp);
   }
 }
 
