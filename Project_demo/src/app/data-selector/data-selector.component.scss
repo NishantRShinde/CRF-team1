@@ -2,9 +2,13 @@
     background-color: white;
     border: rgb(14, 13, 13);
     position: absolute;
-    top: 0;bottom: 0;left: 0;right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin: auto;
-    width: 32%;height: 80%;
+    width: 35vw;
+    height: 83vh;
 
 }
 .page{
@@ -16,8 +20,8 @@
     background-color: #00000080;
 }
 .head {
-    text-indent: 13px;
-    font-size: 30px;
+    text-indent: 3vh;
+    font-size: 22px;
     padding-top: 3%;
     padding-bottom: 5px;
     font-weight: bold;
@@ -126,8 +130,8 @@
 .checkbox2{
     border-radius: 50%;
     border: 2px solid black;
-    height: 30px;
-    width: 30px;
+    // height: 30px;
+    // width: 30px;
     display: inline-block;
     margin-left: 2px;
 
@@ -154,32 +158,38 @@
 }
 .content_1{
     flex-grow: 1;
+    align-items: center;
+    padding-left: 10px;
+    justify-content: center;
+    margin-right: 5px;
 }
 .content_2{
     display: flex; 
     flex-direction: column;
+    justify-content: center;
 }
 .content_3{
     
-    margin-top:-20px;
-    font-size: 23px; 
+    // margin-top:-20px;
+    font-size: 18px; 
     font-weight: bold;
 }
 
 .content_4{
-    margin-top:-35px;
-    margin-left: -35px;
-    font-size: 20px;
+    // margin-top:-35px;
+    // margin-left: -35px;
+    font-size: 18px;
      font-weight: bold;
 }
 .content_6{
     text-indent:-5px;
-    font-size: 20px;
+    font-size: 18px;
     
 }
 .content_7{
-    font-size: 17px;
-    padding-top: -5px;
+    font-size: 13px;
+    // padding-top: -5px;
+    line-height: 16px;
 }
 .default{
      display: flex;

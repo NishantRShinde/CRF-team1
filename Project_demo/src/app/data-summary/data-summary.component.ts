@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ShimmerEffectService } from '../services/shimmer-effect.service';
 // import content from "./src/assets/Json/content.json";
 
 @Component({
@@ -14,6 +15,8 @@ export class DataSummaryComponent {
     Markets: ['in', 'US', 'UK'],
     Periods: ['during', '13 4 Weeks']
   };
+
+  constructor(public shimmerService:ShimmerEffectService){}
   // component: any
   // constructor(private http: HttpClient){
   //   this.http.get("../../assets/Json/content.json").subscribe((res) => {

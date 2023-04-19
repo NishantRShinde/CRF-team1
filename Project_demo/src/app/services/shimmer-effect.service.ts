@@ -17,7 +17,7 @@ export class ShimmerEffectService {
     console.log('in shimmer service')
     setTimeout(() => {
       this.isloading = false;
-    }, 1500);
+    }, 3000);
   }
 
 }
