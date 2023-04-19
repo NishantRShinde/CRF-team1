@@ -8,29 +8,32 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   styleUrls: ['./data-summary.component.scss'],
 })
 export class DataSummaryComponent {
+  mainObj: any;
+  // mainObj: Dict;
+  component: any;
+  constructor(private http: HttpClient) {
+    this.http.get('../../assets/Json/content.json').subscribe((res) => {
+      this.mainObj = res;
+      console.log('it comes up to here');
+      console.log('--- result : ', this.mainObj);
+    });
+    // this.mainObj = this.obj;
+  }
+
   content: Dict = {
     Facts: ['', '$'],
     Products: ['of', 'Beer', 'Coke'],
     Markets: ['in', 'US', 'UK'],
     Periods: ['during', '13 4 Weeks'],
   };
-  // component: any
-  // constructor(private http: HttpClient){
-  //   this.http.get("../../assets/Json/content.json").subscribe((res) => {
-  //     this.content = res;
-  //     console.log('--- result : ', this.content);
-  // //     // this.component = this.content.facts;
-  // //     // console.log(this.component);
-  //   });
-  //   this.dict1=this.content
-  // }
+
   keys(): Array<string> {
-    return Object.keys(this.content);
+    return Object.keys(this.mainObj);
   }
 }
 
 interface Dict {
-  [index: string]: string[];
+  [index: string]: Array<any>;
 }
 
 //  myFunction(): any{
