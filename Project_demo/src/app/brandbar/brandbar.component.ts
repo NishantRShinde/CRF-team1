@@ -20,8 +20,8 @@ export class BrandbarComponent implements AfterViewInit {
     uname: string;
     permissions: number[];
   } = {
-    uname: 'Pratik.Paulkar',
-    permissions: [0, 1, 2],
+    uname: 'Nishant.Shinde',
+    permissions: [0, 1, 2, 3],
   };
 
   ngAfterViewInit() {
