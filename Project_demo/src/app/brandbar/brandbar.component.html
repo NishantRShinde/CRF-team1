@@ -1,22 +1,15 @@
 <nav>
     <ul>
         <span class="left-side">
-            <li id="brand" (click)="highlight('home')" routerLink="/home"><span class="niq-span">NIQ</span>Discover</li>
+            <li id="brand" routerLink="/home"><span class="niq-span">NIQ</span>Discover</li>
             <span>
-                <li class="list-items mmb" (click)="highlight('mmb')" routerLink="/monitorMyBusiness">Monitor my
-                    business
-                </li>
-                <li class="list-items cat" (click)="highlight('cat')" routerLink="/chooseATemplate">Choose a template
-                </li>
-                <li class="list-items bat" (click)="highlight('bat')" routerLink="/buildATable">Build a table</li>
-                <li class="list-items fms" (click)="highlight('fms')" routerLink="/findMyStuff">Find my stuff</li>
+                <li class="list-items" *ngFor="let permission of user.permissions">{{allPermissions[permission]}}</li>
             </span>
         </span>
 
         <div class="right-side">
             <img src="../../assets/bell-solid.svg " alt="notification icon" />
-            <li class="inside-div">Nishant<img style="margin-left: 2px;" src="../../assets/user-solid.svg "
-                    alt="user icon" />
+            <li class="inside-div">{{user.uname}}<img class="user" src="../../assets/user-solid.svg " alt="user icon" />
             </li>
             <img style="margin-left: 15px" src="../../assets/question-circle.svg "
                 alt="question mark within a circle" />
