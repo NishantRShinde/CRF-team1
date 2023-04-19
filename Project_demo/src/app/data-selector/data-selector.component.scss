@@ -1,5 +1,5 @@
 .bigcontainer{
-    background-color: whitesmoke;
+    background-color: white;
     border: rgb(14, 13, 13);
     position: absolute;
     top: 0;bottom: 0;left: 0;right: 0;
@@ -19,7 +19,7 @@
     text-indent: 13px;
     font-size: 30px;
     padding-top: 3%;
-    padding-bottom: 11px;
+    padding-bottom: 5px;
     font-weight: bold;
     // padding: 3% 5%;
 }
@@ -30,9 +30,11 @@
     font-size: 30px;
     height: 400px;
     width: 200px;
+    margin-left: 2px;
+
 }
 .search-bar {
-    background-color: #F5F5F5;
+    background-color: #F2F2F2;
     outline: none;
     margin-right: 10px;
     margin-left: 17px;
@@ -43,10 +45,14 @@
     border-bottom:  1px solid rgb(109, 105, 105);
     margin-bottom: 15px;
     width: 270px;
+    
+
 }
 .scroll{
     width: 100%; 
-    overflow-y: scroll;
+    // padding-left: 10px;
+    // overflow-y: scroll;
+    overflow: auto;
 }
 .boxes{
     display: flex;
@@ -57,13 +63,13 @@
 }
 .icon_5{
     position: absolute;
-    height: 40px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
     margin-top: 12px;
-    margin-bottom: 18px;
-    right: 87%;
+    margin-bottom: 15px;
+    right: 90%;
     background-size: cover;
-    /* background-image: url("src\assets\images\glass.png"); */
+     background-image: url("../../assets/images/ddd.png"); 
 }
 .box-container {
     align-items: center;
@@ -71,17 +77,8 @@
     justify-content: space-between;
 }
 .context_5 {
-     text-indent: 17px;
+    margin-left: 17px;
     font-size: 20px;
-
-}
-.box {
-    flex-basis: calc(33.33% - 20px);
-    display: flex;
-    margin: 10px;
-    width: 478px;
-    height: 115px;
-    border:  1px solid rgb(204, 197, 197);
 }
 
 .cross {
@@ -98,7 +95,6 @@
 .icon {
      position: unset;
      top: -500px;
-   
      margin: 10px 20px 10px 20px;
     background-image: url("../../assets/images/home.png");
      background-size: cover;
@@ -126,6 +122,15 @@
     height: 30px;
     width: 30px;
     display: inline-block;
+}
+.checkbox2{
+    border-radius: 50%;
+    border: 2px solid black;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    margin-left: 2px;
+
 }
 
 .cancel {
@@ -155,16 +160,22 @@
     flex-direction: column;
 }
 .content_3{
-    font-size: 25px; 
+    
+    margin-top:-20px;
+    font-size: 23px; 
     font-weight: bold;
 }
 
 .content_4{
-    font-size: 15px;
+    margin-top:-35px;
+    margin-left: -35px;
+    font-size: 20px;
      font-weight: bold;
 }
 .content_6{
-    font-size: 15px;
+    text-indent:-5px;
+    font-size: 20px;
+    
 }
 .content_7{
     font-size: 17px;
