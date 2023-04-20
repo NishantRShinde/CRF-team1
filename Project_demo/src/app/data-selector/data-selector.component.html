@@ -1,7 +1,7 @@
 <div class="page">
     <div class="bigcontainer">
-        <mat-icon *ngIf="panelnumber==2 || panelnumber==3" class="back" (click)="Onback()">⬅</mat-icon>
-        <div class="head" [ngStyle]="{ 'padding-left': panelnumber==1? '5%':'14%', }">
+        <mat-icon *ngIf="panelnumber==2 || panelnumber==3" class="back" (click)="Onback()"></mat-icon>
+        <div class="head" [ngStyle]="{ 'padding-left': panelnumber==1? '5%':'14%' }">
             {{heading}}
         </div>
         <mat-icon class="cross" (click)="changeisDatasetSelector()"></mat-icon>
@@ -11,10 +11,10 @@
             name="searchText" class="search-bar">
         <mat-icon *ngIf="panelnumber===2 || panelnumber==3" class="icon_5"></mat-icon>
 
-        <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '75%':'45%', }">
+        <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '65%':'45%' }">
             <div class="boxes" *ngFor="let i of panel"
-                [ngStyle]="{ 'height': panelnumber==1 || panelnumber==3? '29%':'15%', 'padding-left':panelnumber==2? '7%': '0px' }">
-                <div *ngIf="panelnumber==3" [ngStyle]="{ 'height': '80%', 'padding-left': '10%' }">
+                [ngStyle]="{ 'height': panelnumber==1? '29%':panelnumber==3? '37%': '15%', 'padding-left':panelnumber==2? '4%': '0px','margin-right':panelnumber==3? '20px':'3px','align-items':panelnumber==1 || panelnumber==2? 'center':'top' }">
+                <div *ngIf="panelnumber==3" [ngStyle]="{ 'height': '80%', 'padding-left': '0%' }">
                     <!-- content for panelnumber==3 -->
                 </div>
                 <div *ngIf="panelnumber==1" style="width: 15%; padding-left: 2%;"><mat-icon class="icon3"
@@ -26,7 +26,7 @@
                         <!-- "{{panelnumber == 1? 'content_3': panelnumber == 2? 'content_6': 'content_4'}}" -->
                         <ng-container>
                             <span
-                                [ngClass]="{'content_3': panelnumber === 1, 'content_6': panelnumber === 2, 'content_7': panelnumber === 3}">{{i.title}}</span>
+                                [ngClass]="{'content_3': panelnumber === 1, 'content_6': panelnumber === 2, 'content_9': panelnumber === 3}">{{i.title}}</span>
                         </ng-container>
                         <!-- <ng-container *ngIf="panelnumber == 3">
                             <span class="content_4">{{i.title}}</span>
@@ -40,8 +40,8 @@
                 </div>
                 <div class="checkbox_1" style="min-width: 10%; max-width: 10%;"
                     [ngStyle]="{'align-self': panelnumber==1? 'last baseline':'none', 'padding-bottom': panelnumber==1? '15px':'none'}">
-                    <input type="radio" name="option1" [value]="i.title" class="checkbox1"
-                        (click)="SelectedDatasetlist(i.title)">
+                    <input type="{{panelnumber==3? 'radio':'checkbox'}}" name="option1" [value]="i.title"
+                        class="checkbox1" (click)="SelectedDatasetlist(i.title)">
                     <!-- (change)="updateCheckboxSelection()" -->
                 </div>
             </div>
@@ -60,11 +60,11 @@
                 <div><button class="cancel" (click)="changeisDatasetSelector()" style="padding: 40 px;">Cancel</button>
                 </div>
                 <div *ngIf="!(panelnumber==3)"><button class="next" [disabled]="!isAtLeastOneCheckboxSelected"
-                        (click)="Onnext()"
+                        (click)="Onnext()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
                         [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
                 </div>
                 <div *ngIf="panelnumber==3"><button class="apply" [disabled]="!isAtLeastOneCheckboxSelected"
-                        (click)="applyDataset()"
+                        (click)="applyDataset()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
                         [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd' ">Apply
                         Dataset</button>
                 </div>

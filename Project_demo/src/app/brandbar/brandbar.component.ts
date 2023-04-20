@@ -23,7 +23,7 @@ export class BrandbarComponent implements AfterViewInit {
     uname: string;
     permissions: number[];
   } = {
-    uname: 'Omakar.shete',
+    uname: 'Nishant.Shinde',
     permissions: [0, 1, 2, 3],
   };
 
