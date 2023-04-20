@@ -17,13 +17,13 @@ export class BrandbarComponent implements AfterViewInit {
     'Find my stuff',
   ];
 
-  constructor(public shimmerService:ShimmerEffectService){}
+  constructor(public shimmerService: ShimmerEffectService) {}
 
   user: {
     uname: string;
     permissions: number[];
   } = {
-    uname: 'Nishant.Shinde',
+    uname: 'Omakar.shete',
     permissions: [0, 1, 2, 3],
   };
 

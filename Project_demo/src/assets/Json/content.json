@@ -1,13 +1,13 @@
 {
     "facts": [
-        "testting",
+        "",
         ["$"]
     ],
 
     "products":[
         "of",
         ["Beer",
-        "coke"]
+        "coke", "pepsi"]
         
     ],
 
