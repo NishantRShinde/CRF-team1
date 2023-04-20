@@ -1,4 +1,5 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { ShimmerEffectService } from '../services/shimmer-effect.service';
 
 @Component({
   selector: 'app-brandbar',
@@ -16,11 +17,13 @@ export class BrandbarComponent implements AfterViewInit {
     'Find my stuff',
   ];
 
+  constructor(public shimmerService: ShimmerEffectService) {}
+
   user: {
     uname: string;
     permissions: number[];
   } = {
-    uname: 'Nishant.Shinde',
+    uname: 'Omakar.shete',
     permissions: [0, 1, 2, 3],
   };
 

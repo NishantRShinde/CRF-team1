@@ -17,7 +17,7 @@ export class UntitledReportComponent implements OnInit{
   addcard_icon_disable: boolean = false;
   more_icon_disable: boolean = false;
   // isloading: boolean = true;
-  isDatasetSelector:boolean = false;
+  
 
   constructor(public shimmerService:ShimmerEffectService){}
 
@@ -59,8 +59,6 @@ export class UntitledReportComponent implements OnInit{
   //   }, 1500);
   // }
 
-  OpenDatasetSelector(){
-    this.isDatasetSelector = true;
-  }
+  
 
 }

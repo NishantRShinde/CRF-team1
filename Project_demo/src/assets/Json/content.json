@@ -1,23 +1,26 @@
 {
     "facts": [
-        "testting",
-        "$"
+        "",
+        ["$"]
     ],
 
     "products":[
         "of",
-        "Beer",
-        "coke"
+        ["Beer",
+        "coke", "pepsi"]
+        
     ],
 
     "markets":[
         "in",
-        "US",
-        "UK"
+        ["US",
+        "UK"]
+        
     ],
     
     "periods":[
         "during",
-        "13 4 Weeks"
+        ["13 4 Weeks"]
+        
     ]
 }
