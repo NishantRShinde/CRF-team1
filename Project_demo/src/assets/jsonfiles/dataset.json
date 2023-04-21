@@ -2,7 +2,7 @@
     "panels_1": [
         {
             "title": "Omnishopper 2.0 panel",
-            "description": "Broad, trended analytics of individual shopper purchasing behavior in online and in store channels.",
+            "description": "Broad, trended analytics of an individual to and shopper purchasing behavior in online and in store channels.",
             "icon": "icon1",
             "checkboxName": "checkbox1"
         },
@@ -14,13 +14,13 @@
         },
         {
             "title": "Homescan panel",
-            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "description": "Broad, trended analytics of an individual to  purchasing behaviour in entire and in store",
             "icon": "icon3",
             "checkboxName": "checkbox1"
         },
         {
             "title": "Omnishopper panel",
-            "description": "Broad, trended analytics of individual shopper behavior in online and in store channels.",
+            "description": "Broad, trended analytics of an individual to  behavior in online and in store channels.",
             "icon": "icon",
             "checkboxName": "checkbox1"
         },
@@ -32,19 +32,19 @@
         },
         {
             "title": "Homescan panel",
-            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "description": "Broad, trended analytics of an individual to  individual shopper purchasing behaviour in entire and in store",
             "icon": "icon3",
             "checkboxName": "checkbox1"
         },
         {
             "title": "Retail Measurement",
-            "description": "Cross-channel and granular performance tracking of in-store, point-of-sale data.",
+            "description": "Cross-channel and granular performance track of in-store, point-of-sale data.",
             "icon": "icon",
             "checkboxName": "checkbox1"
         },
         {
             "title": "Homescan panel",
-            "description": "Brand trended analytics of individual shopper purchasing behaviour in entire and in store",
+            "description": "Broad, trended analytics of an individual to shopper purchasing behaviour in entire and in store",
             "icon": "icon3",
             "checkboxName": "checkbox1"
         }
