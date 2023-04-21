@@ -12,11 +12,7 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './untitled-report/report-page-footer/report-page-footer.component';
 
-
-
-
 @NgModule({
-  
   declarations: [
     AppComponent,
     BrandbarComponent,

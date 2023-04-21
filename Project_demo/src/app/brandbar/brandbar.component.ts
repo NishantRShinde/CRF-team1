@@ -16,6 +16,12 @@ export class BrandbarComponent implements AfterViewInit {
     'Build a table',
     'Find my stuff',
   ];
+  // linkToshow: string[] = {
+  //   'monitorMyBusiness',
+  //   'chooseATemplate',
+  //   'buildATable',
+  //   'findMyStuff'
+  // }
 
   constructor(public shimmerService: ShimmerEffectService) {}
 

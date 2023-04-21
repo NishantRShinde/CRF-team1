@@ -6,8 +6,9 @@
             count="1" appearance="line"></ngx-skeleton-loader>
     </div>
     <span *ngIf="!shimmerService.isloading" style="cursor: pointer; margin: 0px 0px; border-bottom: 1px solid #4f4f4f">
+
+        <span *ngIf="isSelected">NielsenIQ </span>
         <span *ngFor="let index of [0, 1, 2]">
-            <span *ngIf="isSelected">NielsenIQ </span>
             <span *ngIf="index === 0;">{{dataSourcelist[index]}}</span>
             <span *ngIf="index !== 0 && dataSourcelist[index] !== ''"> | {{dataSourcelist[index]}}</span>
         </span>

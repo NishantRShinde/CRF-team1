@@ -1,20 +1,23 @@
 <nav>
     <ul>
-        <span class="left-side">
-            <li id="brand" routerLink="/home"><span class="niq-span">NIQ</span>Discover</li>
-            <span>
-                <li class="list-items" *ngFor="let permission of user.permissions">{{allPermissions[permission]}}</li>
-            </span>
-        </span>
+        <div class="left-side">
+            <li routerLink="/home" id="brand"><img class="niq-logo"
+                    src="../../assets/images/brandbar-images/NIQ-Discover.PNG " alt="NIQ logo" /></li>
+            <div>
+                <li routerLink="/{{allPermissions[permission]}}" class="list-items"
+                    *ngFor="let permission of user.permissions">{{allPermissions[permission]}}</li>
+            </div>
+        </div>
 
         <div class="right-side">
-            <img src="../../assets/bell-solid.svg " alt="notification icon" />
-            
+            <img class="icon-right" src="../../assets/images/brandbar-images/notification.png "
+                alt="notification icon" />
+
             <div class="usericon">
-            <li class="username">{{user.uname}}</li>
-            <img class="user" src="../../assets/user-solid.svg " alt="user icon" />
+                <li class="username">{{user.uname}}</li>
+                <img class="user" src="../../assets/images/brandbar-images/avatar.png " alt="user icon" />
             </div>
-            <img style="margin-left: 15px" src="../../assets/question-circle.svg "
+            <img class="icon-right" src="../../assets/images/brandbar-images/question-circle.svg "
                 alt="question mark within a circle" />
         </div>
 
