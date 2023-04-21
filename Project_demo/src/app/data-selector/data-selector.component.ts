@@ -8,11 +8,11 @@ import { ShimmerEffectService } from '../services/shimmer-effect.service';
   styleUrls: ['./data-selector.component.scss'],
 })
 export class DataSelectorComponent {
-  // @Input() dataselectorbox!: boolean;
+  // output property declares an event emitter used to emit events with boolean values.an array of strings. component to parent;
   @Output() ChangeBoolean = new EventEmitter<boolean>();
   @Output() sendDataSources = new EventEmitter<string[]>();
 
-  selectedDatasources: string[];
+  listedDatasources: string[];//list oof selected datasource
   heading: string = 'Choose source type';
   [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
@@ -27,14 +27,14 @@ export class DataSelectorComponent {
       this.dataset = res;
       this.panel = this.dataset.panels_1;
     });
-    this.selectedDatasources = [];
+    this.listedDatasources = []; //list oof selected datasource
   }
 
-  currentTitle: string = '';
+  currentTitle: string = ''; //current heading title
 
-  panelnumber: number = 1;
+  panelnumber: number = 1; //panelnumber is intialize to integers
   Onnext(): void {
-    this.selectedDatasources.push(this.currentTitle);
+    this.listedDatasources.push(this.currentTitle);
 
     this.panelnumber++;
     if (this.panelnumber == 1) {
@@ -74,17 +74,17 @@ export class DataSelectorComponent {
     );
     this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
   }
-  changeisDatasetSelector() {
+  changeisDatasetSelector() {    //closing container
     const temp: boolean = false;
-    this.ChangeBoolean.emit(temp);
+    this.ChangeBoolean.emit(temp);  
   }
   applyDataset() {
-    this.selectedDatasources.push(this.currentTitle);
+    this.listedDatasources.push(this.currentTitle);
     this.ChangeBoolean.emit(false);
     this.shimmerService.shimmer_effect();
-    this.sendDataSources.emit(this.selectedDatasources);
+    this.sendDataSources.emit(this.listedDatasources);//bottomline updation
   }
-  SelectedDatasetlist(title: string) {
+  SelectedDatasetlist(title: string) {//current title
     this.currentTitle = title;
     this.isAtLeastOneCheckboxSelected = true;
   }

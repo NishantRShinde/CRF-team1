@@ -11,9 +11,9 @@
             name="searchText" class="search-bar">
         <mat-icon *ngIf="panelnumber===2 || panelnumber==3" class="icon_5"></mat-icon>
 
-        <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '65%':'45%' }">
+        <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '70%':'45%' }">
             <div class="boxes" *ngFor="let i of panel"
-                [ngStyle]="{ 'height': panelnumber==1? '29%':panelnumber==3? '37%': '15%', 'padding-left':panelnumber==2? '4%': '0px','margin-right':panelnumber==3? '20px':'3px','align-items':panelnumber==1 || panelnumber==2? 'center':'top' }">
+                [ngStyle]="{ 'height': panelnumber==1? '28%':panelnumber==3? '37%': '15%', 'padding-left':panelnumber==2? '4%': '0px','margin-right':panelnumber==3? '20px':'3px','align-items':panelnumber==1 || panelnumber==2? 'center':'top' }">
                 <div *ngIf="panelnumber==3" [ngStyle]="{ 'height': '80%', 'padding-left': '0%' }">
                     <!-- content for panelnumber==3 -->
                 </div>
