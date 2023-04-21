@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect.service';
 
 @Component({
-  selector: 'app-untitled-report',
-  templateUrl: './untitled-report.component.html',
-  styleUrls: ['./untitled-report.component.scss']
+  selector: 'app-report-page',
+  templateUrl: './report-page.component.html',
+  styleUrls: ['./report-page.component.scss']
 })
-export class UntitledReportComponent implements OnInit{
+export class ReportPageComponent implements OnInit{
   report_title: string = "Untitled-Report"
   undo: string = "";
   redo: string = "";
