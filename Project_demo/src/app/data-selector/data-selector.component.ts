@@ -31,6 +31,7 @@ export class DataSelectorComponent {
   }
 
   currentTitle: string = '';
+  titleBeforeCurrent: string = '';
 
   panelnumber: number = 1;
   Onnext(): void {
@@ -56,24 +57,26 @@ export class DataSelectorComponent {
       this.heading = 'Choose source type';
     } else if (this.panelnumber == 2) {
       this.panel = this.dataset.panels_2;
-      this.heading = 'Retail Measurement';
-    } else if (this.panelnumber == 3) {
-      this.panel = this.dataset.panels_3;
-      this.heading = 'SYNDICATED US';
-    } else if (this.panelnumber <= 3) {
-      this.panelnumber = 1;
-      this.panel = this.dataset.panels_1;
-      this.heading = 'Choose source type';
+      this.heading = this.titleBeforeCurrent;
     }
+    //else if (this.panelnumber == 3) {
+    //   this.panel = this.dataset.panels_3;
+    //   this.heading = '';
+    //  }
+    //else if (this.panelnumber <= 3) {
+    //   this.panelnumber = 1;
+    //   this.panel = this.dataset.panels_1;
+    //   this.heading = 'Choose source type';
+    // }
   }
-  updateCheckboxSelection(): void {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const atLeastOneCheckboxSelected = Array.prototype.some.call(
-      checkboxes,
-      (checkbox: HTMLInputElement) => checkbox.checked
-    );
-    this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
-  }
+  // updateCheckboxSelection(): void {
+  //   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  //   const atLeastOneCheckboxSelected = Array.prototype.some.call(
+  //     checkboxes,
+  //     (checkbox: HTMLInputElement) => checkbox.checked
+  //   );
+  //   this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
+  // }
   changeisDatasetSelector() {
     const temp: boolean = false;
     this.ChangeBoolean.emit(temp);
@@ -85,6 +88,9 @@ export class DataSelectorComponent {
     this.sendDataSources.emit(this.selectedDatasources);
   }
   SelectedDatasetlist(title: string) {
+    if (this.panelnumber == 2) {
+      this.titleBeforeCurrent = this.currentTitle;
+    }
     this.currentTitle = title;
     this.isAtLeastOneCheckboxSelected = true;
   }
