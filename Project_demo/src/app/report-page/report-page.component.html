@@ -1,10 +1,10 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<div class="report-page">
+<div class="report-page" *ngIf="datasetSelectorService.isDataApplied">
     <div class="page-header">
         <div>
-            <input #reportTitle class="page-header-title" type="text" value="{{ report_title }}" size="18px" ngModel />
+            <input class="page-header-title" [(ngModel)]="reportTitle"  type="text" (blur)="saveInputText()" size="18px"/>
         </div>
         <div class="page-header-shimmer-title" *ngIf="shimmerService.isloading">
             <ngx-skeleton-loader [theme]="{ 'height': '35px', 'background-color': 'rgb(204,204,204)',}" count="1"
@@ -12,36 +12,56 @@
             </ngx-skeleton-loader>
         </div>
         <div class="page-header-icons-container">
-            <button type="button" class="icon_button" [disabled]="undo_icon_disable" style="transform: scaleX(-1)"
-                (click)="undo_click()">
+            <button type="button" class="icon_button" [disabled]="undoIconDisable" style="transform: scaleX(-1)"
+                (click)="undoClick()">
                 <i class="fa fa-share"></i>
             </button>
-            <button type="button" class="icon_button" [disabled]="redo_icon_disable" (click)="redo_click()">
+            <button type="button" class="icon_button" [disabled]="redoIconDisable" (click)="redoClick()">
                 <i class="fa fa-share"></i>
             </button>
             <span class="vertical-line"></span>
-            <button type="button" class="icon_button" [disabled]="download_icon_disable">
+            <button type="button" class="icon_button" [disabled]="downloadIconDisable">
                 <i class="fa fa-download"></i>
             </button>
-            <button type="button" class="icon_button" [disabled]="save_icon_disable || shimmerService.isloading"
-                (click)="save_report_title(reportTitle.value)">
+            <button type="button" class="icon_button" [disabled]="saveIconDisable || shimmerService.isloading"
+                (click)="saveReportTitle()">
                 <i class="fa fa-print"></i>
             </button>
             <span class="vertical-line"></span>
-            <button type="button" class="icon_button" [disabled]="addcard_icon_disable">
+            <button type="button" class="icon_button" [disabled]="addcardIconDisable">
                 <i class="fa fa-plus-circle"></i>
             </button>
-            <button type="button" class="icon_button" [disabled]="more_icon_disable">
+            <button type="button" class="icon_button" [disabled]="moreIconDisable">
                 <i class="fa fa-ellipsis-h"></i>
                 
             </button>
         </div>
-        <div class="head-more">
+        <div class="header-more">
             <div class="more-flex-container">
-                <div><span>Save</span></div>
-                <div><span>Add</span></div>
-                <div><span>Report Filter</span></div>
-                <div><span>Edit Report layout</span></div>
+                <div class="icon">
+                    <span class="symbol">
+                        <i class="fa fa-print"></i>
+                    </span>
+                    <span>Save</span>
+                </div>
+                <div class="icon">
+                    <span class="symbol">
+                        <i class="fa fa-plus-circle"></i>
+                    </span>
+                    <span>Add</span>
+                </div>
+                <div class="icon">
+                    <span class="symbol">
+                        <i class="fa fa-filter"></i>
+                    </span>
+                    <span>Report Filter</span>
+                </div>
+                <div class="icon">
+                    <span class="symbol">
+                        <i class="fa fa-retweet"></i>
+                    </span>
+                    <span>Edit Report layout</span>
+                </div>
             </div>
         </div>
     </div>
@@ -70,10 +90,10 @@
                     <table class="report-table">
                         <thead>
                             <tr>
-                                <th style="width: 9vw">Markets</th>
-                                <th style="width: 9vw">Periods</th>
-                                <th style="width: 14vw">Products</th>
-                                <th style="width: 6vw; text-align: right">$</th>
+                                <th style="min-width: 9vw;min-width: 9vw;">Markets</th>
+                                <th style="min-width: 9vw;min-width: 9vw;">Periods</th>
+                                <th style="min-width: 14vw;min-width: 14vw;">Products</th>
+                                <th style="min-width: 6vw;min-width: 6vw; text-align: right">$</th>
                             </tr>
                         </thead>
                     </table>
@@ -97,4 +117,4 @@
         </div>
     </div>
 </div>
-<app-report-page-footer></app-report-page-footer>
+<app-report-page-footer ></app-report-page-footer>

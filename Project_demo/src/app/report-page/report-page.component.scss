@@ -142,8 +142,8 @@ $font: "arial", "sans-serif";
     }
 
     .table-head {
-      width: 100%;
-      position: relative;
+      // width: 100%;
+      // position: relative;
       border-top: 1px solid rgb(204, 204, 204);
       border-bottom: 1px solid rgb(204, 204, 204);
       // background-color: aquamarine;
@@ -232,7 +232,7 @@ $font: "arial", "sans-serif";
   }
 }
  
-.head-more { 
+.header-more { 
   display: none; 
   position: fixed;
   right: 30px;
@@ -256,12 +256,16 @@ $font: "arial", "sans-serif";
     // background-color: aqua;
 
     div {
-      padding: 10px;
+      padding: 5px 0px 0px 0px;
       width: 87%;
 
       &:hover {
         background-color: rgb(204, 204, 204);
       }
+    }
+    span{
+      padding: 3px;
+      font-size: 13px;
     }
   }
 } 

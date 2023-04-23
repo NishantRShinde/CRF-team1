@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ShimmerEffectService } from '../services/shimmer-effect.service';
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
+import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 
 @Component({
   selector: 'app-report-page',
@@ -7,49 +8,56 @@ import { ShimmerEffectService } from '../services/shimmer-effect.service';
   styleUrls: ['./report-page.component.scss']
 })
 export class ReportPageComponent implements OnInit{
-  report_title: string = "Untitled-Report"
+  reportTitle: string = "Untitled-Report"
+  oldReportTitle: string = "Untitled-Report"
   undo: string = "";
   redo: string = "";
-  undo_icon_disable: boolean = true;
-  redo_icon_disable: boolean = true;
-  download_icon_disable: boolean = true;
-  save_icon_disable: boolean = false;
-  addcard_icon_disable: boolean = false;
-  more_icon_disable: boolean = false;
+  undoIconDisable: boolean = true;
+  redoIconDisable: boolean = true;
+  downloadIconDisable: boolean = true;
+  saveIconDisable: boolean = false;
+  addcardIconDisable: boolean = false;
+  moreIconDisable: boolean = false;
   // isloading: boolean = true;
   
 
-  constructor(public shimmerService:ShimmerEffectService){}
+  constructor(public shimmerService:ShimmerEffectService,
+              public datasetSelectorService: DatasetSelectorService,
+    ){}
 
   ngOnInit(): void {
     // setTimeout(() => {
     //   this.isloading = false;
     // }, 1000);
   }
-  save_report_title(title: string): void{
-    if(!title){
-      this.report_title = 'Untitled-Report';
-      this.undo_icon_disable = false;
-      this.redo_icon_disable = this.redo ? false:true;
+  saveInputText(){
+    this.undo = this.oldReportTitle;
+    this.undoIconDisable = false;
+    this.oldReportTitle = this.reportTitle;
+  }
+  saveReportTitle(): void{
+    if(!this.reportTitle){
+      this.reportTitle = 'Untitled-Report';
+      this.undoIconDisable = false;
+      this.redoIconDisable = this.redo ? false:true;
       return ;
     }
-    this.undo = this.report_title;
-    this.report_title = title;
-    this.undo_icon_disable = false;
-    this.redo_icon_disable = true;
+    this.undo = this.reportTitle;
+    this.undoIconDisable = false;
+    this.redoIconDisable = true;
   }
 
-  undo_click(){
-    this.redo = this.report_title;
-    this.report_title = this.undo;
-    this.undo_icon_disable = true;
-    this.redo_icon_disable = false;
+  undoClick(){
+    this.redo = this.reportTitle;
+    this.reportTitle = this.undo;
+    this.undoIconDisable = true;
+    this.redoIconDisable = false;
   }
 
-  redo_click(){
-    this.report_title = this.redo;
-    this.undo_icon_disable = false;
-    this.redo_icon_disable = true;
+  redoClick(){
+    this.reportTitle = this.redo;
+    this.undoIconDisable = false;
+    this.redoIconDisable = true;
   }
 
   // shimmer_effect(){

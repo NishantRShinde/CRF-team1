@@ -11,6 +11,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ReportPageFooterComponent } from './report-page/report-page-footer/repo
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,
