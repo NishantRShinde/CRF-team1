@@ -7,5 +7,5 @@ export class DatasetSelectorService {
   
   isDataApplied: boolean = false;
   isSelectorOpen: boolean = true;
-  appliedDataset: string = "";
+  appliedDataset: string = ""; 
 }
