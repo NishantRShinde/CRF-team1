@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'; 
 import { HttpClient } from '@angular/common/http'; 
-import { ShimmerEffectService } from '../services/shimmer-effect.service'; 
-// import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service'; 
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service'; 
 
-// import { DatasetSelector } from '../services/dataset-selector/dataset-selector.service'; 
+import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 
 
 @Component({
@@ -12,12 +11,11 @@ import { ShimmerEffectService } from '../services/shimmer-effect.service';
   styleUrls: ['./data-selector.component.scss'],
 })
 
-
-
 export class DataSelectorComponent { 
   // output property declares an event emitter used to emit events with boolean values.an array of strings. component to parent;
-  @Output() ChangeBoolean = new EventEmitter<boolean>(); 
-  @Output() sendDataSources = new EventEmitter<string>(); 
+  // @Output() ChangeBoolean = new EventEmitter<boolean>(); 
+  // @Output() sendDataSources = new EventEmitter<string>();
+  @Output() sendFooterContent = new EventEmitter<string>(); 
 // comment above 2 lines
   listedDatasources: string[]; //list oof selected datasource 
   heading: string = 'Choose source type';
@@ -29,7 +27,7 @@ export class DataSelectorComponent {
   constructor( 
     public shimmerService: ShimmerEffectService, 
     private http: HttpClient,
-    // public datasetSelectorservice:DatasetSelectorService,
+     public datasetSelectorservice:DatasetSelectorService,
   ) {
     this.http.get('../../assets/jsonfiles/dataset.json').subscribe((res) => {
       this.dataset = res;
@@ -77,22 +75,20 @@ export class DataSelectorComponent {
     
   }
   
-  updatecheckboxselection(): void {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const atLeastOneCheckboxSelected = Array.prototype.some.call( 
-      checkboxes, 
-      (checkbox: HTMLInputElement) => checkbox.checked 
-    );
-    this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
-  }
-  changeisdatasetselector() { 
-    // closedatasetselector() { 
-      // this.datasetSelectorService.isSelectedOpen=false;
-      // console.log(this.datasetSelectorService.isSelectedOpen)
+  // updatecheckboxselection(): void {
+  //   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  //   const atLeastOneCheckboxSelected = Array.prototype.some.call( 
+  //     checkboxes, 
+  //     (checkbox: HTMLInputElement) => checkbox.checked 
+  //   );
+  //   this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
+  // }
+  closeDatasetSelector() { 
+    this.datasetSelectorservice.isSelectorOpen=false;
 
     //closing container 
-    const temp: boolean = false;
-    this.ChangeBoolean.emit(temp);
+    // const temp: boolean = false;
+    // this.ChangeBoolean.emit(temp);
   }
 
   footercontent(datasetlists:string[]){
@@ -105,16 +101,18 @@ export class DataSelectorComponent {
     return content;
   }
   applydataset() {
-    this.listedDatasources.push(this.currentTitle);  
-    this.ChangeBoolean.emit(false); 
-    this.shimmerService.shimmer_effect(); 
+    // this.listedDatasources.push(this.currentTitle);  
+    // this.ChangeBoolean.emit(false); 
+    // this.shimmerService.shimmer_effect(); 
     // this.sendDataSources.emit(this.footercontent(this.listedDatasources));
 
-    // this.datasetSelectorService.isSelectedOpen=false;
-    // this.shimmerService.shimmerEffect(); 
-    // this.datasetSelectorService.appliedDataset=this.listedDatasources;
-    // this.datasetSelectorService.isDataApplied=true;
+    this.datasetSelectorservice.isSelectorOpen=false;
+    this.shimmerService.shimmerEffect(); 
+    let footerString=this.footercontent(this.listedDatasources);
+    this.datasetSelectorservice.appliedDataset=footerString;
+    this.datasetSelectorservice.isDataApplied=true;
 
+    
   }
   selecteddatasetlist(title: string) {
     //current title

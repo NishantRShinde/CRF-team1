@@ -4,9 +4,7 @@
         <div class="head" [ngStyle]="{ 'padding-left': panelnumber===1? '5%':'14%' }">
             {{heading}}
         </div>
-        <mat-icon class="cross" (click)="changeisdatasetselector()"></mat-icon>
-        <!-- <mat-icon class="cross" (click)="closedatasetselector()"></mat-icon> -->
-
+        <mat-icon class="cross" (click)="closeDatasetSelector()"></mat-icon> 
 
         <p *ngIf="panelnumber===2 || panelnumber===3" class="context_5">Choose a dataset</p>
         <input *ngIf="panelnumber===2 || panelnumber===3" type="text" data-cy="input-search-asset" id="search"
@@ -63,11 +61,8 @@
         <div class="foot_container" [ngStyle]="{ 'height': panelnumber===1? '17%':'10%',}">
             <div style="flex-grow: 1"></div>
             <div style=" display: flex;">
-                <div class="cont"></div>
-                <div>
-                    <button class="cancel" (click)="changeisdatasetselector()" >Cancel</button>
-                    <!-- <button class="cancel" (click)="closedatasetselector()" >Cancel</button> -->
-
+                <div style="flex-grow: 1; padding:20px;"></div>
+                <div><button class="cancel" (click)="closeDatasetSelector()" style="padding: 40 px;">Cancel</button> 
                 </div>
                 <div *ngIf="!(panelnumber===3)"><button class="next" [disabled]="!isAtLeastOneCheckboxSelected"
                         (click)="onnext()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "

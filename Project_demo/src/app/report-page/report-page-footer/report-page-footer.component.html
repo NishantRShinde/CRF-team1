@@ -1,0 +1,20 @@
+<div (click)="OpenDatasetSelector()" class="report-page-footer">
+    <span>Source:&nbsp;</span>
+    <div *ngIf="shimmerService.isloading">
+        <ngx-skeleton-loader
+            [theme]="{ 'height': '100%', 'width': '40vw', 'margin-left':'10px', 'background-color': 'rgb(204,204,204)','border-radius':'20px' }"
+            count="1" appearance="line"></ngx-skeleton-loader>
+    </div>
+    <span *ngIf="!shimmerService.isloading" style="cursor: pointer; margin: 0px 0px; border-bottom: 1px solid #4f4f4f">
+        <span *ngIf="!datasetSelectorService.isDataApplied">Choose a dataset</span>
+
+        <span *ngIf="datasetSelectorService.isDataApplied">NielsenIQ 
+            <span *ngFor="let index of [0, 1, 2]">
+                <span *ngIf="index === 0;">{{datasetSelectorService.appliedDataset[index]}}</span>
+                <span *ngIf="index !== 0 && datasetSelectorService.appliedDataset[index] !== ''"> | {{datasetSelectorService.appliedDataset[index]}}</span>
+            </span>
+        </span>
+        
+    </span>
+</div>
+<app-data-selector *ngIf="datasetSelectorService.isSelectorOpen"></app-data-selector>
