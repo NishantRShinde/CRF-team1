@@ -1,64 +1,80 @@
 <div class="page">
     <div class="bigcontainer">
-        <mat-icon *ngIf="panelnumber==2 || panelnumber==3" class="back" (click)="Onback()"></mat-icon>
-        <div class="head" [ngStyle]="{ 'padding-left': panelnumber==1? '5%':'14%' }">
+        <mat-icon *ngIf="panelnumber===2 || panelnumber===3" class="back" (click)="onback()"></mat-icon>
+        <div class="head" [ngStyle]="{ 'padding-left': panelnumber===1? '5%':'14%' }">
             {{heading}}
         </div>
-        <mat-icon class="cross" (click)="changeisDatasetSelector()"></mat-icon>
+        <mat-icon class="cross" (click)="changeisdatasetselector()"></mat-icon>
+        <!-- <mat-icon class="cross" (click)="closedatasetselector()"></mat-icon> -->
 
-        <p *ngIf="panelnumber==2 || panelnumber==3" class="context_5">Choose a dataset</p>
-        <input *ngIf="panelnumber===2 || panelnumber==3" type="text" data-cy="input-search-asset" id="search"
+
+        <p *ngIf="panelnumber===2 || panelnumber===3" class="context_5">Choose a dataset</p>
+        <input *ngIf="panelnumber===2 || panelnumber===3" type="text" data-cy="input-search-asset" id="search"
             name="searchText" class="search-bar">
-        <mat-icon *ngIf="panelnumber===2 || panelnumber==3" class="icon_5"></mat-icon>
+        <mat-icon *ngIf="panelnumber===2 || panelnumber===3" class="icon_5"></mat-icon>
 
-        <div class="scroll" [ngStyle]="{ 'height': panelnumber==1? '70%':'45%' }">
+        <div class="scroll" [ngStyle]="{ 'height': panelnumber===1? '70%':'45%' }">
             <div class="boxes" *ngFor="let i of panel"
-                [ngStyle]="{ 'height': panelnumber==1? '28%':panelnumber==3? '37%': '15%', 'padding-left':panelnumber==2? '4%': '0px','margin-right':panelnumber==3? '20px':'3px','align-items':panelnumber==1 || panelnumber==2? 'center':'top' }">
-                <div *ngIf="panelnumber==3" [ngStyle]="{ 'height': '80%', 'padding-left': '0%' }">
-                    <!-- content for panelnumber==3 -->
+                [ngStyle]="{ 'height': panelnumber===1? '28%':panelnumber===3? '37%': '15%', 'padding-left':panelnumber===2? '4%': '0px',
+                'margin-right':panelnumber===3? '20px':'3px','align-items':panelnumber===1 || panelnumber===2? 'center':'top' }">
+                
+                <div *ngIf="panelnumber===3" 
+                    [ngStyle]="{ 'height': '80%', 'padding-left': '0%' }">    
                 </div>
-                <div *ngIf="panelnumber==1" style="width: 15%; padding-left: 2%;"><mat-icon class={{i.icon}}
-                        aria-hidden="false" aria-label="Example home icon"></mat-icon></div>
+
+                <div *ngIf="panelnumber===1" style="width: 15%; padding-left: 2%;">
+                    <mat-icon class={{i.icon}}></mat-icon>
+                </div>
 
                 <div class="content_1">
                     <div class="content_2">
                         
                         <ng-container> 
                             <span 
-                                [ngClass]="{'content_3': panelnumber === 1, 'content_6': panelnumber === 2, 'content_9': panelnumber === 3}">{{i.title}}</span> 
+                                [ngClass]="{'content_3': panelnumber === 1, 'content_6': panelnumber === 2,
+                                'content_9': panelnumber === 3}">
+                                {{i.title}}
+                            </span> 
                         </ng-container>
                         
-                        <br *ngIf="panelnumber==1">
-                        <span *ngIf="panelnumber==1" class="content_7">{{i.description}}</span>
+                        <br *ngIf="panelnumber===1">
+                        <span *ngIf="panelnumber===1" class="content_7">
+                            {{i.description}}
+                        </span>
                     </div>
                 </div>
+
                 <div class="checkbox_1" style="min-width: 10%; max-width: 10%;"
-                    [ngStyle]="{'align-self': panelnumber==1? 'last baseline':'none', 'padding-bottom': panelnumber==1? '15px':'none'}">
-                    <input type="{{panelnumber==3? 'radio':'checkbox'}}" name="option1" [value]="i.title"
-                        class="checkbox1" (click)="SelectedDatasetlist(i.title)">
-                    <!-- (change)="updateCheckboxSelection()" -->
+                    [ngStyle]="{'align-self': panelnumber===1? 'last baseline':'none', 'padding-bottom': panelnumber===1? '15px':'none'}">
+                    <input type="{{panelnumber===3? 'radio':'checkbox'}}" name="option1" [value]="i.title"
+                        class="checkbox1" (click)="selecteddatasetlist(i.title)">
+                    <!-- (change)="updateCheckboxSelection()"  name="option2" value="option2"-->
                 </div>
             </div>
-
         </div>
-        <div *ngIf="!(panelnumber==1)" class="default">
+
+        <div *ngIf="!(panelnumber===1)" class="default">
             <div class="checkbox_1">
-                <input type="checkbox" name="option2" value="option2" class="checkbox2">
-                <label for="option1" style="display: inline-block; font-size: 15px;">Save as Default</label>
+                <input type="checkbox" class="checkbox2">
+                <label for="option1" >Save as Default</label>
             </div>
         </div>
-        <div class="foot_container" [ngStyle]="{ 'height': panelnumber==1? '17%':'10%',}">
+
+        <div class="foot_container" [ngStyle]="{ 'height': panelnumber===1? '17%':'10%',}">
             <div style="flex-grow: 1"></div>
             <div style=" display: flex;">
-                <div style="flex-grow: 1; padding:20px;"></div>
-                <div><button class="cancel" (click)="changeisDatasetSelector()" style="padding: 40 px;">Cancel</button>
+                <div class="cont"></div>
+                <div>
+                    <button class="cancel" (click)="changeisdatasetselector()" >Cancel</button>
+                    <!-- <button class="cancel" (click)="closedatasetselector()" >Cancel</button> -->
+
                 </div>
-                <div *ngIf="!(panelnumber==3)"><button class="next" [disabled]="!isAtLeastOneCheckboxSelected"
-                        (click)="Onnext()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
+                <div *ngIf="!(panelnumber===3)"><button class="next" [disabled]="!isAtLeastOneCheckboxSelected"
+                        (click)="onnext()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
                         [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd'  ">Next</button>
                 </div>
-                <div *ngIf="panelnumber==3"><button class="apply" [disabled]="!isAtLeastOneCheckboxSelected"
-                        (click)="applyDataset()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
+                <div *ngIf="panelnumber===3"><button class="apply" [disabled]="!isAtLeastOneCheckboxSelected"
+                        (click)="applydataset()" [style.color]="isAtLeastOneCheckboxSelected ? 'White' : 'gray'  "
                         [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd' ">Apply
                         Dataset</button>
                 </div>
