@@ -28,10 +28,11 @@ import { ReportPageFooterComponent } from './untitled-report/report-page-footer/
     HttpClientModule,
     NgxSkeletonLoaderModule,
     RouterModule.forRoot([
+      { path: '', redirectTo: '/buildAtable', pathMatch: 'full' },
+      { path: 'buildATable', component: AppComponent },
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },
       { path: 'chooseATemplate', component: AppComponent },
-      { path: 'buildATable', component: AppComponent },
       { path: 'findMyStuff', component: AppComponent },
     ]),
     HttpClientModule,
