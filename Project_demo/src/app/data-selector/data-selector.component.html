@@ -23,26 +23,23 @@
                 <div class="content_1">
                     <div class="content_2">
                         <!-- <span > {{i.title}}</span> -->
-                        <!-- "{{panelnumber == 1? 'content_3': panelnumber == 2? 'content_6': 'content_4'}}" -->
-                        <ng-container>
-                            <span
-                                [ngClass]="{'content_3': panelnumber === 1, 'content_6': panelnumber === 2, 'content_7': panelnumber === 3}">{{i.title}}</span>
+                        <ng-container *ngIf="panelnumber == 1 ">
+                            <span class="content_3">{{i.title}}</span>
                         </ng-container>
-                        <!-- <ng-container *ngIf="panelnumber == 3">
+                        <ng-container *ngIf="panelnumber == 3">
                             <span class="content_4">{{i.title}}</span>
                         </ng-container>
                         <ng-container *ngIf="panelnumber == 2">
                             <span class="content_6">{{i.title}}</span>
-                        </ng-container> -->
+                        </ng-container>
                         <br *ngIf="panelnumber==1">
                         <span *ngIf="panelnumber==1" class="content_7">{{i.description}}</span>
                     </div>
                 </div>
                 <div class="checkbox_1" style="min-width: 10%; max-width: 10%;"
                     [ngStyle]="{'align-self': panelnumber==1? 'last baseline':'none', 'padding-bottom': panelnumber==1? '15px':'none'}">
-                    <input type="radio" name="option1" [value]="i.title" class="checkbox1"
-                        (click)="SelectedDatasetlist(i.title)">
-                    <!-- (change)="updateCheckboxSelection()" -->
+                    <input type="{{panelnumber==3? 'radio':'checkbox'}}" name="option1" value="option1"
+                        class="checkbox1" (change)="updateCheckboxSelection()" (click)="SelectedDatasetlist(i.title)">
                 </div>
             </div>
 
@@ -50,7 +47,7 @@
         <div *ngIf="!(panelnumber==1)" class="default">
             <div class="checkbox_1">
                 <input type="checkbox" name="option2" value="option2" class="checkbox2">
-                <label for="option1" style="display: inline-block; font-size: 15px;">Save as Default</label>
+                <label for="option1" style="display: inline-block; font-size: 18px;">Save as Default</label>
             </div>
         </div>
         <div class="foot_container" [ngStyle]="{ 'height': panelnumber==1? '17%':'10%',}">
