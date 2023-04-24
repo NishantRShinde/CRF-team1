@@ -1,10 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core'; 
 import { HttpClient } from '@angular/common/http'; 
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service'; 
-
 import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 
-
+enum Panel {
+  SourceType,
+  Dataset,
+  Dataview
+}
 @Component({
   selector: 'app-data-selector',
   templateUrl: './data-selector.component.html',
@@ -16,73 +19,64 @@ export class DataSelectorComponent {
   // @Output() ChangeBoolean = new EventEmitter<boolean>(); 
   // @Output() sendDataSources = new EventEmitter<string>();
   @Output() sendFooterContent = new EventEmitter<string>(); 
-// comment above 2 lines
-  listedDatasources: string[]; //list oof selected datasource 
+  listedDatasources: string[]; //arraylist oof selected datasource 
   heading: string = 'Choose source type';
   [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
 
-  dataset: any;
-  panel: any;
+  dataset: any; 
+  panel: any; 
+  Panel=Panel;
+  currentPanel = Panel.SourceType;
+
   constructor( 
     public shimmerService: ShimmerEffectService, 
     private http: HttpClient,
      public datasetSelectorservice:DatasetSelectorService,
-  ) {
+  ) { 
     this.http.get('../../assets/jsonfiles/dataset.json').subscribe((res) => {
       this.dataset = res;
       this.panel = this.dataset.panels_1;
     });
-    this.listedDatasources = []; //list oof selected datasource
+    this.listedDatasources = []; 
   }
 
   currentTitle: string = ''; 
-  titleBeforeCurrent: string = ''; 
+  // titleBeforeCurrent: string = ''; 
 
-  panelnumber: number = 1; 
-  // currentPanel: PanelNumber = PanelNumber.PANEL_1;
-
-
-  onnext(): void {
+  onNext(): void {
+    this.datasetSelected+=" | "+this.currentTitle
     this.listedDatasources.push(this.currentTitle); 
-
-    this.panelnumber++; 
-    if (this.panelnumber == 1) { 
-      this.panel = this.dataset.panels_1; 
-      this.heading = 'Choose source type'; 
-    } else if (this.panelnumber == 2) { 
+    this.currentPanel++; 
+    if (this.currentPanel == Panel.Dataset) { 
       this.panel = this.dataset.panels_2; 
       this.heading = this.currentTitle; 
-    } else if (this.panelnumber == 3) { 
+    } else if (this.currentPanel == Panel.Dataview) { 
       this.panel = this.dataset.panels_3; 
       this.heading = this.currentTitle; 
-    } 
-    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected; 
-  } 
-
-  
-  
-  onback(): void { 
-    this.panelnumber--; 
-    if (this.panelnumber == 1) { 
+    } else { 
       this.panel = this.dataset.panels_1; 
       this.heading = 'Choose source type'; 
-    } else if (this.panelnumber == 2) { 
-      this.heading = this.titleBeforeCurrent; 
-      this.panel = this.dataset.panels_2;
-      this.heading = this.listedDatasources[this.listedDatasources.length -2];
-    }
-    
+    } 
+    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected; 
   }
   
-  // updatecheckboxselection(): void {
-  //   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  //   const atLeastOneCheckboxSelected = Array.prototype.some.call( 
-  //     checkboxes, 
-  //     (checkbox: HTMLInputElement) => checkbox.checked 
-  //   );
-  //   this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
-  // }
+  onback(): void {
+    this.listedDatasources.pop(); 
+    this.currentPanel--; 
+    if (this.currentPanel == Panel.SourceType) { 
+      this.panel = this.dataset.panels_1; 
+      this.heading = 'Choose source type'; 
+    } else if (this.currentPanel == Panel.Dataset) { 
+      this.panel = this.dataset.panels_2; 
+      this.heading = this.listedDatasources[this.listedDatasources.length - 1]; 
+    } else { 
+      this.panel = this.dataset.panels_3; 
+      this.heading = this.listedDatasources[this.listedDatasources.length - 1]; 
+    } 
+    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected; 
+  }
+  
   closeDatasetSelector() { 
     this.datasetSelectorservice.isSelectorOpen=false;
 
@@ -91,31 +85,30 @@ export class DataSelectorComponent {
     // this.ChangeBoolean.emit(temp);
   }
 
-  footercontent(datasetlists:string[]){
-    let content: string = "NielsenIQ "
-    content += datasetlists[0];
-    for(let i=1; i<3; i++){
-      content += " | " + datasetlists[i];
-    }
-    console.log(content);
-    return content;
-  }
-  applydataset() {
-    // this.listedDatasources.push(this.currentTitle);  
-    // this.ChangeBoolean.emit(false); 
-    // this.shimmerService.shimmer_effect(); 
-    // this.sendDataSources.emit(this.footercontent(this.listedDatasources));
+  // footercontent(datasetlists:string[]){
+  //   let content: string = "NielsenIQ "
+  //   content += datasetlists[0];
+  //   for(let i=1; i<3; i++){
+  //     content += " | " + datasetlists[i];
+  //   }
+  //   // console.log(content);
+  //    return content;
+  // }
+  datasetSelected:string="NielsenIQ"
 
+
+  applydataset() {
+    this.datasetSelected+=" | "+this.currentTitle
+    console.log(this.datasetSelected)
+     this.listedDatasources.push(this.currentTitle);  
     this.datasetSelectorservice.isSelectorOpen=false;
     this.shimmerService.shimmerEffect(); 
-    let footerString=this.footercontent(this.listedDatasources);
+    // let footerString=this.footercontent(this.listedDatasources);
+    let footerString=this.datasetSelected;
     this.datasetSelectorservice.appliedDataset=footerString;
     this.datasetSelectorservice.isDataApplied=true;
-
-    
-  }
-  selecteddatasetlist(title: string) {
-    //current title
+  } 
+  checkboxSelector(title: string) {//current title
     this.currentTitle = title; 
     this.isAtLeastOneCheckboxSelected = true; 
   }
