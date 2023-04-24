@@ -6,23 +6,25 @@ import { AppComponent } from './app.component';
 import { DataSelectorComponent } from './data-selector/data-selector.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
-import { UntitledReportComponent } from './untitled-report/untitled-report.component';
+import { ReportPageComponent } from './report-page/report-page.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
-import { ReportPageFooterComponent } from './untitled-report/report-page-footer/report-page-footer.component';
+import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     BrandbarComponent,
-    UntitledReportComponent,
+    ReportPageComponent,
     DataSummaryComponent,
     DataSelectorComponent,
     ReportPageFooterComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,

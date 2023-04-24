@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ShimmerEffectService } from '../services/shimmer-effect.service';
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 // import content from "./src/assets/Json/content.json";
 
 @Component({
@@ -16,7 +16,7 @@ export class DataSummaryComponent {
   ) {
     this.http.get('../../assets/Json/content.json').subscribe((res) => {
       this.content = res;
-      // console.log('--- result : ', this.content);
+      // console.log('--- result : ', this.content); 
     });
   }
 
