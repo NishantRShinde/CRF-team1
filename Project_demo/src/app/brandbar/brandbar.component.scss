@@ -2,15 +2,13 @@ $black: #000000;
 $blue: #0000FF;
 $font-family_1: Arial, Helvetica, sans-serif;
 
-nav {
+ul {
 	font-family: $font-family_1;
 	border-bottom: 1px solid #0E86D4;
 	height: 48px;
 	box-sizing: border-box;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
-}
-ul {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

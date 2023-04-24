@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 
 @Component({
@@ -6,47 +6,29 @@ import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.
   templateUrl: './brandbar.component.html',
   styleUrls: ['./brandbar.component.scss'],
 })
-export class BrandbarComponent implements AfterViewInit {
-  previous: any;
-  isFirst: boolean = true;
-
-  allPermissions: string[] = [
-    'Monitor my business',
-    'Choose a template',
-    'Build a table',
-    'Find my stuff',
-  ];
-  // linkToshow: string[] = {
-  //   'monitorMyBusiness',
-  //   'chooseATemplate',
-  //   'buildATable',
-  //   'findMyStuff'
-  // }
-
+export class BrandbarComponent {
   constructor(public shimmerService: ShimmerEffectService) {}
 
+  currentlySelected: AllPermissions = AllPermissions.buildATable;
+
+  //user object
   user: {
     uname: string;
-    permissions: number[];
+    permissions: Array<{ name: string; route: string }>;
   } = {
     uname: 'Nishant.Shinde',
-    permissions: [0, 1, 2, 3],
+    permissions: [
+      { name: 'Monitor my business', route: '/monitorMyBusiness' },
+      { name: 'Choose a template', route: 'chooseATemplate' },
+      { name: 'Build a table', route: '/buildATable' },
+      { name: 'Find my stuff', route: '/findMyStuff' },
+    ],
   };
+}
 
-  ngAfterViewInit() {
-    let listItems = document.querySelectorAll('.list-items');
-    listItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        if (this.isFirst) {
-          item.classList.add('border-class');
-          this.isFirst = false;
-          this.previous = item;
-        } else {
-          this.previous.classList.remove('border-class');
-          item.classList.add('border-class');
-          this.previous = item;
-        }
-      });
-    });
-  }
+enum AllPermissions {
+  monitorMyBusiness,
+  chooseATemplate,
+  buildATable,
+  findMyStuff,
 }
