@@ -16,7 +16,7 @@ export class DataSummaryComponent {
   ) {
     this.http.get('../../assets/Json/content.json').subscribe((res) => {
       this.content = res;
-      // console.log('--- result : ', this.content);
+      // console.log('--- result : ', this.content); 
     });
   }
 
