@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
+import { Component } from '@angular/core'; 
+import { HttpClient } from '@angular/common/http'; 
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service'; 
 // import content from "./src/assets/Json/content.json";
 
 @Component({
@@ -14,8 +14,8 @@ export class DataSummaryComponent {
     private http: HttpClient, 
     public shimmerService: ShimmerEffectService 
   ) { 
-    this.http.get('../../assets/Json/content.json').subscribe((res) => {
-      this.content = res;
+    this.http.get('../../assets/Json/content.json').subscribe((res)=>{
+      this.content = res; 
       // console.log('--- result : ', this.content);  
     }); 
   } 
@@ -24,7 +24,7 @@ export class DataSummaryComponent {
     return Object.keys(this.content); 
   } 
  
-  // content: Dict = {
+  // content: Dict = { 
   //   Facts: ['', '$'],
   //   Products: ['of', 'Beer', 'Coke'],
   //   Markets: ['in', 'US', 'UK'],
