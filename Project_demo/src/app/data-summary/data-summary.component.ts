@@ -8,22 +8,22 @@ import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.
   templateUrl: './data-summary.component.html',
   styleUrls: ['./data-summary.component.scss'],
 })
-export class DataSummaryComponent {
-  content: any;
-  constructor(
-    private http: HttpClient,
-    public shimmerService: ShimmerEffectService
-  ) {
+export class DataSummaryComponent { 
+  content: any; 
+  constructor( 
+    private http: HttpClient, 
+    public shimmerService: ShimmerEffectService 
+  ) { 
     this.http.get('../../assets/Json/content.json').subscribe((res) => {
       this.content = res;
-      // console.log('--- result : ', this.content); 
-    });
-  }
-
-  keys(): Array<string> {
-    return Object.keys(this.content);
-  }
-
+      // console.log('--- result : ', this.content);  
+    }); 
+  } 
+ 
+  keys(): Array<string> { 
+    return Object.keys(this.content); 
+  } 
+ 
   // content: Dict = {
   //   Facts: ['', '$'],
   //   Products: ['of', 'Beer', 'Coke'],
