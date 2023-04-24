@@ -45,7 +45,7 @@ export class DataSelectorComponent {
   // titleBeforeCurrent: string = ''; 
 
   onNext(): void {
-    this.datasetSelected+=" | "+this.currentTitle
+    this.datasetSelected+=this.currentTitle+" | "
     this.listedDatasources.push(this.currentTitle); 
     this.currentPanel++; 
     if (this.currentPanel == Panel.Dataset) { 
@@ -94,11 +94,11 @@ export class DataSelectorComponent {
   //   // console.log(content);
   //    return content;
   // }
-  datasetSelected:string="NielsenIQ"
+  datasetSelected:string="NielsenIQ "
 
 
   applydataset() {
-    this.datasetSelected+=" | "+this.currentTitle
+    this.datasetSelected+=this.currentTitle
     console.log(this.datasetSelected)
      this.listedDatasources.push(this.currentTitle);  
     this.datasetSelectorservice.isSelectorOpen=false;
