@@ -2,21 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.bigcontainer {
-    background-color: white;
-    border: rgb(14, 13, 13);
-    border-radius: 4px;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 31.4vw;
-    height: 83vh;
-
-}
-
 .page {
     position: absolute;
     width: 100vw;
@@ -27,6 +12,36 @@
     right: 0;
     margin: auto;
     background-color: #00000080;
+
+    .bigcontainer {
+        background-color: white;
+        border: rgb(14, 13, 13);
+        border-radius: 4px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 31.4vw;
+        height: 83vh;
+    }
+
+    .back {
+        position: absolute;
+        top: 17px;
+        left: 18px;
+        padding: 1px;
+        height: 18px;
+        width: 18px;
+        background-image: url("../../assets/images/back.png");
+        background-size: cover;
+    
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+        }
+    
+    }
 }
 
 .head {
@@ -35,7 +50,6 @@
     padding-top: 4%;
     padding-bottom: 5px;
     font-weight: 600;
-    // padding: 3% 5%;
 }
 
 .cross {
@@ -53,21 +67,6 @@
     }
 }
 
-.back {
-    position: absolute;
-    top: 17px;
-    left: 18px;
-    padding: 1px;
-    height: 18px;
-    width: 18px;
-    background-image: url("../../assets/images/back.png");
-    background-size: cover;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.08);
-    }
-
-}
 
 .search-bar {
     background-color: #F2F2F2;
@@ -82,21 +81,31 @@
     border-bottom: 1px solid rgb(109, 105, 105);
     margin-bottom: 15px;
     width: 190px;
-
-
 }
 
 .scroll {
     width: 100%;
     overflow: auto;
-}
 
-.boxes {
-    display: flex;
-    border-radius: 4px;
-    border: 1px solid rgb(204, 204, 204);
-    margin: 13px 3px 0px 16px;
-
+    .boxes {
+        display: flex;
+        border-radius: 4px;
+        border: 1px solid rgb(204, 204, 204);
+        margin: 13px 3px 0px 16px;
+    
+    }
+    .content_1 {
+        flex-grow: 1;
+        align-items: center;
+        padding-left: 10px;
+        justify-content: center;
+        margin-right: 5px;
+    }
+    
+    .content_2 {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .icon_5 {
@@ -120,29 +129,25 @@
     font-size: 15px;
 }
 
-.icon {
+@mixin icon($image) {
     position: unset;
     top: -500px;
     margin: 10px 20px 10px 20px;
-    background-image: url("../../assets/images/home.png");
+    background-image: url($image);
     background-size: cover;
-}
-
-.icon2 {
-    position: unset;
-    top: -500px;
-    margin: 10px 20px 10px 20px;
-    background-image: url("../../assets/images/Weigh.jpg");
-    background-size: cover;
-}
-
-.icon3 {
-    position: unset;
-    top: -500px;
-    margin: 10px 20px 10px 20px;
-    background-image: url("../../assets/images/user.png");
-    background-size: cover;
-}
+  }
+  .icon {
+    @include icon("../../assets/images/home.png");
+  }
+  
+  .icon2 {
+    @include icon("../../assets/images/Weigh.jpg");
+  }
+  
+  .icon3 {
+    @include icon("../../assets/images/user.png");
+  }
+    
 
 .checkbox1 {
     border-radius: 50%;
@@ -151,9 +156,12 @@
     width: 25px;
     display: inline-block;
 }
+.checkbox_5{
+    min-width: 10%;
+     max-width: 10%;
 
+}
 .checkbox_1 {
-   
     display: inline-flex;
     align-items: center;
     padding-left: 17px;
@@ -184,7 +192,6 @@
     border-radius: 2px;
     font-weight: 700;
     background-color: transparent;
-
     &:hover {
         background-color: rgba(0, 0, 0, 0.08);
 
@@ -202,19 +209,6 @@
     border-radius: 2px;
     margin-right: 25px;
     padding: 10px;
-}
-
-.content_1 {
-    flex-grow: 1;
-    align-items: center;
-    padding-left: 10px;
-    justify-content: center;
-    margin-right: 5px;
-}
-
-.content_2 {
-    display: flex;
-    flex-direction: column;
 }
 
 .content_3 {
@@ -260,6 +254,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+
+    .foot_container1{
+        flex-grow: 1
+    }
+    .foot_container2{
+        display: flex;
+    
+    .foot_container3{
+        flex-grow: 1;
+         padding:20px;
+    }
+}
 }
 
 .apply {
