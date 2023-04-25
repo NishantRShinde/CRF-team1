@@ -1,7 +1,7 @@
 <div class="page">
     <div class="bigcontainer">
         <mat-icon *ngIf="currentPanel===Panel.Dataset || currentPanel===Panel.Dataview"
-            class="back" (click)="onback()"></mat-icon>
+            class="back" (click)="onBack()"></mat-icon>
         <div class="head" [ngStyle]="{ 'padding-left': currentPanel===Panel.SourceType? '5%':'14%' }">
             {{heading}}
         </div>
