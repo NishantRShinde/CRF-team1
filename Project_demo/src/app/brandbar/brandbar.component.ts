@@ -7,7 +7,10 @@ import { DatasetSelectorService } from '../services/open-dataset-selector/open-d
   styleUrls: ['./brandbar.component.scss'],
 })
 export class BrandbarComponent {
-  constructor(public shimmerService: ShimmerEffectService) {}
+  constructor(
+    public shimmerService: ShimmerEffectService,
+    public datasetSelectorService: DatasetSelectorService
+  ) {}
 
   currentlySelected: AllPermissions = AllPermissions.buildATable;
 
@@ -27,8 +30,10 @@ export class BrandbarComponent {
 
   changeCurrentlySelected(index: number): void {
     this.currentlySelected = index;
-    if (this.currentlySelected != AllPermissions.buildATable) {
-      DatasetSelectorService.isOnBuildATable = false;
+    if (this.currentlySelected === AllPermissions.buildATable) {
+      this.datasetSelectorService.isOnBuildATable = true;
+    } else {
+      this.datasetSelectorService.isOnBuildATable = false;
     }
   }
 }
