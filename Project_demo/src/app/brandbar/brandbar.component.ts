@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
-
+import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 @Component({
   selector: 'app-brandbar',
   templateUrl: './brandbar.component.html',
@@ -24,6 +24,13 @@ export class BrandbarComponent {
       { name: 'Find my stuff', route: '/findMyStuff' },
     ],
   };
+
+  changeCurrentlySelected(index: number): void {
+    this.currentlySelected = index;
+    if (this.currentlySelected != AllPermissions.buildATable) {
+      DatasetSelectorService.isOnBuildATable = false;
+    }
+  }
 }
 
 enum AllPermissions {

@@ -4,7 +4,7 @@
                 src="../../assets/images/brandbar-images/NIQ-Discover.PNG " alt="NIQ logo" /></li>
         <div>
             <li class="list-items" *ngFor="let permission of user.permissions; let i = index;"
-                [ngClass]="{'border-class' : i === currentlySelected}" (click)="currentlySelected = i"
+                [ngClass]="{'border-class' : i === currentlySelected}" (click)="changeCurrentlySelected(i)"
                 routerLink="{{permission.route}}">
                 {{ permission.name}}</li>
         </div>
