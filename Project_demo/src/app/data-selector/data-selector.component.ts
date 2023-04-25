@@ -18,10 +18,10 @@ export class DataSelectorComponent {
   // output property declares an event emitter used to emit events with boolean values.an array of strings. component to parent;
   // @Output() ChangeBoolean = new EventEmitter<boolean>(); 
   // @Output() sendDataSources = new EventEmitter<string>();
-  @Output() sendFooterContent = new EventEmitter<string>(); 
-  listedDatasources: string[]; //arraylist oof selected datasource 
+  // @Output() sendFooterContent = new EventEmitter<string>(); 
+
   heading: string = 'Choose source type';
-  [x: string]: any;
+  // [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
 
   dataset: any; 
@@ -38,19 +38,18 @@ export class DataSelectorComponent {
       this.dataset = res;
       this.panel = this.dataset.panels_1;
     });
-    this.listedDatasources = []; 
   }
 
   currentTitle: string = ''; 
-  // titleBeforeCurrent: string = ''; 
+  titleBeforeCurrent: string = ''; 
 
   onNext(): void {
     this.datasetSelected+=this.currentTitle+" | "
-    this.listedDatasources.push(this.currentTitle); 
     this.currentPanel++; 
     if (this.currentPanel == Panel.Dataset) { 
       this.panel = this.dataset.panels_2; 
       this.heading = this.currentTitle; 
+      this.titleBeforeCurrent=this.currentTitle
     } else if (this.currentPanel == Panel.Dataview) { 
       this.panel = this.dataset.panels_3; 
       this.heading = this.currentTitle; 
@@ -58,23 +57,22 @@ export class DataSelectorComponent {
       this.panel = this.dataset.panels_1; 
       this.heading = 'Choose source type'; 
     } 
-    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected; 
+    this.isAtLeastOneCheckboxSelected = false; 
   }
   
-  onback(): void {
-    this.listedDatasources.pop(); 
+  onBack(): void {
+     this.datasetSelected = 'NielsenIQ ';
     this.currentPanel--; 
     if (this.currentPanel == Panel.SourceType) { 
       this.panel = this.dataset.panels_1; 
       this.heading = 'Choose source type'; 
     } else if (this.currentPanel == Panel.Dataset) { 
       this.panel = this.dataset.panels_2; 
-      this.heading = this.listedDatasources[this.listedDatasources.length - 1]; 
+      this.heading=this.titleBeforeCurrent
     } else { 
       this.panel = this.dataset.panels_3; 
-      this.heading = this.listedDatasources[this.listedDatasources.length - 1]; 
     } 
-    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected; 
+    this.isAtLeastOneCheckboxSelected = false; 
   }
   
   closeDatasetSelector() { 
@@ -99,11 +97,9 @@ export class DataSelectorComponent {
 
   applydataset() {
     this.datasetSelected+=this.currentTitle
-    console.log(this.datasetSelected)
-     this.listedDatasources.push(this.currentTitle);  
+    // console.log(this.datasetSelected)
     this.datasetSelectorservice.isSelectorOpen=false;
     this.shimmerService.shimmerEffect(); 
-    // let footerString=this.footercontent(this.listedDatasources);
     let footerString=this.datasetSelected;
     this.datasetSelectorservice.appliedDataset=footerString;
     this.datasetSelectorservice.isDataApplied=true;
