@@ -1,11 +1,11 @@
 <ul>
     <div class="left-side">
-        <li id="brand" routerLink="/home" (click)="currentlySelected = -1"><img class="niq-logo"
+        <li id="brand" routerLink="/home"><img class="niq-logo"
                 src="../../assets/images/brandbar-images/NIQ-Discover.PNG " alt="NIQ logo" /></li>
         <div>
-            <li class="list-items" *ngFor="let permission of user.permissions; let i = index;"
-                [ngClass]="{'border-class' : i === currentlySelected}" (click)="changeCurrentlySelected(i)"
-                routerLink="{{permission.route}}">
+            <li class="list-items" *ngFor="let permission of user.permissions;"
+                [ngClass]="{'border-class' : currentlySelected === permission.name}"
+                (click)="changeCurrentlySelected(permission.name)" routerLink="{{permission.route}}">
                 {{ permission.name}}</li>
         </div>
     </div>
