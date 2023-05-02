@@ -9,8 +9,10 @@
 
         <p *ngIf="currentPanel===Panel.Dataset || currentPanel===Panel.Dataview" class="context_5">
             Choose a dataset</p>
-        <input *ngIf="currentPanel===Panel.Dataset || currentPanel===Panel.Dataview" type="text"
-            data-cy="input-search-asset" id="search" name="searchText" class="search-bar">
+            <input *ngIf="currentPanel===Panel.Dataset || currentPanel===Panel.Dataview" type="text"
+            data-cy="input-search-asset" id="search" name="searchText" class="search-bar"
+            [(ngModel)]="searchText" (input)="filterData()">
+        
         <mat-icon *ngIf="currentPanel===Panel.Dataset || currentPanel===Panel.Dataview"
             class="icon_5"></mat-icon>
 
@@ -76,7 +78,7 @@
                         [style.background]="isAtLeastOneCheckboxSelected ? 'blue' : '#bbccdd' ">Apply
                         Dataset</button>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> 
+        </div> 
+    </div> 
+</div> 

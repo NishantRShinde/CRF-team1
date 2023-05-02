@@ -15,13 +15,10 @@ enum Panel {
 })
 
 export class DataSelectorComponent { 
-  // output property declares an event emitter used to emit events with boolean values.an array of strings. component to parent;
-  // @Output() ChangeBoolean = new EventEmitter<boolean>(); 
   // @Output() sendDataSources = new EventEmitter<string>();
   // @Output() sendFooterContent = new EventEmitter<string>(); 
 
   heading: string = 'Choose source type';
-  // [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
 
   dataset: any; 
@@ -42,6 +39,7 @@ export class DataSelectorComponent {
 
   currentTitle: string = ''; 
   titleBeforeCurrent: string = ''; 
+  searchText: string = '';
 
   onNext(): void {
     this.datasetSelected+=this.currentTitle+" | "
@@ -58,6 +56,7 @@ export class DataSelectorComponent {
       this.heading = 'Choose source type'; 
     } 
     this.isAtLeastOneCheckboxSelected = false; 
+    this.searchText = '';
   }
   
   onBack(): void {
@@ -73,8 +72,31 @@ export class DataSelectorComponent {
       this.panel = this.dataset.panels_3; 
     } 
     this.isAtLeastOneCheckboxSelected = false; 
+    this.searchText = '';
+
   }
   
+  filterData(): void {
+    if (this.searchText) {
+      if (this.currentPanel == Panel.Dataview) {
+        this.panel = this.dataset.panels_3.filter((item: any) => {
+          return item.title.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+      } else {
+        this.panel = this.dataset.panels_2.filter((item: any) => {
+          return item.title.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+      }
+    } else {
+      if (this.currentPanel == Panel.Dataview) {
+        this.panel = this.dataset.panels_3;
+      } else {
+        this.panel = this.dataset.panels_2;
+      }
+    }
+  }
+  
+
   closeDatasetSelector() { 
     this.datasetSelectorservice.isSelectorOpen=false;
 
@@ -91,20 +113,18 @@ export class DataSelectorComponent {
   //   }
   //   // console.log(content);
   //    return content;
-  // }
+  // } 
   datasetSelected:string="NielsenIQ "
 
 
   applydataset() {
     this.datasetSelected+=this.currentTitle
-    // console.log(this.datasetSelected)
     this.datasetSelectorservice.isSelectorOpen=false;
     this.shimmerService.shimmerEffect(); 
-    let footerString=this.datasetSelected;
-    this.datasetSelectorservice.appliedDataset=footerString;
+    this.datasetSelectorservice.appliedDataset=this.datasetSelected;
     this.datasetSelectorservice.isDataApplied=true;
   } 
-  checkboxSelector(title: string) {//current title
+  checkboxSelector(title: string) {
     this.currentTitle = title; 
     this.isAtLeastOneCheckboxSelected = true; 
   }
