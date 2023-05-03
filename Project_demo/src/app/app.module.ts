@@ -12,6 +12,7 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 import { FormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     HttpClientModule,
     NgxSkeletonLoaderModule,
+    AgGridModule,
     RouterModule.forRoot([
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },
