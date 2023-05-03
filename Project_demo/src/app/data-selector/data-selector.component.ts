@@ -1,92 +1,132 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ShimmerEffectService } from '../services/shimmer-effect.service';
+import { Component, EventEmitter, Input, Output } from '@angular/core'; 
+import { HttpClient } from '@angular/common/http'; 
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service'; 
+import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 
+enum Panel {
+  SourceType,
+  Dataset,
+  Dataview
+}
 @Component({
   selector: 'app-data-selector',
   templateUrl: './data-selector.component.html',
   styleUrls: ['./data-selector.component.scss'],
 })
-export class DataSelectorComponent{
-  // @Input() dataselectorbox!: boolean;
-  @Output() ChangeBoolean = new EventEmitter<boolean>();
-  @Output() sendDataSources = new EventEmitter<string[]>();
 
-  selectedDatasources:string[];
+export class DataSelectorComponent { 
+  // @Output() sendDataSources = new EventEmitter<string>();
+  // @Output() sendFooterContent = new EventEmitter<string>(); 
+
   heading: string = 'Choose source type';
-  [x: string]: any;
   isAtLeastOneCheckboxSelected = false;
 
-  dataset: any
-  panel: any;
-  constructor(public shimmerService:ShimmerEffectService, private http: HttpClient) {
+  dataset: any; 
+  panel: any; 
+  Panel=Panel;
+  currentPanel = Panel.SourceType;
 
-    this.http.get("../../assets/jsonfiles/dataset.json").subscribe((res) => {
+  constructor( 
+    public shimmerService: ShimmerEffectService, 
+    private http: HttpClient,
+     public datasetSelectorservice:DatasetSelectorService,
+  ) { 
+    this.http.get('../../assets/jsonfiles/dataset.json').subscribe((res) => {
       this.dataset = res;
       this.panel = this.dataset.panels_1;
     });
-    this.selectedDatasources = [];
+  }
+
+  currentTitle: string = ''; 
+  titleBeforeCurrent: string = ''; 
+  searchText: string = '';
+
+  onNext(): void {
+    this.datasetSelected+=this.currentTitle+" | "
+    this.currentPanel++; 
+    if (this.currentPanel == Panel.Dataset) { 
+      this.panel = this.dataset.panels_2; 
+      this.heading = this.currentTitle; 
+      this.titleBeforeCurrent=this.currentTitle
+    } else if (this.currentPanel == Panel.Dataview) { 
+      this.panel = this.dataset.panels_3; 
+      this.heading = this.currentTitle; 
+    } else { 
+      this.panel = this.dataset.panels_1; 
+      this.heading = 'Choose source type'; 
+    } 
+    this.isAtLeastOneCheckboxSelected = false; 
+    this.searchText = '';
+  }
+  
+  onBack(): void {
+     this.datasetSelected = 'NielsenIQ ';
+    this.currentPanel--; 
+    if (this.currentPanel == Panel.SourceType) { 
+      this.panel = this.dataset.panels_1; 
+      this.heading = 'Choose source type'; 
+    } else if (this.currentPanel == Panel.Dataset) { 
+      this.panel = this.dataset.panels_2; 
+      this.heading=this.titleBeforeCurrent
+    } else { 
+      this.panel = this.dataset.panels_3; 
+    } 
+    this.isAtLeastOneCheckboxSelected = false; 
+    this.searchText = '';
 
   }
-  panelnumber: number = 1;
+  
+  filterData(): void {
+    if (this.searchText) {
+      if (this.currentPanel == Panel.Dataview) {
+        this.panel = this.dataset.panels_3.filter((item: any) => {
+          return item.title.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+      } else {
+        this.panel = this.dataset.panels_2.filter((item: any) => {
+          return item.title.toLowerCase().includes(this.searchText.toLowerCase());
+        });
+      }
+    } else {
+      if (this.currentPanel == Panel.Dataview) {
+        this.panel = this.dataset.panels_3;
+      } else {
+        this.panel = this.dataset.panels_2;
+      }
+    }
+  }
+  
 
-  Onnext(): void {
-    this.panelnumber++;
-    if (this.panelnumber == 1) {
-      this.panel = this.dataset.panels_1;
-      this.heading = "Choose source type";
-    }
-    else if (this.panelnumber == 2) {
-      this.panel = this.dataset.panels_2;
-      this.heading = "Retail Measurement";
-    }
-    else if (this.panelnumber == 3) {
-      this.panel = this.dataset.panels_3;
-      this.heading = "SYNDICATED US";
-    }
-    else if (this.panelnumber >= 3) {
-      this.panelnumber = 1;
-      this.panel = this.dataset.panels_1;
-      this.heading = "Choose source type";
-    }
-    this.isAtLeastOneCheckboxSelected = !this.isAtLeastOneCheckboxSelected;
+  closeDatasetSelector() { 
+    this.datasetSelectorservice.isSelectorOpen=false;
+
+    //closing container 
+    // const temp: boolean = false;
+    // this.ChangeBoolean.emit(temp);
   }
-  Onback(): void {
-    this.panelnumber--;
-    if (this.panelnumber == 1) {
-      this.panel = this.dataset.panels_1;
-      this.heading = "Choose source type";
-    }
-    else if (this.panelnumber == 2) {
-      this.panel = this.dataset.panels_2;
-      this.heading = "Retail Measurement";
-    }
-    else if (this.panelnumber == 3) {
-      this.panel = this.dataset.panels_3;
-      this.heading = "SYNDICATED US";
-    }
-    else if (this.panelnumber <= 3) {
-      this.panelnumber = 1;
-      this.panel = this.dataset.panels_1;
-      this.heading = "Choose source type";
-    }
-  }
-  updateCheckboxSelection(): void {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const atLeastOneCheckboxSelected = Array.prototype.some.call(checkboxes, (checkbox: HTMLInputElement) => checkbox.checked);
-    this.isAtLeastOneCheckboxSelected = atLeastOneCheckboxSelected;
-  }
-  changeisDatasetSelector(){
-    const temp: boolean = false;
-    this.ChangeBoolean.emit(temp);
-  }
-  applyDataset(){
-    this.ChangeBoolean.emit(false);
-    this.shimmerService.shimmer_effect();
-    this.sendDataSources.emit(this.selectedDatasources);
-  }
-  SelectedDatasetlist(title:string){
-    this.selectedDatasources.push(title);
+
+  // footercontent(datasetlists:string[]){
+  //   let content: string = "NielsenIQ "
+  //   content += datasetlists[0];
+  //   for(let i=1; i<3; i++){
+  //     content += " | " + datasetlists[i];
+  //   }
+  //   // console.log(content);
+  //    return content;
+  // } 
+  datasetSelected:string="NielsenIQ "
+
+
+  applydataset() {
+    this.datasetSelected+=this.currentTitle
+    this.datasetSelectorservice.isSelectorOpen=false;
+    this.shimmerService.shimmerEffect(); 
+    this.datasetSelectorservice.appliedDataset=this.datasetSelected;
+    this.datasetSelectorservice.isDataApplied=true;
+  } 
+  checkboxSelector(title: string) {
+    this.currentTitle = title; 
+    this.isAtLeastOneCheckboxSelected = true; 
   }
 }
 

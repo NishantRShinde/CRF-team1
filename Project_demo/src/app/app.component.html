@@ -1,2 +1,3 @@
 <app-brandbar></app-brandbar>
-<app-untitled-report></app-untitled-report>
+<app-report-page *ngIf="datasetSelectorService.isOnBuildATable"></app-report-page>
+<div class="nothing" *ngIf="!datasetSelectorService.isOnBuildATable">Oops<br>Nothing to show</div>

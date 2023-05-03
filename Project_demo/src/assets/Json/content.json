@@ -6,21 +6,18 @@
 
     "Products":[
         "of",
-        ["Beer",
-        "coke"] 
-        
+        ["Beer", 
+        "coke", "pepsi"] 
     ],
 
     "Markets":[
         "in",
-        ["US",
-        "UK"] 
-        
+        ["US", 
+        "UK"]
     ],
     
     "Periods":[
         "during",
-        ["13 4 Weeks"]
-        
+        ["13 4 Weeks"] 
     ]
-}
+} 

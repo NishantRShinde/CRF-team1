@@ -1,46 +1,48 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { ShimmerEffectService } from '../services/shimmer-effect.service';
-
+import { Component } from '@angular/core';
+import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
+import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 @Component({
   selector: 'app-brandbar',
   templateUrl: './brandbar.component.html',
   styleUrls: ['./brandbar.component.scss'],
 })
-export class BrandbarComponent implements AfterViewInit {
-  previous: any;
-  isFirst: boolean = true;
+export class BrandbarComponent {
+  constructor(
+    public shimmerService: ShimmerEffectService,
+    public datasetSelectorService: DatasetSelectorService
+  ) {
+    console.log(typeof this.user.permissions[0].name);
+  }
 
-  allPermissions: string[] = [
-    'Monitor my business',
-    'Choose a template',
-    'Build a table',
-    'Find my stuff',
-  ];
+  currentlySelected: string = AllPermissions.buildATable;
 
-  constructor(public shimmerService:ShimmerEffectService){}
-
+  //user object
   user: {
     uname: string;
-    permissions: number[];
+    permissions: Array<{ name: string; route: string }>;
   } = {
     uname: 'Nishant.Shinde',
-    permissions: [0, 1, 2, 3],
+    permissions: [
+      { name: AllPermissions.monitorMyBusiness, route: '/monitorMyBusiness' },
+      { name: AllPermissions.chooseATemplate, route: 'chooseATemplate' },
+      { name: AllPermissions.buildATable, route: '/buildATable' },
+      { name: AllPermissions.findMyStuff, route: '/findMyStuff' },
+    ],
   };
 
-  ngAfterViewInit() {
-    let listItems = document.querySelectorAll('.list-items');
-    listItems.forEach((item) => {
-      item.addEventListener('click', () => {
-        if (this.isFirst) {
-          item.classList.add('border-class');
-          this.isFirst = false;
-          this.previous = item;
-        } else {
-          this.previous.classList.remove('border-class');
-          item.classList.add('border-class');
-          this.previous = item;
-        }
-      });
-    });
+  changeCurrentlySelected(permission: string): void {
+    this.currentlySelected = permission;
+    if (this.currentlySelected === AllPermissions.buildATable) {
+      this.datasetSelectorService.isOnBuildATable = true;
+    } else {
+      this.datasetSelectorService.isOnBuildATable = false;
+    }
   }
+}
+
+enum AllPermissions {
+  monitorMyBusiness = 'Monitor my business',
+  chooseATemplate = 'Choose a template',
+  buildATable = 'Build a table',
+  findMyStuff = 'Find my stuff',
 }
