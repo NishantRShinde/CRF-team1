@@ -20,6 +20,8 @@ export class ReportPageComponent implements OnInit {
   addcardIconDisable: boolean = false;
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
+  showChartList: boolean = false;
+  chartOptions: {class: string, name: string}[] = [{class: 'bi bi-table', name: 'Table'},{class: 'bi bi-graph-up', name: 'Line chart'},{class: 'bi bi-bar-chart-line-fill', name: 'Column chart'},{class: 'bi bi-bar-chart-steps', name: 'Bar chart'},{class: 'bi bi-pie-chart-fill', name: 'Pie chart'},{class: 'bi bi-border-inner', name: 'Scatter chart'}];
   // isloading: boolean = true;
 
   constructor(
@@ -32,6 +34,13 @@ export class ReportPageComponent implements OnInit {
     //   this.isloading = false;
     // }, 1000);
   }
+
+  openCard(index: number): void {
+    console.log(index);
+    this.showChartList = false;
+    
+  }
+
   saveInputText() {
     this.undo = this.oldReportTitle;
     this.undoIconDisable = false;

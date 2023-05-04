@@ -268,6 +268,14 @@ $font: "arial", "sans-serif";
     .symbol {
       padding: 0px 10px 0px 3px;
     }
+    
+  }
+  .chart-icon {
+    padding: 11px 10px;
+    width: 84.5%;
+    .chart-symbol {
+      padding-right: 13px;
+    }
   }
 
   // div {
@@ -282,6 +290,10 @@ $font: "arial", "sans-serif";
   //   padding: 3px;
   //   font-size: 13px;
   // }
+}
+
+#chart-container{
+  right: 62px;
 }
 
 .head-more ul {
