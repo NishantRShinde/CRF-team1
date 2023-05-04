@@ -24,8 +24,9 @@ export class ReportPageComponent implements OnInit {
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
   // isloading: boolean = true;
-  showActualPrice: boolean = false;
+  showActualFact: boolean = false;
   rowData:any;
+  columnDefs!: ColDef[];
 
   constructor(
     public shimmerService: ShimmerEffectService,
@@ -37,17 +38,29 @@ export class ReportPageComponent implements OnInit {
     this.http.get('../../assets/jsonfiles/97210-RB_RULE.json').subscribe(data => {
       this.rowData = data;
     });
+    this.columnDefs = this.getColumns();
   }
 
-  columnDefs: ColDef[] = [
-    { field: 'market', headerName:"Markets", headerClass: 'header-cell', cellStyle: { borderRight: '1px solid rgb(204,204,204)', borderBottom: '1px solid rgb(204,204,204)' } },
-    { field: 'period', headerName:"Periods", headerClass: 'header-cell', cellStyle: { borderRight: '1px solid rgb(204,204,204)', borderBottom: '1px solid rgb(204,204,204)' } },
-    { field: 'product', headerName:"Products", headerClass: 'header-cell', cellStyle: { borderRight: '1px solid rgb(204,204,204)', borderBottom: '1px solid rgb(204,204,204)' } },
-    {
-      field: '$', headerClass: 'header-cell', cellStyle: { borderRight: '1px solid rgb(204,204,204)', borderBottom: '1px solid rgb(204,204,204)' },
-      valueFormatter: this.priceFormatter.bind(this),
-    },
-  ];
+  getColumns(){
+    return [
+      { field: 'market', headerName:"Markets", headerClass: 'header-cell', cellClass: 'body-cell', width: 137 },
+      { field: 'period', headerName:"Periods", headerClass: 'header-cell', cellClass: 'body-cell', width: 134 },
+      { field: 'product', headerName:"Products", headerClass: 'header-cell', cellClass: 'body-cell', width: 205 },
+      {
+        field: '$', headerClass: 'header-cell', cellClass: 'body-cell', width: 180,
+        
+        valueFormatter: this.factFormatter.bind(this),
+        // cellRenderer: (params: any) => {
+        //   if (!this.showActualFact) {
+        //     return '###';
+        //   } else {
+        //     return params.value;
+        //   }
+        // },
+        
+      },
+    ];
+  }
 
   // rowData = [
   //   { make: 'Toyota', model: 'Celica', price: 35000 },
@@ -55,9 +68,16 @@ export class ReportPageComponent implements OnInit {
   //   { make: 'Porsche', model: 'Boxster', price: 72000 },
   // ];
 
-  priceFormatter(params: any) {
-    if (this.showActualPrice) {
-      return params.value;
+  factFormatter(params: any) {
+    if (this.showActualFact) {
+      const numberValue = parseFloat(params.value);
+      const formattedValue = numberValue.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      });
+      return formattedValue;
     } else {
       return '###';
     }
@@ -69,8 +89,6 @@ export class ReportPageComponent implements OnInit {
     this.oldReportTitle = this.reportTitle;
   }
   saveReportTitle(): void {
-    this.showActualPrice = !this.showActualPrice;
-    console.warn(this.showActualPrice);
     if (!this.reportTitle) {
       this.reportTitle = 'Untitled-Report';
       this.undoIconDisable = false;
