@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
+import { AddCardsService } from '../services/add-cards/add-cards.service';
 
 @Component({
   selector: 'app-report-page',
@@ -26,7 +27,8 @@ export class ReportPageComponent implements OnInit {
 
   constructor(
     public shimmerService: ShimmerEffectService,
-    public datasetSelectorService: DatasetSelectorService
+    public datasetSelectorService: DatasetSelectorService,
+    public addCard: AddCardsService
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +40,11 @@ export class ReportPageComponent implements OnInit {
   openCard(index: number): void {
     console.log(index);
     this.showChartList = false;
-    
+    if(index === 0) {
+      this.addCard.addTableChart("Table");
+    }else if(index === 1) {
+      this.addCard.addLineChart("Line");
+    }
   }
 
   saveInputText() {

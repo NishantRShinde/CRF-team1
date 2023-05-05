@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<div class="report-page" *ngIf="datasetSelectorService.isDataApplied">
+<div class="report-page" *ngIf="true">
     <div class="page-header">
         <div>
             <input class="page-header-title" [(ngModel)]="reportTitle" type="text" (blur)="saveInputText()"
@@ -79,58 +79,8 @@
     </div>
 
     <app-data-summary></app-data-summary>
-
-    <div class="card" [ngStyle]="{ 'position': expandCard? 'fixed':'relative', 
-                                   'width' : expandCard?'100%': 'auto',
-                                   'margin': expandCard?'0px':'0px 12px',
-                                   'top': expandCard?'0px':'auto',
-                                   'height':expandCard?'100%':'auto'}">
-        <div class="card-head-body">
-            <div class="card-head">
-                <input class="tab-title" type="text" value="Table-1" />
-                <div *ngIf="!headerMore" class="card-icons">
-                    <button type="button" class="icon_button" (click)="expandCard = !expandCard">
-                        <i class="fa fa-arrows-alt" style="transform: rotate(45deg)"></i>
-                    </button>
-                    <button type="button" class="icon_button">
-                        <i class="fa fa-ellipsis-h"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="card-body-shimmer" *ngIf="shimmerService.isloading">
-                <ngx-skeleton-loader [theme]=" { height: '100%' , width: '100%' }" count="1" appearance="line">
-                </ngx-skeleton-loader>
-            </div>
-            <div *ngIf="!shimmerService.isloading" class="card-body">
-                <div class="table-head">
-                    <table class="report-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 9vw;">Markets</th>
-                                <th style="width: 9vw;">Periods</th>
-                                <th style="width: 14vw;">Products</th>
-                                <th style="width: 6vw;text-align: right">$</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="table-body" [ngStyle]="{ 'height': expandCard? '83.5vh':'55vh' }">
-                    <table class="report-table">
-                        <tbody>
-                            <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] ">
-                                <td style="width: 9vw">Total US Food</td>
-                                <td style="width: 9vw">4 w/e 07/20/19</td>
-                                <td style="min-width: 14vw; max-width: 14vw">
-                                    BEER | ANHEUSER-BUSCH IN BEV SA
-                                </td>
-                                <td style="width: 6vw; text-align: right;">###
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+    <app-card-design></app-card-design>
 </div>
-<app-report-page-footer *ngIf="!expandCard"></app-report-page-footer>
+<app-report-page-footer *ngIf="true"></app-report-page-footer>
+<!-- datasetSelectorService.isDataApplied -->
+<!-- !expandCard -->
