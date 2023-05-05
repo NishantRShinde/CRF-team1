@@ -121,10 +121,10 @@
                         </thead>
                     </table>
                 </div>
-                <div class="table-body" [ngStyle]="{ 'height': expandCard? '83.5vh':'55vh' }">
+                <div class="table-body" [ngStyle]="{ 'height': expandCard? '83.5vh':'50vh' }">
                     <table class="report-table">
                         <tbody>
-                            <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15] ">
+                            <tr *ngFor="let i of [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15] ">
                                 <td style="width: 9vw">Total US Food</td>
                                 <td style="width: 9vw">4 w/e 07/20/19</td>
                                 <td style="min-width: 14vw; max-width: 14vw">
@@ -138,6 +138,15 @@
                 </div> -->
             </div>
         </div>
+
     </div>
+
+    <!-- <div>Run-Buttom HTML</div> -->
+
+    <div class="Run-Button-container">
+        <button class="Run-Button" [disabled]="shimmerService.isloading" (click)="RunButton()" *ngIf="showRunButton"
+            [style.background]="shimmerService.isloading? '#bbccdd' : 'blue'">Run ➤</button>
+    </div>
+    <app-bottom-bar *ngIf="showBottomBar"></app-bottom-bar>
 </div>
 <app-report-page-footer *ngIf="!expandCard"></app-report-page-footer>

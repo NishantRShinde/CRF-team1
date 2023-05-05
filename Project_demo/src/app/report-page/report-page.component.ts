@@ -37,6 +37,10 @@ export class ReportPageComponent implements OnInit {
   showActualFact: boolean = false;
   rowData: any;
   columnDefs!: ColDef[];
+  
+  showBottomBar=false;
+  showRunButton: boolean = true;
+
 
   constructor(
     public shimmerService: ShimmerEffectService,
@@ -151,4 +155,11 @@ export class ReportPageComponent implements OnInit {
   //     this.isloading = false;
   //   }, 1500);
   // }
+
+  // Run-button
+  RunButton() {
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar=true; 
+    this.showRunButton = false;
+  }
 }
