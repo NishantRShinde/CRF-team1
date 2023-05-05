@@ -158,8 +158,31 @@ export class ReportPageComponent implements OnInit {
 
   // Run-button
   RunButton() {
-    this.shimmerService.shimmerEffect();
+     this.shimmerService.shimmerEffect();
+    
     this.showBottomBar=true; 
     this.showRunButton = false;
   }
+  cancelButton() {
+
+    this.showBottomBar = false;
+    this.showRunButton = true;
+  }
 }
+
+// export class MyComponent {
+//   dataType: string = 'Tables'; // initial value set to Tables
+//   tableData: any[] = []; // actual data for table
+//   chartData: any[] = []; // actual data for line chart
+  
+//   // function to fetch actual data based on current selected data type
+//   fetchData() {
+//     if (this.dataType === 'Tables') {
+//       // fetch actual data for table
+//       // assign the fetched data to this.tableData
+//     } else if (this.dataType === 'Line Chart') {
+//       // fetch actual data for line chart
+//       // assign the fetched data to this.chartData
+//     }
+//   }
+// }
