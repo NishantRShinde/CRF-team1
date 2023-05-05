@@ -12,7 +12,6 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 import { FormsModule } from '@angular/forms';
-import { CardDesignComponent } from './card-design/card-design.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +20,7 @@ import { CardDesignComponent } from './card-design/card-design.component';
     ReportPageComponent,
     DataSummaryComponent,
     DataSelectorComponent,
-    ReportPageFooterComponent,
-    CardDesignComponent,
+    ReportPageFooterComponent
   ],
   imports: [
     BrowserModule,
