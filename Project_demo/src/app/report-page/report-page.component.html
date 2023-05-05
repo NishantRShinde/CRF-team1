@@ -29,7 +29,8 @@
                 <i class="fa fa-print"></i>
             </button>
             <span class="vertical-line"></span>
-            <button type="button" class="icon_button" [disabled]="addcardIconDisable">
+            <button type="button" class="icon_button" (click)="showChartList=!showChartList"
+                (blur)="showChartList=!showChartList" [disabled]="addcardIconDisable">
                 <i class="fa fa-plus-circle"></i>
             </button>
             <button type="button" class="icon_button" [disabled]="moreIconDisable" (blur)="headerMore = false"
@@ -37,6 +38,16 @@
                 <i class="fa fa-ellipsis-h"></i>
 
             </button>
+        </div>
+
+        <div *ngIf="showChartList" class="more-container" id="chart-container">
+            <div *ngFor="let option of chartOptions; let i = index" class="icon chart-icon">
+                <span class="symbol chart-symbol">
+                    <i class="{{option.class}}"> </i>
+                </span>
+                <span>{{option.name}}</span>
+            </div>
+
         </div>
         <div *ngIf="headerMore" class="more-container">
             <div class="icon">

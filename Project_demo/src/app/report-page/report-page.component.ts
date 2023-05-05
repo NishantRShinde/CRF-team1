@@ -23,9 +23,19 @@ export class ReportPageComponent implements OnInit {
   addcardIconDisable: boolean = false;
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
+
+  showChartList: boolean = false;
+  chartOptions: { class: string; name: string }[] = [
+    { class: 'bi bi-table', name: 'Table' },
+    { class: 'bi bi-graph-up', name: 'Line chart' },
+    { class: 'bi bi-bar-chart-line-fill', name: 'Column chart' },
+    { class: 'bi bi-bar-chart-steps', name: 'Bar chart' },
+    { class: 'bi bi-pie-chart-fill', name: 'Pie chart' },
+    { class: 'bi bi-border-inner', name: 'Scatter chart' },
+  ];
   // isloading: boolean = true;
   showActualFact: boolean = false;
-  rowData:any;
+  rowData: any;
   columnDefs!: ColDef[];
 
   constructor(
@@ -35,20 +45,43 @@ export class ReportPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.get('../../assets/jsonfiles/97210-RB_RULE.json').subscribe(data => {
-      this.rowData = data;
-    });
+    this.http
+      .get('../../assets/jsonfiles/97210-RB_RULE.json')
+      .subscribe((data) => {
+        this.rowData = data;
+      });
     this.columnDefs = this.getColumns();
   }
 
-  getColumns(){
+  getColumns() {
     return [
-      { field: 'market', headerName:"Markets", headerClass: 'header-cell', cellClass: 'body-cell', width: 137 },
-      { field: 'period', headerName:"Periods", headerClass: 'header-cell', cellClass: 'body-cell', width: 134 },
-      { field: 'product', headerName:"Products", headerClass: 'header-cell', cellClass: 'body-cell', width: 205 },
       {
-        field: '$', headerClass: 'header-cell', cellClass: 'body-cell', width: 180,
-        
+        field: 'market',
+        headerName: 'Markets',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 137,
+      },
+      {
+        field: 'period',
+        headerName: 'Periods',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 134,
+      },
+      {
+        field: 'product',
+        headerName: 'Products',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 205,
+      },
+      {
+        field: '$',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 180,
+
         valueFormatter: this.factFormatter.bind(this),
         // cellRenderer: (params: any) => {
         //   if (!this.showActualFact) {
@@ -57,7 +90,6 @@ export class ReportPageComponent implements OnInit {
         //     return params.value;
         //   }
         // },
-        
       },
     ];
   }
@@ -75,7 +107,7 @@ export class ReportPageComponent implements OnInit {
         style: 'currency',
         currency: 'USD',
         minimumFractionDigits: 0,
-        maximumFractionDigits: 0
+        maximumFractionDigits: 0,
       });
       return formattedValue;
     } else {
