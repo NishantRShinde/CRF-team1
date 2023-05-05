@@ -41,6 +41,13 @@ export class ReportPageComponent implements OnInit {
   showBottomBar=false;
   showRunButton: boolean = true;
 
+  cardList = [
+    {"type":"table", "title": "Table-1"},
+  ];
+
+  text!: string;
+  cardTitle!: string;
+
 
   constructor(
     public shimmerService: ShimmerEffectService,
@@ -119,6 +126,18 @@ export class ReportPageComponent implements OnInit {
     }
   }
 
+  addCard(type: string){
+    let listLength = this.cardList.length + 1;
+    this.showActualFact = false;
+    if(type === "Table"){
+      this.cardList.push({"type":"table", "title":"Table-" + (listLength.toString()) });
+    }
+    else{
+      this.cardList.push({"type":"lineChart", "title":"Chart-" + (listLength.toString()) });
+    }
+    this.showChartList = false;
+  }
+
   saveInputText() {
     this.undo = this.oldReportTitle;
     this.undoIconDisable = false;
@@ -158,8 +177,9 @@ export class ReportPageComponent implements OnInit {
 
   // Run-button
   RunButton() {
-     this.shimmerService.shimmerEffect();
-    
+    this.showActualFact = !this.showActualFact;
+    this.columnDefs = this.getColumns();
+    this.shimmerService.shimmerEffect();
     this.showBottomBar=true; 
     this.showRunButton = false;
   }
