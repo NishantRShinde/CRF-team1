@@ -1,10 +1,10 @@
 <div (click)="OpenDatasetSelector()" class="report-page-footer">
     <span>Source:&nbsp; </span>
-    <div *ngIf="shimmerService.isloading">
+    <!-- <div *ngIf="shimmerService.isloading">
         <ngx-skeleton-loader
             [theme]="{ 'height': '100%', 'width': '40vw', 'margin-left':'10px', 'background-color': 'rgb(204,204,204)','border-radius':'20px' }"
             count="1" appearance="line"></ngx-skeleton-loader>
-    </div>
+    </div> -->
     <span *ngIf="!shimmerService.isloading" class="footer-content">
         <span *ngIf="!datasetSelectorService.isDataApplied">Choose a dataset</span>
         <span *ngIf="datasetSelectorService.isDataApplied">
