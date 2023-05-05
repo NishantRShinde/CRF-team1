@@ -21,6 +21,10 @@ export class ReportPageComponent implements OnInit {
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
   // isloading: boolean = true;
+  
+  showBottomBar=false;
+  showRunButton: boolean = true;
+
 
   constructor(
     public shimmerService: ShimmerEffectService,
@@ -28,10 +32,9 @@ export class ReportPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.isloading = false;
-    // }, 1000);
+
   }
+  
   saveInputText() {
     this.undo = this.oldReportTitle;
     this.undoIconDisable = false;
@@ -68,4 +71,11 @@ export class ReportPageComponent implements OnInit {
   //     this.isloading = false;
   //   }, 1500);
   // }
+
+  // Run-button
+  RunButton() {
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar=true; 
+    this.showRunButton = false;
+  }
 }

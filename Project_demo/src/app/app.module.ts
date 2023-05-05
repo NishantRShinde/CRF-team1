@@ -12,6 +12,7 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 import { FormsModule } from '@angular/forms';
+import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
     DataSummaryComponent,
     DataSelectorComponent,
     ReportPageFooterComponent,
+    BottomBarComponent,
   ],
   imports: [
     BrowserModule,
