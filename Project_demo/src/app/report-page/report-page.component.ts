@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 // import { AgGridAngular } from 'ag-grid-angular';
@@ -11,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./report-page.component.scss'],
 })
 export class ReportPageComponent implements OnInit {
+  @ViewChild('cardHolder') cardHolder: any;
   reportTitle: string = 'Untitled-Report';
   oldReportTitle: string = 'Untitled-Report';
   undo: string = '';
@@ -34,20 +35,23 @@ export class ReportPageComponent implements OnInit {
     { class: 'bi bi-border-inner', name: 'Scatter chart' },
   ];
   // isloading: boolean = true;
-  showActualFact: boolean = false;
+  // showActualFact: boolean = false;
   rowData: any;
-  columnDefs!: ColDef[];
-  
-  showBottomBar=false;
+  colData: any;
+  // columnDefs!: ColDef[];
+
+  showBottomBar = false;
   showRunButton: boolean = true;
 
-  cardList = [
-    {"type":"table", "title": "Table-1"},
-  ];
+  cardList!: {
+    type: string;
+    title: string;
+    columns: any;
+    showActualFact: boolean;
+  }[];
 
   text!: string;
   cardTitle!: string;
-
 
   constructor(
     public shimmerService: ShimmerEffectService,
@@ -61,10 +65,18 @@ export class ReportPageComponent implements OnInit {
       .subscribe((data) => {
         this.rowData = data;
       });
-    this.columnDefs = this.getColumns();
+    this.cardList = [
+      {
+        type: 'table',
+        title: 'Table-1',
+        columns: this.getColumns(false),
+        showActualFact: false,
+      },
+    ];
+    // this.cardList[0].columns = this.getColumns();
   }
 
-  getColumns() {
+  getColumns(showActualFact: boolean) {
     return [
       {
         field: 'market',
@@ -94,6 +106,7 @@ export class ReportPageComponent implements OnInit {
         width: 180,
 
         valueFormatter: this.factFormatter.bind(this),
+        valueFormatterParams: { showActualFact: showActualFact },
         // cellRenderer: (params: any) => {
         //   if (!this.showActualFact) {
         //     return '###';
@@ -112,7 +125,8 @@ export class ReportPageComponent implements OnInit {
   // ];
 
   factFormatter(params: any) {
-    if (this.showActualFact) {
+    const showActualFact = params.colDef.valueFormatterParams.showActualFact;
+    if (showActualFact) {
       const numberValue = parseFloat(params.value);
       const formattedValue = numberValue.toLocaleString('en-US', {
         style: 'currency',
@@ -126,16 +140,29 @@ export class ReportPageComponent implements OnInit {
     }
   }
 
-  addCard(type: string){
+  addCard(type: string) {
     let listLength = this.cardList.length + 1;
-    this.showActualFact = false;
-    if(type === "Table"){
-      this.cardList.push({"type":"table", "title":"Table-" + (listLength.toString()) });
-    }
-    else{
-      this.cardList.push({"type":"lineChart", "title":"Chart-" + (listLength.toString()) });
+    // this.showActualFact = false;
+    if (type === 'Table') {
+      this.cardList.push({
+        type: 'table',
+        title: 'Table-' + listLength.toString(),
+        columns: this.getColumns(false),
+        showActualFact: false,
+      });
+    } else {
+      this.cardList.push({
+        type: 'lineChart',
+        title: 'Chart-' + listLength.toString(),
+        columns: this.getColumns(false),
+        showActualFact: false,
+      });
     }
     this.showChartList = false;
+    setTimeout(() => {
+      this.cardHolder.nativeElement.scrollTop =
+        this.cardHolder.nativeElement.scrollHeight;
+    }, 0);
   }
 
   saveInputText() {
@@ -177,10 +204,16 @@ export class ReportPageComponent implements OnInit {
 
   // Run-button
   RunButton() {
-    this.showActualFact = !this.showActualFact;
-    this.columnDefs = this.getColumns();
+    // this.showActualFact = !this.showActualFact;
+    // this.columnDefs = this.getColumns();
+    for (let i of this.cardList) {
+      if (!i.showActualFact) {
+        i.showActualFact = true;
+        i.columns = this.getColumns(true);
+      }
+    }
     this.shimmerService.shimmerEffect();
-    this.showBottomBar=true; 
+    this.showBottomBar = true;
     this.showRunButton = false;
   }
 }

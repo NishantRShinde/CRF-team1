@@ -80,8 +80,8 @@
     </div>
 
     <app-data-summary></app-data-summary>
-    <div class="card-holder">
-        <div *ngFor="let a of cardList" class="card">
+    <div #cardHolder class="card-holder">
+        <div *ngFor="let a of cardList" class="card" [ngClass]="{'expand-card': expandCard, 'comp-card': !expandCard}">
             <div class="card-head">
                 <input class="tab-title" type="text" [value]= 'a.title' />
                 <div class="card-icons">
@@ -103,7 +103,7 @@
                     style="width: 100%; height: 100%;"
                     class="ag-theme-alpine"
                     [rowData]="rowData"
-                    [columnDefs]="columnDefs">
+                    [columnDefs]=a.columns>
                 </ag-grid-angular>
 
             </div>
