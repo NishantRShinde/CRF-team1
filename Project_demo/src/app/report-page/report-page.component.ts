@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
 // import { AgGridAngular } from 'ag-grid-angular';
@@ -129,6 +130,11 @@ export class ReportPageComponent implements OnInit {
   addCard(type: string){
     let listLength = this.cardList.length + 1;
     this.showActualFact = false;
+    this.showRunButton = true;
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar = false;
+
+    
     if(type === "Table"){
       this.cardList.push({"type":"table", "title":"Table-" + (listLength.toString()) });
     }
@@ -177,16 +183,18 @@ export class ReportPageComponent implements OnInit {
 
   // Run-button
   RunButton() {
-    this.showActualFact = !this.showActualFact;
-    this.columnDefs = this.getColumns();
+    this.showActualFact = !this.showActualFact; 
+    this.columnDefs = this.getColumns(); 
     this.shimmerService.shimmerEffect();
     this.showBottomBar=true; 
     this.showRunButton = false;
   }
   cancelButton() {
-
-    this.showBottomBar = false;
-    this.showRunButton = true;
+    if (this.showActualFact) { 
+      this.showActualFact = false;
+      this.showBottomBar = false;
+      this.showRunButton = true;
+    }
   }
 }
 
