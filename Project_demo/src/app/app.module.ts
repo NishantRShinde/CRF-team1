@@ -12,6 +12,12 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 import { FormsModule } from '@angular/forms';
+import { CardDesignComponent } from './card-design/card-design.component';
+import { CardComponent } from './card-design/card/card.component';
+// import { NgChartsModule } from 'ng2-charts';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { ChartModule } from 'angular-highcharts';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +26,15 @@ import { FormsModule } from '@angular/forms';
     ReportPageComponent,
     DataSummaryComponent,
     DataSelectorComponent,
-    ReportPageFooterComponent
+    ReportPageFooterComponent,
+    CardDesignComponent,
+    CardComponent,
+    LineChartComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ChartModule,
     AppRoutingModule,
     MatIconModule,
     HttpClientModule,
