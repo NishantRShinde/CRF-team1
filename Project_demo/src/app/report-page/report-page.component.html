@@ -116,6 +116,32 @@
         <button class="Run-Button" [disabled]="shimmerService.isloading" (click)="RunButton()" *ngIf="showRunButton"
             [style.background]="shimmerService.isloading? '#bbccdd' : 'blue'">Run ➤</button>
     </div>
-    <app-bottom-bar *ngIf="showBottomBar"></app-bottom-bar>
+    <app-bottom-bar *ngIf="showBottomBar"  
+    (cancel)="cancelButton()"></app-bottom-bar>
 </div>
 <app-report-page-footer *ngIf="!expandCard"></app-report-page-footer>
+
+
+<!-- <div *ngIf="dataType === 'Tables'"></div>
+<table> -->
+    <!-- table headers -->
+    <!-- <tr>
+      <th>Column 1</th>
+      <th>Column 2</th> -->
+      <!-- more columns -->
+    <!-- </tr> -->
+    <!-- table data -->
+    <!-- <tr *ngFor="let data of tableData">
+      <td>{{ data.column1 }}</td>
+      <td>{{ data.column2 }}</td> -->
+      <!-- more columns -->
+    <!-- </tr>
+  </table>
+</div>
+
+<div *ngIf="dataType === 'Line Chart'"> -->
+  <!-- display line chart preview or actual data based on whether fetchData() has been called or not -->
+  <!-- <div id="line-chart"></div>
+</div>
+
+<button (click)="fetchData()">Run</button> -->

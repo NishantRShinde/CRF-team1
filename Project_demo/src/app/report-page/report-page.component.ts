@@ -143,6 +143,9 @@ export class ReportPageComponent implements OnInit {
   addCard(type: string) {
     let listLength = this.cardList.length + 1;
     // this.showActualFact = false;
+    this.showRunButton = true;
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar = false;
     if (type === 'Table') {
       this.cardList.push({
         type: 'table',
@@ -195,13 +198,6 @@ export class ReportPageComponent implements OnInit {
     this.redoIconDisable = true;
   }
 
-  // shimmer_effect(){
-  //   this.isloading = true;
-  //   setTimeout(() => {
-  //     this.isloading = false;
-  //   }, 1500);
-  // }
-
   // Run-button
   RunButton() {
     // this.showActualFact = !this.showActualFact;
@@ -216,4 +212,28 @@ export class ReportPageComponent implements OnInit {
     this.showBottomBar = true;
     this.showRunButton = false;
   }
+  cancelButton() {
+    // if (this.showActualFact) {
+    //   this.showActualFact = false;
+      this.showBottomBar = false;
+      this.showRunButton = true;
+    // }
+  }
 }
+
+// export class MyComponent {
+//   dataType: string = 'Tables'; // initial value set to Tables
+//   tableData: any[] = []; // actual data for table
+//   chartData: any[] = []; // actual data for line chart
+
+//   // function to fetch actual data based on current selected data type
+//   fetchData() {
+//     if (this.dataType === 'Tables') {
+//       // fetch actual data for table
+//       // assign the fetched data to this.tableData
+//     } else if (this.dataType === 'Line Chart') {
+//       // fetch actual data for line chart
+//       // assign the fetched data to this.chartData
+//     }
+//   }
+// }
