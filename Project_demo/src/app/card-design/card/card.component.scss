@@ -10,7 +10,7 @@ $font: "arial", "sans-serif";
     background-color: white;
     // border-radius: 10px;
     // margin: 0% 12px;
-    margin-bottom: 4px;
+    // margin-bottom: 4px;
 
     &-head-body {
       display: flex;
@@ -53,10 +53,10 @@ $font: "arial", "sans-serif";
     &-body {
       flex-grow: 1;
       // display: flex;
-      // overflow-y: scroll;
-      margin: 8px 16px;
-      margin-bottom: 20px;
-      border: 1px solid rgb(204, 204, 204);
+      overflow-y: hidden;
+      margin: 0px 16px;
+      // margin-bottom: 20px;
+      // border: 1px solid rgb(204, 204, 204);
       // border-top: none;
       // background-color: aqua;
     }
@@ -147,6 +147,17 @@ $font: "arial", "sans-serif";
 //   text-align: left;
 //   margin: 10px 10px;
 // }
+  // .bottom-border {
+  //   border-bottom: 1px solid black;
+  //   &:hover {
+  //     border-color: rgb(103, 194, 236);
+  //   }
+  // }
+  // .indiv-summary {
+  //   font-size: 14px;
+  //   margin-left: 20px;
+  //   padding: 3px 0;
+  // }
 
 ::-webkit-scrollbar {
   width: 5px;

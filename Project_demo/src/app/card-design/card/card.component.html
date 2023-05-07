@@ -7,7 +7,7 @@
                                 'z-index': expandCard?'1000': '0'}">
     <div class="card-head-body">
         <div class="card-head">
-            <input class="tab-title" type="text" [value]="addCards.clickType === 'Table'?'Table-{{addCards.tableNumber}}': 'Chart-{{addCards.lineChartNumber}}'" />
+            <input class="tab-title" type="text" [value]="addCards.clickType === 'Table'?'Table-' + addCards.tableNumber: 'Chart-' + addCards.lineChartNumber" />
             <div class="card-icons">
                 <button type="button" class="icon_button" (click)="expandCard = !expandCard">
                     <i class="fa fa-arrows-alt" style="transform: rotate(45deg)"></i>
@@ -17,12 +17,13 @@
                 </button>
             </div>
         </div>
+        
         <div class="card-body-shimmer" *ngIf="shimmerService.isloading">
             <ngx-skeleton-loader [theme]=" { height: '100%' , width: '100%' }" count="1" appearance="line">
             </ngx-skeleton-loader>
         </div>
         <div *ngIf="!shimmerService.isloading" class="card-body">
-            
+            <app-line-chart></app-line-chart>
         </div>
     </div>
 </div>

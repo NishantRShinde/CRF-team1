@@ -30,7 +30,7 @@
             </button>
             <span class="vertical-line"></span>            
             <!-- (blur)="showChartList = false" -->
-            <button type="button" class="icon_button" [disabled]="addcardIconDisable" (click)="showChartList = !showChartList" >
+            <button type="button" class="icon_button" [disabled]="addcardIconDisable" (click)="showChartList = !showChartList" (blur)="showChartList = false">
                 <i class="fa fa-plus-circle"></i>
             </button>
           
@@ -42,7 +42,7 @@
         </div>
 
         <div *ngIf="showChartList" class="more-container" id="chart-container">
-            <div *ngFor="let option of chartOptions; let i = index" class="icon chart-icon" (click)="openCard(i)">
+            <div *ngFor="let option of chartOptions; let i = index" class="icon chart-icon" (mousedown)="openCard(i)">
                 <span class="symbol chart-symbol">
                     <i class="{{option.class}}"> </i>
                 </span>
