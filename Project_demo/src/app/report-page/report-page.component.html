@@ -83,7 +83,7 @@
     <div #cardHolder class="card-holder">
         <div *ngFor="let a of cardList" class="card" [ngClass]="{'expand-card': expandCard, 'comp-card': !expandCard}">
             <div class="card-head">
-                <input class="tab-title" type="text" [value]= 'a.title' />
+                <input class="tab-title" type="text" [value]='a.title' />
                 <div class="card-icons">
                     <button type="button" class="icon_button" (click)="expandCard = !expandCard">
                         <i class="fa fa-arrows-alt" style="transform: rotate(45deg)"></i>
@@ -99,10 +99,7 @@
             </div>
             <div *ngIf="!shimmerService.isloading" class="card-body">
 
-                <ag-grid-angular
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-alpine"
-                    [rowData]="rowData"
+                <ag-grid-angular style="width: 100%; height: 100%;" class="ag-theme-alpine" [rowData]="rowData"
                     [columnDefs]=a.columns>
                 </ag-grid-angular>
 
@@ -116,32 +113,31 @@
         <button class="Run-Button" [disabled]="shimmerService.isloading" (click)="RunButton()" *ngIf="showRunButton"
             [style.background]="shimmerService.isloading? '#bbccdd' : 'blue'">Run ➤</button>
     </div>
-    <app-bottom-bar *ngIf="showBottomBar"  
-    (cancel)="cancelButton()"></app-bottom-bar>
+    <app-bottom-bar *ngIf="showBottomBar" (cancel)="cancelButton()"></app-bottom-bar>
 </div>
 <app-report-page-footer *ngIf="!expandCard"></app-report-page-footer>
 
 
 <!-- <div *ngIf="dataType === 'Tables'"></div>
 <table> -->
-    <!-- table headers -->
-    <!-- <tr>
+<!-- table headers -->
+<!-- <tr>
       <th>Column 1</th>
       <th>Column 2</th> -->
-      <!-- more columns -->
-    <!-- </tr> -->
-    <!-- table data -->
-    <!-- <tr *ngFor="let data of tableData">
+<!-- more columns -->
+<!-- </tr> -->
+<!-- table data -->
+<!-- <tr *ngFor="let data of tableData">
       <td>{{ data.column1 }}</td>
       <td>{{ data.column2 }}</td> -->
-      <!-- more columns -->
-    <!-- </tr>
+<!-- more columns -->
+<!-- </tr>
   </table>
 </div>
 
 <div *ngIf="dataType === 'Line Chart'"> -->
-  <!-- display line chart preview or actual data based on whether fetchData() has been called or not -->
-  <!-- <div id="line-chart"></div>
+<!-- display line chart preview or actual data based on whether fetchData() has been called or not -->
+<!-- <div id="line-chart"></div>
 </div>
 
 <button (click)="fetchData()">Run</button> -->
