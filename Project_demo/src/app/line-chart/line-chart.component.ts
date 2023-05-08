@@ -115,6 +115,9 @@ export class LineChartComponent {
     this.chartOptions.yAxis.labels.formatter = function () {
       return '$' + this.value;
     };
+    this.chartOptions.tooltip.formatter = function () {
+      return '$' + this.y;
+    };
     this.lineChart = new Chart(this.chartOptions);
   }
 }

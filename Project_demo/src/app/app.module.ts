@@ -12,8 +12,8 @@ import { BrandbarComponent } from './brandbar/brandbar.component';
 import { DataSummaryComponent } from './data-summary/data-summary.component';
 import { ReportPageFooterComponent } from './report-page/report-page-footer/report-page-footer.component';
 import { FormsModule } from '@angular/forms';
-import { CardDesignComponent } from './card-design/card-design.component';
-import { CardComponent } from './card-design/card/card.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { BottomBarComponent } from './bottom-bar/bottom-bar.component';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { ChartModule } from 'angular-highcharts';
 
@@ -25,9 +25,8 @@ import { ChartModule } from 'angular-highcharts';
     DataSummaryComponent,
     DataSelectorComponent,
     ReportPageFooterComponent,
-    CardDesignComponent,
-    CardComponent,
     LineChartComponent,
+    BottomBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +36,7 @@ import { ChartModule } from 'angular-highcharts';
     MatIconModule,
     HttpClientModule,
     NgxSkeletonLoaderModule,
+    AgGridModule,
     RouterModule.forRoot([
       { path: 'home', component: AppComponent },
       { path: 'monitorMyBusiness', component: AppComponent },

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.service';
 import { DatasetSelectorService } from '../services/open-dataset-selector/open-dataset-selector.service';
-import { AddCardsService } from '../services/add-cards/add-cards.service';
+// import { AgGridAngular } from 'ag-grid-angular';
+import { ColDef } from 'ag-grid-community';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-report-page',
@@ -9,6 +11,7 @@ import { AddCardsService } from '../services/add-cards/add-cards.service';
   styleUrls: ['./report-page.component.scss'],
 })
 export class ReportPageComponent implements OnInit {
+  @ViewChild('cardHolder') cardHolder: any;
   reportTitle: string = 'Untitled-Report';
   oldReportTitle: string = 'Untitled-Report';
   undo: string = '';
@@ -21,32 +24,149 @@ export class ReportPageComponent implements OnInit {
   addcardIconDisable: boolean = false;
   moreIconDisable: boolean = false;
   expandCard: boolean = false;
+
   showChartList: boolean = false;
-  chartOptions: {class: string, name: string}[] = [{class: 'bi bi-table', name: 'Table'},{class: 'bi bi-graph-up', name: 'Line chart'},{class: 'bi bi-bar-chart-line-fill', name: 'Column chart'},{class: 'bi bi-bar-chart-steps', name: 'Bar chart'},{class: 'bi bi-pie-chart-fill', name: 'Pie chart'},{class: 'bi bi-border-inner', name: 'Scatter chart'}];
+  chartOptions: { class: string; name: string }[] = [
+    { class: 'bi bi-table', name: 'Table' },
+    { class: 'bi bi-graph-up', name: 'Line chart' },
+    { class: 'bi bi-bar-chart-line-fill', name: 'Column chart' },
+    { class: 'bi bi-bar-chart-steps', name: 'Bar chart' },
+    { class: 'bi bi-pie-chart-fill', name: 'Pie chart' },
+    { class: 'bi bi-border-inner', name: 'Scatter chart' },
+  ];
   // isloading: boolean = true;
+  // showActualFact: boolean = false;
+  rowData: any;
+  colData: any;
+  // columnDefs!: ColDef[];
+
+  showBottomBar = false;
+  showRunButton: boolean = true;
+
+  cardList!: {
+    type: string;
+    title: string;
+    columns: any;
+    showActualFact: boolean;
+  }[];
+
+  text!: string;
+  cardTitle!: string;
 
   constructor(
     public shimmerService: ShimmerEffectService,
     public datasetSelectorService: DatasetSelectorService,
-    public addCard: AddCardsService
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
-    // setTimeout(() => {
-    //   this.isloading = false;
-    // }, 1000);
+    this.http
+      .get('../../assets/jsonfiles/97210-RB_RULE.json')
+      .subscribe((data) => {
+        this.rowData = data;
+      });
+    this.cardList = [
+      {
+        type: 'table',
+        title: 'Table-1',
+        columns: this.getColumns(false),
+        showActualFact: false,
+      },
+    ];
+    // this.cardList[0].columns = this.getColumns();
   }
 
-  openCard(index: number): void {
-    console.log(index);
-    this.showChartList = false;
-    if(index === 0) {
-      this.addCard.addTableChart("Table");
-    }else if(index === 1) {
-      this.addCard.addLineChart("Line");
+  getColumns(showActualFact: boolean) {
+    return [
+      {
+        field: 'market',
+        headerName: 'Markets',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 137,
+      },
+      {
+        field: 'period',
+        headerName: 'Periods',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 134,
+      },
+      {
+        field: 'product',
+        headerName: 'Products',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 205,
+      },
+      {
+        field: '$',
+        headerClass: 'header-cell',
+        cellClass: 'body-cell',
+        width: 180,
+
+        valueFormatter: this.factFormatter.bind(this),
+        valueFormatterParams: { showActualFact: showActualFact },
+        // cellRenderer: (params: any) => {
+        //   if (!this.showActualFact) {
+        //     return '###';
+        //   } else {
+        //     return params.value;
+        //   }
+        // },
+      },
+    ];
+  }
+
+  // rowData = [
+  //   { make: 'Toyota', model: 'Celica', price: 35000 },
+  //   { make: 'Ford', model: 'Mondeo', price: 32000 },
+  //   { make: 'Porsche', model: 'Boxster', price: 72000 },
+  // ];
+
+  factFormatter(params: any) {
+    const showActualFact = params.colDef.valueFormatterParams.showActualFact;
+    if (showActualFact) {
+      const numberValue = parseFloat(params.value);
+      const formattedValue = numberValue.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+      return formattedValue;
+    } else {
+      return '###';
     }
   }
 
+  addCard(type: string) {
+    let listLength = this.cardList.length + 1;
+    // this.showActualFact = false;
+    this.showRunButton = true;
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar = false;
+    if (type === 'Table') {
+      this.cardList.push({
+        type: 'table',
+        title: 'Table-' + listLength.toString(),
+        columns: this.getColumns(false),
+        showActualFact: false,
+      });
+    } else {
+      this.cardList.push({
+        type: 'lineChart',
+        title: 'Chart-' + listLength.toString(),
+        columns: this.getColumns(false),
+        showActualFact: false,
+      });
+    }
+    this.showChartList = false;
+    setTimeout(() => {
+      this.cardHolder.nativeElement.scrollTop =
+        this.cardHolder.nativeElement.scrollHeight;
+    }, 0);
+  }
   saveInputText() {
     this.undo = this.oldReportTitle;
     this.undoIconDisable = false;
@@ -77,10 +197,42 @@ export class ReportPageComponent implements OnInit {
     this.redoIconDisable = true;
   }
 
-  // shimmer_effect(){
-  //   this.isloading = true;
-  //   setTimeout(() => {
-  //     this.isloading = false;
-  //   }, 1500);
-  // }
+  // Run-button
+  RunButton() {
+    // this.showActualFact = !this.showActualFact;
+    // this.columnDefs = this.getColumns();
+    for (let i of this.cardList) {
+      if (!i.showActualFact) {
+        i.showActualFact = true;
+        i.columns = this.getColumns(true);
+      }
+    }
+    this.shimmerService.shimmerEffect();
+    this.showBottomBar = true;
+    this.showRunButton = false;
+  }
+  cancelButton() {
+    // if (this.showActualFact) {
+    //   this.showActualFact = false;
+    this.showBottomBar = false;
+    this.showRunButton = true;
+    // }
+  }
 }
+
+// export class MyComponent {
+//   dataType: string = 'Tables'; // initial value set to Tables
+//   tableData: any[] = []; // actual data for table
+//   chartData: any[] = []; // actual data for line chart
+
+//   // function to fetch actual data based on current selected data type
+//   fetchData() {
+//     if (this.dataType === 'Tables') {
+//       // fetch actual data for table
+//       // assign the fetched data to this.tableData
+//     } else if (this.dataType === 'Line Chart') {
+//       // fetch actual data for line chart
+//       // assign the fetched data to this.chartData
+//     }
+//   }
+// }

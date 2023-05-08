@@ -194,8 +194,8 @@
     background-color: transparent;
     &:hover {
         background-color: rgba(0, 0, 0, 0.08);
-
     }
+    cursor: pointer;
 }
 
 .next {
@@ -209,6 +209,7 @@
     border-radius: 2px;
     margin-right: 25px;
     padding: 10px;
+    cursor: pointer;
 }
 
 .content_3 {
@@ -278,4 +279,5 @@
     border-radius: 2px;
     margin-right: 25px;
     padding: 10px;
+    cursor: pointer;
 }
