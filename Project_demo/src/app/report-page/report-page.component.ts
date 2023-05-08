@@ -48,6 +48,7 @@ export class ReportPageComponent implements OnInit {
     title: string;
     columns: any;
     showActualFact: boolean;
+    viewStatus:string;
   }[];
 
   text!: string;
@@ -71,6 +72,7 @@ export class ReportPageComponent implements OnInit {
         title: 'Table-1',
         columns: this.getColumns(false),
         showActualFact: false,
+        viewStatus:'preview',
       },
     ];
     // this.cardList[0].columns = this.getColumns();
@@ -152,6 +154,8 @@ export class ReportPageComponent implements OnInit {
         title: 'Table-' + listLength.toString(),
         columns: this.getColumns(false),
         showActualFact: false,
+        viewStatus:'preview',
+
       });
     } else {
       this.cardList.push({
@@ -159,6 +163,8 @@ export class ReportPageComponent implements OnInit {
         title: 'Chart-' + listLength.toString(),
         columns: this.getColumns(false),
         showActualFact: false,
+        viewStatus:'preview',
+
       });
     }
     this.showChartList = false;
@@ -206,6 +212,10 @@ export class ReportPageComponent implements OnInit {
       if (!i.showActualFact) {
         i.showActualFact = true;
         i.columns = this.getColumns(true);
+        i.viewStatus='running'
+      }
+      else{
+        i.viewStatus='actual';
       }
     }
     this.shimmerService.shimmerEffect();
@@ -215,9 +225,17 @@ export class ReportPageComponent implements OnInit {
   cancelButton() {
     // if (this.showActualFact) {
     //   this.showActualFact = false;
+    for (let i of this.cardList ){
+      if(i.viewStatus='running'){
+        i.viewStatus='preview';
+        i.showActualFact=false;
+        i.columns=this.getColumns(false)
+      }
+    }
+
       this.showBottomBar = false;
       this.showRunButton = true;
-    // }
+    
   }
 }
 
