@@ -1,6 +1,7 @@
 
 .bottom-border {
       border-bottom: 1px solid black;
+      cursor: pointer;
       &:hover {
         border-color: rgb(103, 194, 236);
       }
@@ -16,14 +17,6 @@
     margin-top: 16px;
     // overflow: hidden;
 }
-
-// .chart:hover .highcharts-legend-item:nth-child(1) span {
-//   color: #FFC107; /* Change legend item color on hover */
-// }
-// .chart:hover .highcharts-series-0 path {
-//   stroke: #FFC107; /* Change line color on hover */
-//   stroke-width: 3;
-// }
 .actual {
   position: absolute;
   right: 0;

@@ -1,8 +1,8 @@
 <ul>
     <div class="left-side">
-        <li id="brand" routerLink="/home"><img class="niq-logo"
-                src="../../assets/images/brandbar-images/NIQ-Discover.PNG " alt="NIQ logo" /></li>
-        <div>
+        <li routerLink="/home"><img class="niq-logo" src="../../assets/images/brandbar-images/NIQ-Discover.PNG "
+                alt="NIQ logo" /></li>
+        <div class="overflow">
             <li class="list-items" *ngFor="let permission of user.permissions;"
                 [ngClass]="{'border-class' : currentlySelected === permission.name}"
                 (click)="changeCurrentlySelected(permission.name)" routerLink="{{permission.route}}">

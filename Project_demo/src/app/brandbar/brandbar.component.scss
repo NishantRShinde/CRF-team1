@@ -37,14 +37,6 @@ li {
 		border-bottom: 4px solid #0E86D4;
 	}
 }
-.usericon{
-	display: inline-flex;
-	align-items: center;
-	padding: 0 6px;
-	&:hover {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-}
 
 .icon-right {
 	padding: 14px 8px;
@@ -73,6 +65,14 @@ li {
 	display: inline-flex;
 	align-items: center;
 	margin-right: 13px;
+	.usericon{
+		display: inline-flex;
+		align-items: center;
+		padding: 0 6px;
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+	}
 }
 
 .username {
@@ -80,4 +80,10 @@ li {
 	padding: 0 0;
 	font-size: 15px;
 	font-weight: 600;
+}
+
+@media screen and (max-width: 1064px) {
+	.overflow {
+		display: none;
+	}
 }
