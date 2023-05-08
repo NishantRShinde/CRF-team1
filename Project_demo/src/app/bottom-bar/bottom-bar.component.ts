@@ -11,18 +11,14 @@ import { ShimmerEffectService } from '../services/shimmer-effect/shimmer-effect.
 export class BottomBarComponent {
   @Output() cancel = new EventEmitter<void>();
 
-  cancelButton() {
-    this.cancel.emit();
-  }
-  // showRunButton: boolean=false;
-  // showBottomBar:boolean=true;
+  
+  
   constructor(
     public shimmerService: ShimmerEffectService
   ) { }
 
-  // cancelButton(){
-  //   this.showRunButton= true;
-  //   this.showBottomBar=false;
-
-  // }
+  cancelButton() {
+    this.cancel.emit();
+    
+  }
 }
